@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     onInputChanged: function (input) {
-      console.log(input)
+      // TODO: Implement on day 1
     }
   }
 }
