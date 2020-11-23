@@ -6,6 +6,8 @@
         Advent of Code
       </b-navbar-brand>
 
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
