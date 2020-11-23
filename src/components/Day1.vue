@@ -1,5 +1,5 @@
 <template>
-  <Day :day="1" @input-changed="onInputChanged">
+  <Day :day="1" :solutions="solutions" @input-changed="onInputChanged">
   </Day>
 </template>
 
@@ -9,6 +9,14 @@ import Day from '@/components/Day'
 export default {
   components: {
     Day
+  },
+  data: function () {
+    return {
+      solutions: {
+        partOne: null,
+        partTwo: null
+      }
+    }
   },
   methods: {
     onInputChanged: function (input) {
