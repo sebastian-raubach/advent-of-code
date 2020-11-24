@@ -11,10 +11,10 @@
           </div>
           <b-card-body>
             <b-card-text class="text-center">
-              <BIconStarFill class="ml-2 badge-gold" v-if="solutions[day] && solutions[day].partOne === true" />
-              <BIconStar class="ml-2 badge-default" v-else />
-              <BIconStarFill class="ml-2 badge-gold" v-if="solutions[day] && solutions[day].partTwo === true" />
-              <BIconStar class="ml-2 badge-default" v-else />
+              <BIconStarFill class="mx-1 badge-gold" v-if="solutions[day] && solutions[day].partOne === true" />
+              <BIconStar class="mx-1 badge-default" v-else />
+              <BIconStarFill class="mx-1 badge-gold" v-if="solutions[day] && solutions[day].partTwo === true" />
+              <BIconStar class="mx-1 badge-default" v-else />
             </b-card-text>
           </b-card-body>
           <b-button block :to="{ name: `day-${day}` }" variant="primary">Day {{ day }}</b-button>
