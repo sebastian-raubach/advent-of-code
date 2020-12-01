@@ -42,6 +42,15 @@ export default {
           partTwo: null
         }
       }
+    },
+    taskInput: {
+      type: String,
+      default: null
+    }
+  },
+  watch: {
+    taskInput: function (newValue) {
+      this.input = newValue
     }
   },
   computed: {
@@ -56,6 +65,11 @@ export default {
   methods: {
     onSubmit: function () {
       this.$emit('input-changed', this.splitData)
+    }
+  },
+  mounted: function () {
+    if (this.taskInput) {
+      this.input = this.taskInput
     }
   }
 }
