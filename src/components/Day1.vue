@@ -29,7 +29,7 @@ export default {
       // Iterate through
       for (let i = 0; i < this.numbers.length; i++) {
         // Start second loop only from i
-        for (let j = i; j < this.numbers.length; j++) {
+        for (let j = i + 1; j < this.numbers.length; j++) {
           if (this.numbers[i] + this.numbers[j] === 2020) {
             this.solutions.partOne = this.numbers[i] * this.numbers[j]
             return
@@ -43,9 +43,9 @@ export default {
       // Iterate through
       for (let i = 0; i < this.numbers.length; i++) {
         // Start second loop only from i
-        for (let j = i; j < this.numbers.length; j++) {
+        for (let j = i + 1; j < this.numbers.length; j++) {
           // Start the third loop only from j
-          for (let k = j; k < this.numbers.length; k++) {
+          for (let k = j + 1; k < this.numbers.length; k++) {
             if (this.numbers[i] + this.numbers[j] + this.numbers[k] === 2020) {
               this.solutions.partTwo = this.numbers[i] * this.numbers[j] * this.numbers[k]
               return

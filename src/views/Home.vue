@@ -3,7 +3,7 @@
     <h1>Advent of Code 2020</h1>
 
     <b-row cols-lg=5>
-      <b-col cols=12 sm=6 md=4 v-for="day in days" :key="`day-${day}`" class="aoc-task mb-3">
+      <b-col cols=12 sm=6 md=4 v-for="day in days" :key="`day-${day}`" class="aoc-task mb-3 d-flex align-items-stretch">
         <b-card no-body :class="`${day > currentDay ? 'disabled' : ''}`" bg-variant="dark">
           <div class="position-relative">
             <b-img fluid class="card-img" :src="require(`@/assets/card-background.jpg`)" />
@@ -16,6 +16,7 @@
               <BIconStarFill class="mx-1 badge-gold" v-if="solutions[day] && solutions[day].partTwo === true" />
               <BIconStar class="mx-1 badge-default" v-else />
             </b-card-text>
+            <b-card-text class="text-center text-white" v-if="titles[day]">"{{ titles[day] }}"</b-card-text>
           </b-card-body>
           <b-button block :to="{ name: `day-${day}` }" variant="primary">Day {{ day }}</b-button>
         </b-card>
@@ -37,10 +38,13 @@ export default {
     return {
       days: Array.from(Array(25).keys()).map(i => i + 1),
       currentDay: 1,
+      titles: {
+        1: 'Report Repair'
+      },
       solutions: {
         1: {
-          partOne: false,
-          partTwo: false
+          partOne: true,
+          partTwo: true
         }
       }
     }
