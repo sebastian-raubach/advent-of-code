@@ -10,6 +10,9 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
+          <b-nav-form @submit.prevent>
+            <b-form-checkbox v-model="localEditingEnabled" switch v-b-tooltip="editingEnabled ? 'Disable editing' : 'Enable editing'" />
+          </b-nav-form>
           <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -20,6 +23,53 @@
     </b-container>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data: function () {
+    return {
+      localEditingEnabled: false
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'editingEnabled'
+    ])
+  },
+  watch: {
+    editingEnabled: function (newValue) {
+      this.localEditingEnabled = newValue
+    },
+    localEditingEnabled: function (newValue) {
+      this.onEditingChanged()
+    }
+  },
+  methods: {
+    onEditingChanged: function () {
+      if (this.localEditingEnabled === true) {
+        this.$bvModal.msgBoxConfirm('I\'m assuming you aren\'t using this to cheat... Enable anyway?', {
+          okTitle: 'Yes',
+          cancelTitle: 'No'
+        })
+          .then(value => {
+            if (value === true) {
+              this.$store.dispatch('setEditingEnabled', true)
+            } else {
+              this.localEditingEnabled = false
+            }
+          })
+      } else {
+        this.$store.dispatch('setEditingEnabled', false)
+      }
+    }
+  },
+  mounted: function () {
+    this.localEditingEnabled = this.editingEnabled
+  }
+}
+</script>
 
 <style lang="scss">
 // Import the bootswatch theme
