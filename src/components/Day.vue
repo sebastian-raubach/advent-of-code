@@ -61,7 +61,7 @@ export default {
     ]),
     splitData: function () {
       if (this.input) {
-        return this.input.split('\n')
+        return this.input.split(/\r?\n/)
       } else {
         return null
       }
