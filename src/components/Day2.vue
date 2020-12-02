@@ -64,7 +64,7 @@ export default {
     },
     solvePartOne: function () {
       // Map each input row to a boolean value representing if it matches the requirement
-      const correctPasswords = this.parsedInput.map(i => {
+      this.solutions.partOne = this.parsedInput.map(i => {
         // Get the letter to count mapping
         const letters = i.letterCount
         // Get the password requirement letter
@@ -75,12 +75,10 @@ export default {
         // Check if the letter exists in the password and if its count is in range
         return letters[letter] && letters[letter] >= range[0] && letters[letter] <= range[1]
       }).filter(p => p).length
-
-      this.solutions.partOne = correctPasswords
     },
     solvePartTwo: function () {
       // Map each input row to a boolean value representing if it matches the requirement
-      const correctPasswords = this.parsedInput.map(i => {
+      this.solutions.partTwo = this.parsedInput.map(i => {
         // Get the original password
         const letters = i.password
         // Get the password requirement letter
@@ -92,8 +90,6 @@ export default {
         // Check if EXACTLY ONE of the positions matches the letter
         return (letters[firstIndex] === letter && letters[lastIndex] !== letter) || (letters[firstIndex] !== letter && letters[lastIndex] === letter)
       }).filter(p => p).length
-
-      this.solutions.partTwo = correctPasswords
     }
   }
 }
