@@ -10,12 +10,12 @@
       <b-button type="submit" @click.prevent="onSubmit">Run</b-button>
     </b-form>
 
-    <template v-if="solutions.partOne">
+    <template v-if="solutions.partOne !== undefined && solutions.partOne !== null">
       <h2>Solution part 1</h2>
       <p>{{ solutions.partOne }}</p>
     </template>
 
-    <template v-if="solutions.partTwo">
+    <template v-if="solutions.partTwo !== undefined && solutions.partTwo !== null">
       <h2>Solution part 2</h2>
       <p>{{ solutions.partTwo }}</p>
     </template>

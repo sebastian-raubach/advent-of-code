@@ -37,12 +37,17 @@ export default {
   data: function () {
     return {
       days: Array.from(Array(25).keys()).map(i => i + 1),
-      currentDay: 1,
+      currentDay: 2,
       titles: {
-        1: 'Report Repair'
+        1: 'Report Repair',
+        2: 'Password Philosophy'
       },
       solutions: {
         1: {
+          partOne: true,
+          partTwo: true
+        },
+        2: {
           partOne: true,
           partTwo: true
         }

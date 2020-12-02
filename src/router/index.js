@@ -18,6 +18,11 @@ const routes = [
     path: '/1',
     name: 'day-1',
     component: () => import(/* webpackChunkName: "day-1" */ '@/components/Day1.vue')
+  },
+  {
+    path: '/2',
+    name: 'day-2',
+    component: () => import(/* webpackChunkName: "day-2" */ '@/components/Day2.vue')
   }
 ]
 
