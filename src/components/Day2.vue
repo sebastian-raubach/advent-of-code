@@ -1,6 +1,5 @@
 <template>
-  <Day :day="2" :solutions="solutions" :taskInput="taskInput" @input-changed="onInputChanged">
-  </Day>
+  <Day :day="2" :solutions="solutions" :taskInput="taskInput" @input-changed="onInputChanged" />
 </template>
 
 <script>

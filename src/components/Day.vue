@@ -12,11 +12,13 @@
 
     <template v-if="solutions.partOne !== undefined && solutions.partOne !== null">
       <h2>Solution part 1</h2>
+      <slot name="partOne" />
       <p>{{ solutions.partOne }}</p>
     </template>
 
     <template v-if="solutions.partTwo !== undefined && solutions.partTwo !== null">
       <h2>Solution part 2</h2>
+      <slot name="partTwo" />
       <p>{{ solutions.partTwo }}</p>
     </template>
   </div>
