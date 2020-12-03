@@ -11,7 +11,7 @@
     </b-form>
 
     <template v-if="solutions.partOne !== undefined && solutions.partOne !== null">
-      <h2>Solution part 1</h2>
+      <h2 class="mt-3">Solution part 1</h2>
       <slot name="partOne" />
       <p>{{ solutions.partOne }}</p>
     </template>
