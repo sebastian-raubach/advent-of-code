@@ -16,45 +16,14 @@ export default {
         partOne: null,
         partTwo: null
       },
-      requiredFields: ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'],
       passportRequirements: {
-        byr: {
-          type: 'number',
-          min: 1920,
-          max: 2002
-        },
-        iyr: {
-          type: 'number',
-          min: 2010,
-          max: 2020
-        },
-        eyr: {
-          type: 'number',
-          min: 2020,
-          max: 2030
-        },
-        hgt: {
-          type: 'height',
-          in: {
-            min: 59,
-            max: 76
-          },
-          cm: {
-            min: 150,
-            max: 193
-          }
-        },
-        hcl: {
-          type: 'hex'
-        },
-        ecl: {
-          type: 'category',
-          categories: ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
-        },
-        pid: {
-          type: 'id',
-          length: 9
-        }
+        byr: { type: 'number', min: 1920, max: 2002 },
+        iyr: { type: 'number', min: 2010, max: 2020 },
+        eyr: { type: 'number', min: 2020, max: 2030 },
+        hgt: { type: 'height', in: { min: 59, max: 76 }, cm: { min: 150, max: 193 } },
+        hcl: { type: 'hex' },
+        ecl: { type: 'category', categories: ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'] },
+        pid: { type: 'id', length: 9 }
       },
       passports: []
     }
