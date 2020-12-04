@@ -17,21 +17,12 @@ export default {
         partTwo: null
       },
       passportRequirements: {
-        byr: (value) => {
-          // Needs to be a number and in range
-          const number = +value
-          return !isNaN(number) && number >= 1920 && number <= 2002
-        },
-        iyr: (value) => {
-          // Needs to be a number and in range
-          const number = +value
-          return !isNaN(number) && number >= 2010 && number <= 2020
-        },
-        eyr: (value) => {
-          // Needs to be a number and in range
-          const number = +value
-          return !isNaN(number) && number >= 2020 && number <= 2030
-        },
+        byr: (value) => this.isInRange(value, 1920, 2002),
+        iyr: (value) => this.isInRange(value, 2010, 2020),
+        eyr: (value) => this.isInRange(value, 2020, 2030),
+        hcl: (value) => /^#[0-9A-F]{6}$/i.test(value),
+        ecl: (value) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].indexOf(value) !== -1,
+        pid: (value) => !isNaN(+value) && value.length === 9,
         hgt: (value) => {
           // For heights, check the system, then the range
           let number
@@ -44,15 +35,16 @@ export default {
           } else {
             return false
           }
-        },
-        hcl: (value) => /^#[0-9A-F]{6}$/i.test(value),
-        ecl: (value) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].indexOf(value) !== -1,
-        pid: (value) => !isNaN(+value) && value.length === 9
+        }
       },
       passports: []
     }
   },
   methods: {
+    isInRange: function (value, min, max) {
+      const number = +value
+      return !isNaN(number) && number >= min && number <= max
+    },
     onInputChanged: function (input) {
       // Parse the passports
       let currentPassport = {}
