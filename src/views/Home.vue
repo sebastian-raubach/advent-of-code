@@ -16,7 +16,7 @@
               <BIconStarFill class="mx-1 badge-gold" v-if="solutions[day] && solutions[day].partTwo === true" />
               <BIconStar class="mx-1 badge-default" v-else />
             </b-card-text>
-            <b-card-text class="text-center text-white" v-if="titles[day]">"{{ titles[day] }}"</b-card-text>
+            <b-card-text class="text-center text-white" v-if="titles[day]">{{ titles[day] }}</b-card-text>
           </b-card-body>
           <b-button block :to="{ name: `day-${day}` }" variant="primary">Day {{ day }}</b-button>
         </b-card>
@@ -37,11 +37,12 @@ export default {
   data: function () {
     return {
       days: Array.from(Array(25).keys()).map(i => i + 1),
-      currentDay: 3,
+      currentDay: 4,
       titles: {
         1: 'Report Repair',
         2: 'Password Philosophy',
-        3: 'Toboggan Trajectory'
+        3: 'Toboggan Trajectory',
+        4: 'Passport Processing'
       },
       solutions: {
         1: {
@@ -53,6 +54,10 @@ export default {
           partTwo: true
         },
         3: {
+          partOne: true,
+          partTwo: true
+        },
+        4: {
           partOne: true,
           partTwo: true
         }
