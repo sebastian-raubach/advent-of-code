@@ -17,13 +17,37 @@ export default {
         partTwo: null
       },
       passportRequirements: {
-        byr: { type: 'number', min: 1920, max: 2002 },
-        iyr: { type: 'number', min: 2010, max: 2020 },
-        eyr: { type: 'number', min: 2020, max: 2030 },
-        hgt: { type: 'height', in: { min: 59, max: 76 }, cm: { min: 150, max: 193 } },
-        hcl: { type: 'hex' },
-        ecl: { type: 'category', categories: ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'] },
-        pid: { type: 'id', length: 9 }
+        byr: (value) => {
+          // Needs to be a number and in range
+          const number = +value
+          return !isNaN(number) && number >= 1920 && number <= 2002
+        },
+        iyr: (value) => {
+          // Needs to be a number and in range
+          const number = +value
+          return !isNaN(number) && number >= 2010 && number <= 2020
+        },
+        eyr: (value) => {
+          // Needs to be a number and in range
+          const number = +value
+          return !isNaN(number) && number >= 2020 && number <= 2030
+        },
+        hgt: (value) => {
+          // For heights, check the system, then the range
+          let number
+          if (value.indexOf('in') !== -1) {
+            number = +(value.replace('in', ''))
+            return !isNaN(number) && number >= 59 && number <= 76
+          } else if (value.indexOf('cm') !== -1) {
+            number = +(value.replace('cm', ''))
+            return !isNaN(number) && number >= 150 && number <= 193
+          } else {
+            return false
+          }
+        },
+        hcl: (value) => /^#[0-9A-F]{6}$/i.test(value),
+        ecl: (value) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].indexOf(value) !== -1,
+        pid: (value) => !isNaN(+value) && value.length === 9
       },
       passports: []
     }
@@ -58,61 +82,18 @@ export default {
     },
     solvePartOne: function () {
       // Filter out invalid passports
-      const validPassports = this.passports.filter(p => this.isPassportValidPartOne(p))
-      this.solutions.partOne = validPassports.length
+      this.solutions.partOne = this.passports.filter(p => this.isPassportValidPartOne(p)).length
     },
     solvePartTwo: function (input) {
       // Filter first valid passports from part one, then part two
-      const validPassports = this.passports.filter(p => this.isPassportValidPartOne(p)).filter(p => this.isPassportValidPartTwo(p))
-      this.solutions.partTwo = validPassports.length
+      this.solutions.partTwo = this.passports.filter(p => this.isPassportValidPartOne(p)).filter(p => this.isPassportValidPartTwo(p)).length
     },
     isPassportValidPartOne: function (passport) {
-      const matchingFields = Object.keys(this.passportRequirements).filter(r => passport[r] !== undefined && passport[r] !== null).length
-
-      return matchingFields === Object.keys(this.passportRequirements).length
+      return Object.keys(this.passportRequirements).filter(r => passport[r] !== undefined && passport[r] !== null).length === Object.keys(this.passportRequirements).length
     },
     isPassportValidPartTwo: function (passport) {
       // Check all password requirements
-      const matchingFields = Object.keys(this.passportRequirements).filter(req => {
-        // Get the value
-        const value = passport[req]
-        // Parse it as a number
-        const numberValue = +value
-        // And get the current requirement
-        const requirement = this.passportRequirements[req]
-
-        switch (requirement.type) {
-          case 'number':
-            // For numbers, check they are numbers and check the range
-            return !isNaN(numberValue) && numberValue >= requirement.min && numberValue <= requirement.max
-          case 'id':
-            // For ids, check they are numbers and check the length
-            return !isNaN(numberValue) && value.length === requirement.length
-          case 'category':
-            // For categories, check they are a valid value
-            return requirement.categories.indexOf(value) !== -1
-          case 'hex':
-            // For colors, check they are hex values
-            return /^#[0-9A-F]{6}$/i.test(value)
-          case 'height': {
-            // For heights, check the system, then the range
-            let system
-            if (value.indexOf('in') !== -1) {
-              system = 'in'
-            } else if (value.indexOf('cm') !== -1) {
-              system = 'cm'
-            } else {
-              return false
-            }
-
-            const height = +(value.replace(system, ''))
-
-            return !isNaN(height) && height >= requirement[system].min && height <= requirement[system].max
-          }
-        }
-      })
-
-      return matchingFields.length === Object.keys(this.passportRequirements).length
+      return Object.keys(this.passportRequirements).filter(req => this.passportRequirements[req](passport[req])).length === Object.keys(this.passportRequirements).length
     }
   }
 }
