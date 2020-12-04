@@ -17,6 +17,45 @@ export default {
         partTwo: null
       },
       requiredFields: ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'],
+      passportRequirements: {
+        byr: {
+          type: 'number',
+          min: 1920,
+          max: 2002
+        },
+        iyr: {
+          type: 'number',
+          min: 2010,
+          max: 2020
+        },
+        eyr: {
+          type: 'number',
+          min: 2020,
+          max: 2030
+        },
+        hgt: {
+          type: 'height',
+          in: {
+            min: 59,
+            max: 76
+          },
+          cm: {
+            min: 150,
+            max: 193
+          }
+        },
+        hcl: {
+          type: 'hex'
+        },
+        ecl: {
+          type: 'category',
+          categories: ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
+        },
+        pid: {
+          type: 'id',
+          length: 9
+        }
+      },
       passports: []
     }
   },
@@ -59,57 +98,52 @@ export default {
       this.solutions.partTwo = validPassports.length
     },
     isPassportValidPartOne: function (passport) {
-      const matchingFields = this.requiredFields.filter(r => passport[r] !== undefined && passport[r] !== null).length
+      const matchingFields = Object.keys(this.passportRequirements).filter(r => passport[r] !== undefined && passport[r] !== null).length
 
-      return matchingFields === this.requiredFields.length
+      return matchingFields === Object.keys(this.passportRequirements).length
     },
     isPassportValidPartTwo: function (passport) {
-      // Get all fields and convert to numbers where required
-      const byr = +passport.byr
-      const iyr = +passport.iyr
-      const eyr = +passport.eyr
-      const hgt = passport.hgt
-      const hcl = passport.hcl
-      const ecl = passport.ecl
-      const pid = passport.pid
+      // Check all password requirements
+      const matchingFields = Object.keys(this.passportRequirements).filter(req => {
+        // Get the value
+        const value = passport[req]
+        // Parse it as a number
+        const numberValue = +value
+        // And get the current requirement
+        const requirement = this.passportRequirements[req]
 
-      // Check all year ranges
-      if (byr < 1920 || byr > 2002 || iyr < 2010 || iyr > 2020 || eyr < 2020 || eyr > 2030) {
-        return false
-      }
+        switch (requirement.type) {
+          case 'number':
+            // For numbers, check they are numbers and check the range
+            return !isNaN(numberValue) && numberValue >= requirement.min && numberValue <= requirement.max
+          case 'id':
+            // For ids, check they are numbers and check the length
+            return !isNaN(numberValue) && value.length === requirement.length
+          case 'category':
+            // For categories, check they are a valid value
+            return requirement.categories.indexOf(value) !== -1
+          case 'hex':
+            // For colors, check they are hex values
+            return /^#[0-9A-F]{6}$/i.test(value)
+          case 'height': {
+            // For heights, check the system, then the range
+            let system
+            if (value.indexOf('in') !== -1) {
+              system = 'in'
+            } else if (value.indexOf('cm') !== -1) {
+              system = 'cm'
+            } else {
+              return false
+            }
 
-      // Check height based on cm or in
-      if (hgt.indexOf('cm') !== -1) {
-        const value = +(hgt.replace('cm', ''))
-        if (value < 150 || value > 193) {
-          return false
+            const height = +(value.replace(system, ''))
+
+            return !isNaN(height) && height >= requirement[system].min && height <= requirement[system].max
+          }
         }
-      } else if (hgt.indexOf('in') !== -1) {
-        const value = +(hgt.replace('in', ''))
-        if (value < 59 || value > 76) {
-          return false
-        }
-      } else {
-        return false
-      }
+      })
 
-      // Check hair color to be a hex color
-      if (/^#[0-9A-F]{6}$/i.test(hcl) === false) {
-        return false
-      }
-
-      // Check eye color is within range
-      if (['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].indexOf(ecl) === -1) {
-        return false
-      }
-
-      // Check pid is a number and has the required length
-      if (isNaN(+pid) || pid.length !== 9) {
-        return false
-      }
-
-      // Everything is fulfilled
-      return true
+      return matchingFields.length === Object.keys(this.passportRequirements).length
     }
   }
 }
