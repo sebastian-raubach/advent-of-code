@@ -17,21 +17,13 @@ export default {
         partOne: null,
         partTwo: null
       },
-      bflr: {
-        B: (cur, i) => { cur.f += Math.pow(2, i) },
-        F: (cur, i) => { cur.b -= Math.pow(2, i) },
-        L: (cur, i) => { cur.r -= Math.pow(2, i) },
-        R: (cur, i) => { cur.l += Math.pow(2, i) }
-      },
-      lr: {
-
-      },
       parsedInput: null
     }
   },
   methods: {
     onInputChanged: function (input) {
-      this.parsedInput = input.map(i => i.split(''))
+      // Map the letters to 0s and 1s
+      this.parsedInput = input.map(r => r.replace(/B/g, '1').replace(/F/g, '0').replace(/R/g, '1').replace(/L/g, '0'))
 
       this.solvePartOne()
       this.solvePartTwo()
@@ -39,27 +31,12 @@ export default {
     solvePartOne: function () {
       // For each boarding pass
       this.seatIds = this.parsedInput.map(p => {
-        // Start with the initial configuration
-        const cur = { f: 0, b: 127, l: 0, r: 7 }
+        // Convert the first 7 letters to the row number
+        const row = parseInt(p.substring(0, 7), 2)
+        // And the last 7 letters to the col number
+        const col = parseInt(p.substring(7, 10), 2)
 
-        // First, determine the row
-        let exponent = 6
-        // Go through the first 7 letters
-        for (let letter = 0; letter < 7; letter++) {
-          // Adjust according to the letter
-          this.bflr[p[letter]](cur, exponent--)
-        }
-
-        // Then determine the column
-        exponent = 2
-        // Go through the remaining letters
-        for (let letter = 7; letter < 10; letter++) {
-          // Adjust according to the letter
-          this.bflr[p[letter]](cur, exponent--)
-        }
-
-        // Get the seat it
-        return cur.b * 8 + cur.l
+        return row * 8 + col
       })
 
       // Get the maximum
