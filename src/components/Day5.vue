@@ -37,37 +37,51 @@ export default {
       this.solvePartTwo()
     },
     solvePartOne: function () {
+      // For each boarding pass
       this.seatIds = this.parsedInput.map(p => {
+        // Start with the initial configuration
         const cur = { f: 0, b: 127, l: 0, r: 7 }
 
+        // First, determine the row
         let exponent = 6
+        // Go through the first 7 letters
         for (let letter = 0; letter < 7; letter++) {
+          // Adjust according to the letter
           this.bflr[p[letter]](cur, exponent--)
         }
 
+        // Then determine the column
         exponent = 2
+        // Go through the remaining letters
         for (let letter = 7; letter < 10; letter++) {
+          // Adjust according to the letter
           this.bflr[p[letter]](cur, exponent--)
         }
 
+        // Get the seat it
         return cur.b * 8 + cur.l
       })
 
+      // Get the maximum
       this.solutions.partOne = this.seatIds.reduce((a, b) => a > b ? a : b)
     },
     solvePartTwo: function (input) {
-      const startRow = Math.floor(this.seatIds.reduce((a, b) => a < b ? a : b) / 8)
-      const endRow = Math.floor(this.solutions.partOne / 8)
+      // Get the first row that has tickets (skip the minimum row)
+      const startRow = Math.floor(this.seatIds.reduce((a, b) => a < b ? a : b) / 8) + 1
+      // Get the last row that has tickets (skip the maximum row)
+      const endRow = Math.floor(this.solutions.partOne / 8) - 1
 
+      // Iterate through the row in the range
       for (let row = startRow; row <= endRow; row++) {
+        // Iterate through the columns
         for (let col = 0; col < 8; col++) {
+          // Get the seat id
           const id = row * 8 + col
 
-          if (this.seatIds.indexOf(id) === -1) {
-            if (this.seatIds.indexOf(id - 1) !== -1 && this.seatIds.indexOf(id + 1) !== -1) {
-              this.solutions.partTwo = id
-              return
-            }
+          // Check if the current seat id isn't in the list, but the neighbors are
+          if (this.seatIds.indexOf(id) === -1 && this.seatIds.indexOf(id - 1) !== -1 && this.seatIds.indexOf(id + 1) !== -1) {
+            this.solutions.partTwo = id
+            return
           }
         }
       }
