@@ -17,11 +17,15 @@ export default {
         partTwo: null
       },
       passportRequirements: {
+        // For all years, check they are numbers and in range
         byr: (value) => this.isInRange(value, 1920, 2002),
         iyr: (value) => this.isInRange(value, 2010, 2020),
         eyr: (value) => this.isInRange(value, 2020, 2030),
+        // For hair color check the hex value
         hcl: (value) => /^#[0-9A-F]{6}$/i.test(value),
+        // Eye color has to be one of the options
         ecl: (value) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].indexOf(value) !== -1,
+        // The id has to be a number and length 9
         pid: (value) => !isNaN(+value) && value.length === 9,
         hgt: (value) => {
           // For heights, check the system, then the range
@@ -33,6 +37,7 @@ export default {
             number = +(value.replace('cm', ''))
             return !isNaN(number) && number >= 150 && number <= 193
           } else {
+            // If we get here, neither 'in' nor 'cm' was specified => invalid
             return false
           }
         }
@@ -41,6 +46,13 @@ export default {
     }
   },
   methods: {
+    /**
+     * Checks whether the given value is a number and within range.
+     * @param value The value to check
+     * @param min The lower range bound (inclusive)
+     * @param max The upper range bound (inclusive)
+     * @returns `true` if the given value is a number and within range. `false` otherwise.
+     */
     isInRange: function (value, min, max) {
       const number = +value
       return !isNaN(number) && number >= min && number <= max

@@ -33,6 +33,11 @@ const routes = [
     path: '/4',
     name: 'day-4',
     component: () => import(/* webpackChunkName: "day-4" */ '@/components/Day4.vue')
+  },
+  {
+    path: '/5',
+    name: 'day-5',
+    component: () => import(/* webpackChunkName: "day-5" */ '@/components/Day5.vue')
   }
 ]
 
