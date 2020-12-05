@@ -17,27 +17,21 @@ export default {
         partOne: null,
         partTwo: null
       },
-      parsedInput: null
+      parsedInput: null,
+      mapping: { B: 1, F: 0, R: 1, L: 0 }
     }
   },
   methods: {
     onInputChanged: function (input) {
-      // Map the letters to 0s and 1s
-      this.parsedInput = input.map(r => r.replace(/B/g, '1').replace(/F/g, '0').replace(/R/g, '1').replace(/L/g, '0'))
+      // Map the letters to 0s and 1s, by splitting into characters, mapping them to 0 and 1, then joining back together
+      this.parsedInput = input.map(r => r.split('').map(c => this.mapping[c]).join(''))
 
       this.solvePartOne()
       this.solvePartTwo()
     },
     solvePartOne: function () {
-      // For each boarding pass
-      this.seatIds = this.parsedInput.map(p => {
-        // Convert the first 7 letters to the row number
-        const row = parseInt(p.substring(0, 7), 2)
-        // And the last 7 letters to the col number
-        const col = parseInt(p.substring(7, 10), 2)
-
-        return row * 8 + col
-      })
+      // Mab boarding pass sequence as binary number to decimal number
+      this.seatIds = this.parsedInput.map(p => parseInt(p, 2))
 
       // Get the maximum
       this.solutions.partOne = this.seatIds.reduce((a, b) => a > b ? a : b)
