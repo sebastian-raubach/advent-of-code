@@ -37,20 +37,22 @@ export default {
   data: function () {
     return {
       days: Array.from(Array(25).keys()).map(i => i + 1),
-      currentDay: 5,
+      currentDay: 6,
       titles: {
         1: 'Report Repair',
         2: 'Password Philosophy',
         3: 'Toboggan Trajectory',
         4: 'Passport Processing',
-        5: 'Binary Boarding'
+        5: 'Binary Boarding',
+        6: 'Custom Customs'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
         2: { partOne: true, partTwo: true },
         3: { partOne: true, partTwo: true },
         4: { partOne: true, partTwo: true },
-        5: { partOne: true, partTwo: true }
+        5: { partOne: true, partTwo: true },
+        6: { partOne: true, partTwo: true }
       }
     }
   }
