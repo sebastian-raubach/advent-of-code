@@ -27,26 +27,35 @@ export default {
       this.reverseMapping = {}
 
       input.forEach(i => {
-        // Replace all occurances of "bag" or "bags"
+        // Replace all occurances of "bag" or "bags" and remove "."s
         i = i.replace(/bag(s)?/g, '').replace(/\./g, '')
+        // Split into the parent and child
         const parts = i.split(' contain ')
+        // Trim
         const source = parts[0].trim()
+        // Split the children
         const targets = parts[1].split(', ').map(s => {
+          // Get the number
           let number = s.replace(/\D/g, '')
+          // And the color
           const color = s.replace(/[0-9]/g, '')
 
+          // If there is no number assume 0
           if (number.length === 0) {
             number = 0
           }
 
+          // Return the object
           return {
             color: color.trim(),
             quantity: +number
           }
         })
 
+        // Store the mapping
         this.bagMapping[source] = targets
 
+        // Then store the reverse mapping
         targets.forEach(t => {
           if (!this.reverseMapping[t.color]) {
             this.reverseMapping[t.color] = []
@@ -60,49 +69,54 @@ export default {
       this.solvePartTwo()
     },
     solvePartOne: function () {
-      const query = 'shiny gold'
-
+      // Store current bags on a queue
+      const current = []
+      // Remember the visited nodes
       const visited = new Set()
-      const current = new Set()
-      const terminal = new Set()
 
-      current.add(query)
+      // Add the starting bag
+      current.push('shiny gold')
 
-      while (current.size > 0) {
-        const bag = current.values().next().value
-        current.delete(bag)
+      // While there are bags to visit
+      while (current.length > 0) {
+        // Get the first
+        const bag = current.shift()
 
-        if (!visited.has(bag)) {
+        // Get its parents
+        const parents = this.reverseMapping[bag]
+
+        if (!parents) {
+          // If there aren't any, add it to the visited nodes
           visited.add(bag)
-
-          const parents = this.reverseMapping[bag]
-
-          if (!parents) {
-            terminal.add(bag)
-          } else {
-            parents.forEach(p => {
-              terminal.add(p.color)
-              current.add(p.color)
-            })
-          }
+        } else {
+          // Else, add all parents
+          parents.forEach(p => {
+            visited.add(p.color)
+            current.push(p.color)
+          })
         }
       }
 
-      this.solutions.partOne = terminal.size
+      this.solutions.partOne = visited.size
     },
     solvePartTwo: function () {
-      const query = 'shiny gold'
-
+      // Count the number of bags
       let counter = 0
+      // Store the current bags on a queue
       const current = []
-      current.push({ color: query, quantity: 1 })
+      // Add the query
+      current.push({ color: 'shiny gold', quantity: 1 })
 
+      // While there are bags on the queue
       while (current.length > 0) {
+        // Get the first
         const bag = current.shift()
 
+        // Get all children
         const children = this.bagMapping[bag.color]
 
         if (children) {
+          // If there are any add them on the queue with the quantities
           children.forEach(c => {
             counter += bag.quantity * c.quantity
             current.push({
