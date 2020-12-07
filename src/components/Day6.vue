@@ -65,7 +65,7 @@ export default {
       // Map the groups to their length (answers) and then sum them up
       this.solutions.partOne = this.groupAnswers.map(g => Object.keys(g.letters).length).reduce((a, b) => a + b)
     },
-    solvePartTwo: function (input) {
+    solvePartTwo: function () {
       // Map the groups to the number of answers that have been answered by all and then sum them up
       this.solutions.partTwo = this.groupAnswers.map(g => Object.keys(g.letters).filter(k => g.letters[k] === g.counter).length).reduce((a, b) => a + b)
     }

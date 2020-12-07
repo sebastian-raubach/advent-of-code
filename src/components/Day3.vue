@@ -68,7 +68,7 @@ export default {
       // Start the drawer
       this.gridOne = new PathDrawer(this.parsedInput, this.paths[1]).getPathGrid()
     },
-    solvePartTwo: function (input) {
+    solvePartTwo: function () {
       // Check the slopes
       const slopes = [
         [1, 1],

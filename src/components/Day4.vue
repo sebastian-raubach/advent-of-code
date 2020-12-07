@@ -88,7 +88,7 @@ export default {
       // Filter out invalid passports
       this.solutions.partOne = this.passports.filter(p => this.isPassportValidPartOne(p)).length
     },
-    solvePartTwo: function (input) {
+    solvePartTwo: function () {
       // Filter first valid passports from part one, then part two
       this.solutions.partTwo = this.passports.filter(p => this.isPassportValidPartOne(p)).filter(p => this.isPassportValidPartTwo(p)).length
     },

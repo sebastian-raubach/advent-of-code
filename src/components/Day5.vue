@@ -36,7 +36,7 @@ export default {
       // Get the maximum
       this.solutions.partOne = this.seatIds.reduce((a, b) => a > b ? a : b)
     },
-    solvePartTwo: function (input) {
+    solvePartTwo: function () {
       // Get the first row that has tickets (skip the minimum row)
       const startRow = Math.floor(this.seatIds.reduce((a, b) => a < b ? a : b) / 8) + 1
       // Get the last row that has tickets (skip the maximum row)

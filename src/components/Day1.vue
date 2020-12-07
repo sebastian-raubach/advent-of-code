@@ -40,7 +40,7 @@ export default {
 
       this.solutions.partOne = 'No solution found'
     },
-    solvePartTwo: function (input) {
+    solvePartTwo: function () {
       // Iterate through
       for (let i = 0; i < this.numbers.length; i++) {
         // Start second loop only from i
