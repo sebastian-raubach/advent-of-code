@@ -39,10 +39,10 @@ export default {
         }
       })
 
-      this.solutions.partOne = this.solvePartOne(this.operations).accumulator
+      this.solvePartOne()
       this.solvePartTwo()
     },
-    solvePartOne: function (localOperations) {
+    calculateSolution: function (localOperations) {
       let accumulator = 0
       let position = 0
       const visitedPositions = {}
@@ -69,6 +69,9 @@ export default {
         accumulator = next.acc
       }
     },
+    solvePartOne: function () {
+      this.solutions.partOne = this.calculateSolution(this.operations).accumulator
+    },
     solvePartTwo: function () {
       // Loop through all positions
       for (let index = 0; index < this.operations.length; index++) {
@@ -83,7 +86,7 @@ export default {
           tempInput[index].op = i.op === 'nop' ? 'jmp' : 'nop'
 
           // Calculate the result using part one
-          const result = this.solvePartOne(tempInput)
+          const result = this.calculateSolution(tempInput)
 
           // If this configuration has reached the end, it's no longer an infinite loop
           if (result.position === tempInput.length) {
