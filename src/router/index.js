@@ -12,7 +12,12 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+  },
+  {
+    path: '/stats',
+    name: 'json-parser',
+    component: () => import(/* webpackChunkName: "stats" */ '@/views/JsonStats.vue')
   },
   {
     path: '/1',

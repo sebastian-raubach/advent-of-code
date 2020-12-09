@@ -72,18 +72,20 @@ export default {
     solvePartTwo: function (numbers) {
       // Move the first pointer from the start of the numbers
       for (let start = 0; start < numbers.length; start++) {
+        // Keep track of the min, max and sum
+        let sum = numbers[start]
+        let min = sum
+        let max = sum
         // Move the second pointer from the next position onwards
         inner: for (let end = start + 1; end < numbers.length; end++) {
-          // Get the numbers in the range between the two pointers
-          const range = numbers.slice(start, end + 1)
-          // Calculate their sum
-          const sum = range.reduce((a, b) => a + b)
+          // Adjust the values
+          sum += numbers[end]
+          min = Math.min(min, numbers[end])
+          max = Math.max(max, numbers[end])
 
           if (sum === this.solutions.partOne) {
-            // If the sum is the number we're looking for, we have our solution. Sort the numbers.
-            range.sort((a, b) => a - b)
-            // Then add up the smallest and largest
-            this.solutions.partTwo = range[0] + range[range.length - 1]
+            // If it's the result, add up the min and max
+            this.solutions.partTwo = min + max
           } else if (sum > this.solutions.partOne) {
             // If the sum is larger than the number we're looking for, there's no point in going on. Break to the outer loop.
             break inner

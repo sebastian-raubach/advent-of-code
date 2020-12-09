@@ -13,6 +13,7 @@
           <b-nav-form @submit.prevent>
             <b-form-checkbox v-model="localEditingEnabled" switch v-b-tooltip="editingEnabled ? 'Disable editing' : 'Enable editing'" />
           </b-nav-form>
+          <b-nav-item :to="{ name: 'json-parser' }">Stats</b-nav-item>
           <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -78,4 +79,6 @@ $primary: #c0392b;
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-vue/src/index.scss';
 @import '~bootswatch/dist/united/bootswatch';
+
+.tooltip { top: 0; }
 </style>
