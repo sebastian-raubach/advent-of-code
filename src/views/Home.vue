@@ -37,7 +37,7 @@ export default {
   data: function () {
     return {
       days: Array.from(Array(25).keys()).map(i => i + 1),
-      currentDay: 9,
+      currentDay: 10,
       titles: {
         1: 'Report Repair',
         2: 'Password Philosophy',
@@ -47,7 +47,8 @@ export default {
         6: 'Custom Customs',
         7: 'Handy Haversacks',
         8: 'Handheld Halting',
-        9: 'Encoding Error'
+        9: 'Encoding Error',
+        10: 'Adapter Array'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -58,7 +59,8 @@ export default {
         6: { partOne: true, partTwo: true },
         7: { partOne: true, partTwo: true },
         8: { partOne: true, partTwo: true },
-        9: { partOne: true, partTwo: true }
+        9: { partOne: true, partTwo: true },
+        10: { partOne: true, partTwo: true }
       }
     }
   }
