@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { BIconStarFill, BIconStar } from 'bootstrap-vue'
 
 export default {
@@ -37,7 +38,6 @@ export default {
   data: function () {
     return {
       days: Array.from(Array(25).keys()).map(i => i + 1),
-      currentDay: 10,
       titles: {
         1: 'Report Repair',
         2: 'Password Philosophy',
@@ -63,6 +63,11 @@ export default {
         10: { partOne: true, partTwo: true }
       }
     }
+  },
+  computed: {
+    ...mapGetters([
+      'currentDay'
+    ])
   }
 }
 </script>
