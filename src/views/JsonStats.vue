@@ -6,7 +6,7 @@
       </b-form-group>
     </b-form>
 
-    <b-table class="mt-3" :items="json" :fields="fields" sort-by="local_score" :sort-desc="true" v-if="json">
+    <b-table class="mt-3" :items="json" :fields="fields" stacked="sm" sort-by="local_score" :sort-desc="true" v-if="json">
       <template #cell(days)="data">
         <span v-for="day in tasks" :key="`${data.id}-${day}`">
           <BIconStarFill v-b-tooltip.body.html="getTooltip(day, data.item.completion_day_level[day])" class="mr-1 star-gold" v-if="data.item.completion_day_level[day] && data.item.completion_day_level[day][2]" />
