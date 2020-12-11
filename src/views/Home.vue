@@ -48,7 +48,8 @@ export default {
         7: 'Handy Haversacks',
         8: 'Handheld Halting',
         9: 'Encoding Error',
-        10: 'Adapter Array'
+        10: 'Adapter Array',
+        11: 'Seating System'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -60,7 +61,8 @@ export default {
         7: { partOne: true, partTwo: true },
         8: { partOne: true, partTwo: true },
         9: { partOne: true, partTwo: true },
-        10: { partOne: true, partTwo: true }
+        10: { partOne: true, partTwo: true },
+        11: { partOne: true, partTwo: true }
       }
     }
   },
