@@ -6,27 +6,20 @@
       </b-form-group>
     </b-form>
 
-    <b-table class="mt-3" :items="json" :fields="fields" stacked="sm" sort-by="local_score" :sort-desc="true" v-if="json">
+    <b-table table-class="star-table mt-3" :items="json" :fields="fields" stacked="sm" sort-by="local_score" :sort-desc="true" v-if="json">
       <template #cell(days)="data">
-        <span v-for="day in tasks" :key="`${data.id}-${day}`">
-          <BIconStarFill v-b-tooltip.body.html="getTooltip(day, data.item.completion_day_level[day])" class="mr-1 star-gold" v-if="data.item.completion_day_level[day] && data.item.completion_day_level[day][2]" />
-          <BIconStarHalf v-b-tooltip.body.html="getTooltip(day, data.item.completion_day_level[day])" class="mr-1 star-silver" v-else-if="data.item.completion_day_level[day] && data.item.completion_day_level[day][1]" />
-          <BIconStar class="mr-1 star-none" v-else />
-        </span>
+        <template v-for="day in tasks" >
+          <span :key="`${data.id}-${day}`" v-b-tooltip.body.html="getTooltip(day, data.item.completion_day_level[day])" class="star star-gold" v-if="data.item.completion_day_level[day] && data.item.completion_day_level[day][2]">★</span>
+          <span :key="`${data.id}-${day}`" v-b-tooltip.body.html="getTooltip(day, data.item.completion_day_level[day])" class="star star-silver" v-else-if="data.item.completion_day_level[day] && data.item.completion_day_level[day][1]">★</span>
+          <span :key="`${data.id}-${day}`" class="star star-none" v-else>☆</span>
+        </template>
       </template>
     </b-table>
   </div>
 </template>
 
 <script>
-import { BIconStarFill, BIconStarHalf, BIconStar } from 'bootstrap-vue'
-
 export default {
-  components: {
-    BIconStarFill,
-    BIconStarHalf,
-    BIconStar
-  },
   data: function () {
     return {
       input: null,
@@ -45,7 +38,8 @@ export default {
         sortable: true
       }, {
         key: 'days',
-        label: 'Days'
+        label: 'Days',
+        class: 'stars'
       }]
     }
   },
@@ -79,7 +73,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.star-table td.stars div {
+  word-break: break-all;
+  cursor: default;
+}
+.star {
+  font-size: 1.3em;
+}
 .star-gold {
   color: #fbc531;
 }
