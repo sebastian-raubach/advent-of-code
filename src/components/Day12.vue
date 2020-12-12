@@ -248,7 +248,11 @@ export default {
       this.$nextTick(() => {
         // Purge the old chart and add the new one
         this.$plotly.purge(id)
-        this.$plotly.newPlot(id, null, layout, { responsive: true })
+        this.$plotly.newPlot(id, null, layout, {
+          responsive: true,
+          staticPlot: true,
+          displayModeBar: false
+        })
       })
     }
   }
