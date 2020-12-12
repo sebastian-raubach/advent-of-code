@@ -215,7 +215,7 @@ export default {
 
       for (let i = 1; i < points.length; i++) {
         // Calculate the color based on the gradient
-        const color = this.colorGradient[Math.floor((i - 1) / (this.colorGradient.length / points.length))]
+        const color = this.colorGradient[Math.floor((i - 1) * this.colorGradient.length / points.length)]
         // Add the new line
         shapes.push({
           type: 'line',
