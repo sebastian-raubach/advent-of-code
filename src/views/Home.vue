@@ -49,7 +49,8 @@ export default {
         8: 'Handheld Halting',
         9: 'Encoding Error',
         10: 'Adapter Array',
-        11: 'Seating System'
+        11: 'Seating System',
+        12: 'Rain Risk'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -62,7 +63,8 @@ export default {
         8: { partOne: true, partTwo: true },
         9: { partOne: true, partTwo: true },
         10: { partOne: true, partTwo: true },
-        11: { partOne: true, partTwo: true }
+        11: { partOne: true, partTwo: true },
+        12: { partOne: true, partTwo: true }
       }
     }
   },
