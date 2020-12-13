@@ -50,7 +50,8 @@ export default {
         9: 'Encoding Error',
         10: 'Adapter Array',
         11: 'Seating System',
-        12: 'Rain Risk'
+        12: 'Rain Risk',
+        13: 'Shuttle Search'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -64,7 +65,8 @@ export default {
         9: { partOne: true, partTwo: true },
         10: { partOne: true, partTwo: true },
         11: { partOne: true, partTwo: true },
-        12: { partOne: true, partTwo: true }
+        12: { partOne: true, partTwo: true },
+        13: { partOne: true, partTwo: true }
       }
     }
   },
