@@ -51,7 +51,8 @@ export default {
         10: 'Adapter Array',
         11: 'Seating System',
         12: 'Rain Risk',
-        13: 'Shuttle Search'
+        13: 'Shuttle Search',
+        14: 'Docking Data'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -66,7 +67,8 @@ export default {
         10: { partOne: true, partTwo: true },
         11: { partOne: true, partTwo: true },
         12: { partOne: true, partTwo: true },
-        13: { partOne: true, partTwo: true }
+        13: { partOne: true, partTwo: true },
+        14: { partOne: true, partTwo: true }
       }
     }
   },

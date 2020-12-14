@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     editingEnabled: false,
-    currentDay: 13
+    currentDay: 14
   },
   getters: {
     editingEnabled: (state) => state.editingEnabled,

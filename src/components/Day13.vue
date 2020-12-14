@@ -23,14 +23,18 @@ export default {
   },
   methods: {
     onInputChanged: function (input) {
+      // Get the target number for part 1
       this.target = +input[0]
+      // Get only the busses for part 1
       this.numbers = input[1].split(',').filter(i => i !== 'x').map(i => +i)
+      // Get all the busses and their indices for part 2
       this.busses = input[1].split(',').map((b, i) => {
         return {
           index: i,
           value: b === 'x' ? null : +b
         }
       }).filter(b => b.value !== null)
+
       this.solvePartOne()
       this.solvePartTwo()
     },
