@@ -52,7 +52,8 @@ export default {
         11: 'Seating System',
         12: 'Rain Risk',
         13: 'Shuttle Search',
-        14: 'Docking Data'
+        14: 'Docking Data',
+        15: 'Rambunctious Recitation'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -68,7 +69,8 @@ export default {
         11: { partOne: true, partTwo: true },
         12: { partOne: true, partTwo: true },
         13: { partOne: true, partTwo: true },
-        14: { partOne: true, partTwo: true }
+        14: { partOne: true, partTwo: true },
+        15: { partOne: true, partTwo: true }
       }
     }
   },
