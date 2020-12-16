@@ -26,7 +26,6 @@ export default {
       this.solvePartTwo()
     },
     parseInput: function (input) {
-      // Reset fields
       this.ourTicket = null
       this.nearbyTickets = []
       this.fields = {}
