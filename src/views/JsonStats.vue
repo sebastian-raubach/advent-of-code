@@ -56,16 +56,46 @@ export default {
       } else {
         return null
       }
+    },
+    sortedUsersPerDay: function () {
+      if (this.json) {
+        return this.tasks.map(d => {
+          const dailyTimesOne = this.json.map(p => {
+            if (p.completion_day_level[d] && p.completion_day_level[d][1]) {
+              return +p.completion_day_level[d][1].get_star_ts
+            } else {
+              return null
+            }
+          })
+          const dailyTimesTwo = this.json.map(p => {
+            if (p.completion_day_level[d] && p.completion_day_level[d][2]) {
+              return +p.completion_day_level[d][2].get_star_ts
+            } else {
+              return null
+            }
+          })
+
+          dailyTimesOne.sort()
+          dailyTimesTwo.sort()
+
+          return {
+            partOne: dailyTimesOne,
+            partTwo: dailyTimesTwo
+          }
+        })
+      } else {
+        return null
+      }
     }
   },
   methods: {
     getTooltip: function (day, data) {
       let result = `<p>Day ${day}</p>`
       if (data[1] && data[1].get_star_ts) {
-        result += `<p>Part 1: ${new Date(+data[1].get_star_ts * 1000).toLocaleString()}</p>`
+        result += `<p>Part 1: ${new Date(+data[1].get_star_ts * 1000).toLocaleString()} Position: ${this.sortedUsersPerDay[day - 1].partOne.indexOf(+data[1].get_star_ts) + 1}</p>`
       }
       if (data[2] && data[2].get_star_ts) {
-        result += `<p>Part 2: ${new Date(+data[2].get_star_ts * 1000).toLocaleString()}</p>`
+        result += `<p>Part 2: ${new Date(+data[2].get_star_ts * 1000).toLocaleString()} Position: ${this.sortedUsersPerDay[day - 1].partTwo.indexOf(+data[2].get_star_ts) + 1}</p>`
       }
       return result
     }

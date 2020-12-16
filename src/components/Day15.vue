@@ -46,8 +46,10 @@ export default {
       for (let i = input.length + 1; i < target; i++) {
         // The current one is the previous
         const current = prev
+        // Get the previous index
+        const prevIndex = memory.get(current)
         // The previous one is either 0 or the diff between the last two sightings
-        prev = memory.has(current) ? i - memory.get(current) : 0
+        prev = prevIndex !== undefined ? i - prevIndex : 0
         // Save the current index
         memory.set(current, i)
       }
