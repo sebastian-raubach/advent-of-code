@@ -41,121 +41,93 @@ export default {
       this.solvePartOne()
       this.solvePartTwo()
     },
-    generateInitialArrayThree: function (input, size) {
-      const lg = []
-      for (let z = 0; z < 2 * size + 1; z++) {
-        const xys = Array.apply(null, Array(2 * size + input.length)).map(a => Array.apply(null, Array(2 * size + input.length)).map(a => false))
-        for (let y = size; y < size + input.length; y++) {
-          const xs = Array.apply(null, Array(2 * size + input[y - size].length)).map(a => false)
-          for (let x = size; x < size + input[y - size].length; x++) {
-            xs[x] = z === size ? input[y - size][x - size] : false
+    iterate: function (map, neighbors) {
+      const tempMap = new Map(map)
+
+      // Iterate over all currently observed cells
+      map.forEach((alive, position) => {
+        let activeNeighbors = 0
+        neighbors.forEach(n => {
+          // Get the neighbors actual position within the 'grid'
+          const np = position.split(',').map((v, i) => +v + n[i])
+          // Construct its new key
+          const nk = np.join(',')
+
+          // Check if the neighbor is alive
+          const neighborAlive = map.get(nk)
+          if (neighborAlive === true) {
+            // If so, increase the counter
+            activeNeighbors++
+          } else if (neighborAlive === undefined) {
+            // Add all neighbors that don't exist to the map
+            tempMap.set(nk, false)
           }
-          xys[y] = xs
+        })
+
+        // Apply the life-or-death rules
+        if (alive) {
+          tempMap.set(position, activeNeighbors === 2 || activeNeighbors === 3)
+        } else {
+          tempMap.set(position, activeNeighbors === 3)
         }
-        lg[z] = xys
+      })
+
+      return tempMap
+    },
+    expand: function (map, neighbors) {
+      const tempMap = new Map(map)
+
+      // Iterate over all currently observed cells
+      map.forEach((alive, position) => {
+        // Consider all neighboring positions
+        neighbors.forEach(n => {
+          // Get the neighbors actual position within the 'grid'
+          const np = position.split(',').map((v, i) => +v + n[i])
+          // Construct its new key
+          const nk = np.join(',')
+
+          // If it doesn't exist yet, add it as dead
+          if (!tempMap.has(nk)) {
+            tempMap.set(nk, false)
+          }
+        })
+      })
+
+      return tempMap
+    },
+    run: function (neighbors, mapper) {
+      let map = new Map()
+      // Convert the input to a map between position and alive status
+      this.input.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          // Map to the given mapping (pads dimensions)
+          const mapKey = mapper(x, y)
+          map.set(mapKey, cell)
+        })
+      })
+
+      // Initially expand the 'grid' to include the immediate dead neighbors
+      map = this.expand(map, neighbors)
+
+      // Do 6 rounds
+      for (let round = 0; round < 6; round++) {
+        map = this.iterate(map, neighbors)
       }
 
-      return lg
-    },
-    generateInitialArrayFour: function (input, size) {
-      const lg = []
-      for (let z = 0; z < 2 * size + 1; z++) {
-        const wxys = Array.apply(null, Array(2 * size + input.length)).map(a => Array.apply(null, Array(2 * size + input.length)).map(a => Array.apply(null, Array(2 * size + input.length)).map(a => false)))
-        for (let y = 0; y < 2 * size + 1; y++) {
-          const wxs = Array.apply(null, Array(2 * size + input.length)).map(a => Array.apply(null, Array(2 * size + input.length)).map(a => false))
-          for (let x = size; x < size + input.length; x++) {
-            const ws = Array.apply(null, Array(2 * size + input[x - size].length)).map(a => false)
-            for (let w = size; w < size + input[x - size].length; w++) {
-              ws[w] = z === size && y === size ? input[x - size][w - size] : false
-            }
-            wxs[x] = ws
-          }
-          wxys[y] = wxs
+      // Count the ones that are alive
+      let counter = 0
+      map.forEach(value => {
+        if (value) {
+          counter++
         }
-        lg[z] = wxys
-      }
-
-      return lg
-    },
-    doIterationThree: function (grid) {
-      const tempGrid = JSON.parse(JSON.stringify(grid))
-      for (let z = 0; z < grid.length; z++) {
-        for (let y = 0; y < grid[z].length; y++) {
-          for (let x = 0; x < grid[z][y].length; x++) {
-            const cell = grid[z][y][x]
-
-            const activeNeighbors = this.neighborsThree.map(n => grid[z + n[0]] && grid[z + n[0]][y + n[1]] && grid[z + n[0]][y + n[1]][x + n[2]]).reduce((a, b) => a + b)
-
-            if (cell) {
-              tempGrid[z][y][x] = activeNeighbors === 2 || activeNeighbors === 3
-            } else {
-              tempGrid[z][y][x] = activeNeighbors === 3
-            }
-          }
-        }
-      }
-      return tempGrid
-    },
-    doIterationFour: function (grid) {
-      const tempGrid = JSON.parse(JSON.stringify(grid))
-      for (let z = 0; z < grid.length; z++) {
-        for (let y = 0; y < grid[z].length; y++) {
-          for (let x = 0; x < grid[z][y].length; x++) {
-            for (let w = 0; w < grid[z][y][x].length; w++) {
-              const cell = grid[z][y][x][w]
-
-              const activeNeighbors = this.neighborsFour.map(n => grid[z + n[0]] && grid[z + n[0]][y + n[1]] && grid[z + n[0]][y + n[1]][x + n[2]] && grid[z + n[0]][y + n[1]][x + n[2]][w + n[3]]).reduce((a, b) => a + b)
-
-              if (cell) {
-                tempGrid[z][y][x][w] = activeNeighbors === 2 || activeNeighbors === 3
-              } else {
-                tempGrid[z][y][x][w] = activeNeighbors === 3
-              }
-            }
-          }
-        }
-      }
-      return tempGrid
-    },
-    countActiveCellsThree: function (grid) {
-      return grid.map(xy => {
-        return xy.map(x => {
-          return x.map(v => {
-            return v === true ? 1 : 0
-          }).reduce((a, b) => a + b)
-        }).reduce((a, b) => a + b)
-      }).reduce((a, b) => a + b)
-    },
-    countActiveCellsFour: function (grid) {
-      return grid.map(wxy => {
-        return wxy.map(wx => {
-          return wx.map(w => {
-            return w.map(v => {
-              return v === true ? 1 : 0
-            }).reduce((a, b) => a + b)
-          }).reduce((a, b) => a + b)
-        }).reduce((a, b) => a + b)
-      }).reduce((a, b) => a + b)
+      })
+      return counter
     },
     solvePartOne: function () {
-      let curGrid = this.generateInitialArrayThree(this.input, 6)
-
-      for (let it = 0; it < 6; it++) {
-        curGrid = this.doIterationThree(curGrid)
-      }
-
-      // Get the number of active cells
-      this.solutions.partOne = this.countActiveCellsThree(curGrid)
+      this.solutions.partOne = this.run(this.neighborsThree, (x, y) => `0,${y},${x}`)
     },
     solvePartTwo: function () {
-      let curGrid = this.generateInitialArrayFour(this.input, 7)
-
-      for (let it = 0; it < 6; it++) {
-        curGrid = this.doIterationFour(curGrid)
-      }
-
-      // Get the number of active cells
-      this.solutions.partTwo = this.countActiveCellsFour(curGrid)
+      this.solutions.partTwo = this.run(this.neighborsFour, (x, y) => `0,0,${y},${x}`)
     }
   }
 }
