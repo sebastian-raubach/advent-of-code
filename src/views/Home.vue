@@ -54,7 +54,8 @@ export default {
         13: 'Shuttle Search',
         14: 'Docking Data',
         15: 'Rambunctious Recitation',
-        16: 'Ticket Translation'
+        16: 'Ticket Translation',
+        17: 'Conway Cubes'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -72,7 +73,8 @@ export default {
         13: { partOne: true, partTwo: true },
         14: { partOne: true, partTwo: true },
         15: { partOne: true, partTwo: true },
-        16: { partOne: true, partTwo: true }
+        16: { partOne: true, partTwo: true },
+        17: { partOne: true, partTwo: true }
       }
     }
   },
