@@ -55,7 +55,8 @@ export default {
         14: 'Docking Data',
         15: 'Rambunctious Recitation',
         16: 'Ticket Translation',
-        17: 'Conway Cubes'
+        17: 'Conway Cubes',
+        18: 'Operation Order'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -74,7 +75,8 @@ export default {
         14: { partOne: true, partTwo: true },
         15: { partOne: true, partTwo: true },
         16: { partOne: true, partTwo: true },
-        17: { partOne: true, partTwo: true }
+        17: { partOne: true, partTwo: true },
+        18: { partOne: true, partTwo: true }
       }
     }
   },

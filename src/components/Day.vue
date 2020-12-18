@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-3">
     <h1>Day {{ day }}</h1>
 
     <div v-if="markdown && markdown.partOne" class="mb-3">
