@@ -1,4 +1,21 @@
-# advent-of-code-2020
+# Advent of Code 2020
+
+## About
+
+This is the repository for my [Advent of Code 2020](https://adventofcode.com/2020) solution.
+
+I've been using the following technologies:
+
+- [Vue.js](https://vuejs.org/) for the frontend.
+- [Vuex](https://vuex.vuejs.org/) for state management.
+- [Plotly.js](https://plotly.com/javascript/) for some charts.
+- [Bootstrap-Vue](https://bootstrap-vue.org/) for the interface.
+- [GitHub Actions](https://github.com/actions) for CI/CD.
+- [GitHub Pages](https://pages.github.com/) for hosting.
+
+The deployed result is available at: https://sebastian-raubach.github.io/advent-of-code-2020/
+
+---
 
 ## Project setup
 ```
