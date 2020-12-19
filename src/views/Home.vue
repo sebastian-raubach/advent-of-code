@@ -56,7 +56,8 @@ export default {
         15: 'Rambunctious Recitation',
         16: 'Ticket Translation',
         17: 'Conway Cubes',
-        18: 'Operation Order'
+        18: 'Operation Order',
+        19: 'Monster Messages'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -76,7 +77,8 @@ export default {
         15: { partOne: true, partTwo: true },
         16: { partOne: true, partTwo: true },
         17: { partOne: true, partTwo: true },
-        18: { partOne: true, partTwo: true }
+        18: { partOne: true, partTwo: true },
+        19: { partOne: true, partTwo: true }
       }
     }
   },
