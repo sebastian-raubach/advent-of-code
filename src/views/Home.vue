@@ -57,7 +57,8 @@ export default {
         16: 'Ticket Translation',
         17: 'Conway Cubes',
         18: 'Operation Order',
-        19: 'Monster Messages'
+        19: 'Monster Messages',
+        20: 'Jurassic Jigsaw'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -78,7 +79,8 @@ export default {
         16: { partOne: true, partTwo: true },
         17: { partOne: true, partTwo: true },
         18: { partOne: true, partTwo: true },
-        19: { partOne: true, partTwo: true }
+        19: { partOne: true, partTwo: true },
+        20: { partOne: true, partTwo: true }
       }
     }
   },
