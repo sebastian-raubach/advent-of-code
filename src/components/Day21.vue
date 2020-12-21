@@ -40,89 +40,65 @@ export default {
       this.solvePartOne()
       this.solvePartTwo()
     },
+    intersect: function (one, two) {
+      return new Set([...one].filter(x => two.has(x)))
+    },
+    union: function (one, two) {
+      return new Set([...one, ...two])
+    },
     solvePartOne: function () {
-      // Map allergens to ingredients
-      this.allergens = new Map()
-      // Naively add all ingredients to an allergen
+      // Map allergens to the ingredients that may cause them
+      this.allergenToIngredient = {}
+      // Iterate over all foods
       this.foods.forEach(f => {
+        // Then iterate the allergens
         f.allergens.forEach(a => {
-          // Add ALL ingredients to the allergen
-          this.allergens.set(a, new Set(this.ingredients))
-        })
-      })
-
-      // Now we reduce the mapping by excluding the ones that don't occur in all foods that have the allergen
-      // Iterate all allergen to ingredient mappings
-      this.allergens.forEach((ingredients, allergen) => {
-        // Go through all foods
-        this.foods.forEach(f => {
-          // Ignore the ones that don't have the allergen
-          if (!f.allergens.has(allergen)) {
-            return
-          }
-          // For each of the ingredients that could contain the allergen
-          for (const i of new Set(ingredients)) {
-            // If they aren't in the food
-            if (!f.ingredients.has(i)) {
-              // Remove them
-              ingredients.delete(i)
-            }
+          // If we have no mapping yet
+          if (!this.allergenToIngredient[a]) {
+            // Keep the current ingredients
+            this.allergenToIngredient[a] = new Set(f.ingredients)
+          } else {
+            // Else use the intersection between current ones and new ones
+            this.allergenToIngredient[a] = this.intersect(this.allergenToIngredient[a], f.ingredients)
           }
         })
       })
 
-      // Keep track of the safe ingredients
-      const safeIngredients = new Set(this.ingredients)
-      // Iterate all mappings
-      this.allergens.forEach((ingredients, allergen) => {
-        // Remove all ingredients that are possible candidates for an allergen
-        ingredients.forEach(i => safeIngredients.delete(i))
-      })
+      // Unsafe ingredients are those contained in the mapping
+      const unsafeIngredients = new Set(Object.values(this.allergenToIngredient).reduce((a, b) => this.union(a, b)))
+      // Safe ingredients are those that aren't unsafe (duh)
+      const safeIngredients = [...this.ingredients].filter(i => !unsafeIngredients.has(i))
 
-      let count = 0
-      this.foods.forEach(f => {
-        for (const ingredient of f.ingredients) {
-          count += safeIngredients.has(ingredient)
-        }
-      })
-
-      this.solutions.partOne = count
+      //  Solution for part one is the sum over all individual safe ingredient occurance counts
+      this.solutions.partOne = safeIngredients.map(s => this.foods.filter(f => f.ingredients.has(s)).length).reduce((a, b) => a + b)
     },
     solvePartTwo: function () {
-      const list = []
-      const allergensLeft = new Set(this.allergens.keys())
-      const allergenCount = this.allergens.size
+      // Remember the mapped allergens
+      const mappedAllergens = []
+      // Remember which ingredient causes which allergen
+      const allergenMapping = {}
+      // The number of total allergens
+      const nrOfAllergens = Object.keys(this.allergenToIngredient).length
 
-      // While we haven't identified them all yet
-      while (list.length < allergenCount) {
-        // Go through all remaining allergens
-        for (const aLeft of allergensLeft) {
-          // If there's only one ingredient that can have it
-          if (this.allergens.get(aLeft).size === 1) {
-            // Get the only one in the set
-            const ingredient = this.allergens.get(aLeft).values().next().value
-            // Add it to the list
-            list.push({
-              ingredient: ingredient,
-              allergen: aLeft
-            })
+      while (mappedAllergens.length < nrOfAllergens) {
+        // Get those that haven't been mapped yet and that have a unique mapping
+        const allergensWithOne = Object.keys(this.allergenToIngredient).filter(a => mappedAllergens.indexOf(a) === -1 && this.allergenToIngredient[a].size === 1)
 
-            // Delete it from the remaining list
-            allergensLeft.delete(aLeft)
+        // For each unique mapping
+        allergensWithOne.forEach(a => {
+          // Remember that we've mapped this
+          mappedAllergens.push(a)
+          // Get the ingredient that causes it
+          const ingredient = this.allergenToIngredient[a].values().next().value
+          allergenMapping[a] = ingredient
 
-            // For each allergen
-            this.allergens.forEach((ingredients, allergen) => {
-              if (allergen !== aLeft) {
-                // Delete the ingredient from the list
-                ingredients.delete(ingredient)
-              }
-            })
-          }
-        }
+          // Remove the ingredient from all other allergen mappings
+          Object.keys(this.allergenToIngredient).forEach(otherA => this.allergenToIngredient[otherA].delete(ingredient))
+        })
       }
 
-      // Sort them then join them
-      this.solutions.partTwo = list.sort((a, b) => a.allergen.localeCompare(b.allergen)).map(i => i.ingredient).join(',')
+      // Sort the allergens, then map them to the ingredient that causes them, then join with ","
+      this.solutions.partTwo = Object.keys(allergenMapping).sort((a, b) => a.localeCompare(b)).map(a => allergenMapping[a]).join(',')
     }
   }
 }
