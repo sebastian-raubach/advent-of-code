@@ -168,30 +168,21 @@ export default {
       // Keep track of the number of monsters
       let counter = 0
       // Iterate through the grid
-      for (let y = 0; y < grid.length; y++) {
-        for (let x = 0; x < grid[y].length; x++) {
-          // Keep track of whether all monster positions are '#'s
-          let all = true
-          for (let m = 0; m < monster.length; m++) {
-            const pos = monster[m]
-            if (grid[y + pos[0]] === undefined || grid[y + pos[0]][x + pos[1]] !== '#') {
-              // If the required monster part is either outside the grid or isn't a '#', it's not a valid monster
-              all = false
-              break
-            }
-          }
+      grid.forEach((row, y) => {
+        row.forEach((_, x) => {
+          // Keep track of whether all monster positions exist and are '#'s
+          const all = monster.filter(m => grid[y + m[0]] !== undefined && grid[y + m[0]][x + m[1]] === '#').length === monster.length
 
           // If we have a complete monster, replace all parts with 'O's
           if (all) {
-            for (let m = 0; m < monster.length; m++) {
-              const pos = monster[m]
+            monster.forEach(m => {
               // Set it to 'O' to indicate it's been used
-              grid[y + pos[0]][x + pos[1]] = 'O'
+              grid[y + m[0]][x + m[1]] = 'O'
               counter++
-            }
+            })
           }
-        }
-      }
+        })
+      })
 
       return counter > 0
     },
@@ -254,23 +245,14 @@ export default {
       ]
 
       rotatedAndFlipped.forEach(r => {
+        const part = r.part
         // Check if the monster exists in there
-        const replaced = this.replaceAll(r.part, monster)
-
-        if (replaced) {
+        if (this.replaceAll(part, monster)) {
           // Count the non-monster '#'s
-          let counter = 0
-
-          for (let y = 0; y < r.part.length; y++) {
-            for (let x = 0; x < r.part[y].length; x++) {
-              if (r.part[y][x] === '#') {
-                counter++
-              }
-            }
-          }
+          const counter = part.map(row => row.filter(c => c === '#').length).reduce((a, b) => a + b)
 
           // Start the drawer
-          this.gridTwo = new MonsterDrawer(r.part).getFormattedGrid()
+          this.gridTwo = new MonsterDrawer(part).getFormattedGrid()
 
           // The answer is the count
           this.solutions.partTwo = counter
