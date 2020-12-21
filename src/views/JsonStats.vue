@@ -146,7 +146,7 @@ export default {
           x: ut.map((v, i) => i),
           y: ut,
           name: this.json[ui].name,
-          type: 'scatter'
+          mode: 'lines+markers'
         }
       })
 
