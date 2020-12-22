@@ -33,7 +33,7 @@ export default {
       })
 
       this.solvePartOne(JSON.parse(JSON.stringify(decks)))
-      this.solvePartTwo(JSON.parse(JSON.stringify(decks)), new Set())
+      this.solvePartTwo(JSON.parse(JSON.stringify(decks)))
     },
     solvePartOne: function (decks) {
       let winner
