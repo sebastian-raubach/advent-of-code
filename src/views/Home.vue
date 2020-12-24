@@ -61,7 +61,8 @@ export default {
         20: 'Jurassic Jigsaw',
         21: 'Allergen Assessment',
         22: 'Crab Combat',
-        23: 'Crab Cups'
+        23: 'Crab Cups',
+        24: 'Lobby Layout'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -86,7 +87,8 @@ export default {
         20: { partOne: true, partTwo: true },
         21: { partOne: true, partTwo: true },
         22: { partOne: true, partTwo: true },
-        23: { partOne: true, partTwo: true }
+        23: { partOne: true, partTwo: true },
+        24: { partOne: true, partTwo: true }
       }
     }
   },
