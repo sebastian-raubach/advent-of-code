@@ -62,7 +62,8 @@ export default {
         21: 'Allergen Assessment',
         22: 'Crab Combat',
         23: 'Crab Cups',
-        24: 'Lobby Layout'
+        24: 'Lobby Layout',
+        25: 'Combo Breaker'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -88,7 +89,8 @@ export default {
         21: { partOne: true, partTwo: true },
         22: { partOne: true, partTwo: true },
         23: { partOne: true, partTwo: true },
-        24: { partOne: true, partTwo: true }
+        24: { partOne: true, partTwo: true },
+        25: { partOne: true, partTwo: true }
       }
     }
   },
