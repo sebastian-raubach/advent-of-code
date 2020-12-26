@@ -40,11 +40,13 @@ export default {
       days: Array.from(Array(25).keys()).map(i => i + 1),
       titles: {
         1: 'Chronal Calibration',
-        2: 'Inventory Management System'
+        2: 'Inventory Management System',
+        3: 'No Matter How You Slice It'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
-        2: { partOne: true, partTwo: true }
+        2: { partOne: true, partTwo: true },
+        3: { partOne: true, partTwo: true }
       }
     }
   },
