@@ -42,15 +42,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  data: function () {
-    return {
-      input: null
-    }
-  },
   props: {
     day: {
       type: Number,
       default: 1
+    },
+    year: {
+      type: Number,
+      default: 2020
     },
     solutions: {
       type: Object,
@@ -60,32 +59,30 @@ export default {
           partTwo: null
         }
       }
-    },
-    taskInput: {
-      type: String,
-      default: null
-    }
-  },
-  watch: {
-    taskInput: function (newValue) {
-      this.input = newValue
     }
   },
   computed: {
     ...mapGetters([
       'editingEnabled'
     ]),
+    input: function () {
+      try {
+        return require(`@/assets/input/${this.year}/Day-${this.day}.txt`).default
+      } catch (err) {
+        return null
+      }
+    },
     markdown: function () {
       let mdOne
       let mdTwo
 
       try {
-        mdOne = require(`@/assets/markdown/Day-${this.day}.1.md`)
+        mdOne = require(`@/assets/markdown/${this.year}/Day-${this.day}.1.md`)
       } catch (err) {
         // Ignore errors
       }
       try {
-        mdTwo = require(`@/assets/markdown/Day-${this.day}.2.md`)
+        mdTwo = require(`@/assets/markdown/${this.year}/Day-${this.day}.2.md`)
       } catch (err) {
         // Ignore errors
       }

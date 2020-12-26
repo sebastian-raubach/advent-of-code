@@ -1,8 +1,8 @@
-# Advent of Code 2020
+# Advent of Code
 
 ## About
 
-This is the repository for my [Advent of Code 2020](https://adventofcode.com/2020) solution.
+This is the repository for my [Advent of Code](https://adventofcode.com) solution.
 
 I've been using the following technologies:
 
@@ -13,7 +13,7 @@ I've been using the following technologies:
 - [GitHub Actions](https://github.com/actions) for CI/CD.
 - [GitHub Pages](https://pages.github.com/) for hosting.
 
-The deployed result is available at: https://sebastian-raubach.github.io/advent-of-code-2020/
+The deployed result is available at: https://sebastian-raubach.github.io/advent-of-code/
 
 ---
 

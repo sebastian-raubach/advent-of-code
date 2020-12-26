@@ -9,6 +9,9 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item v-for="year in years" :key="`year-${year}`" :to="{ name: `year-${year}` }">{{ year }}</b-nav-item>
+        </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form @submit.prevent>
             <b-form-checkbox v-model="localEditingEnabled" switch v-b-tooltip="editingEnabled ? 'Disable editing' : 'Enable editing'" />
@@ -20,7 +23,7 @@
 
     </b-navbar>
     <b-container class="mt-3">
-      <router-view/>
+      <router-view :key="$route.path"/>
     </b-container>
   </div>
 </template>
@@ -36,8 +39,12 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'currentDay',
       'editingEnabled'
-    ])
+    ]),
+    years: function () {
+      return Object.keys(this.currentDay).sort((a, b) => b - a)
+    }
   },
   watch: {
     editingEnabled: function (newValue) {

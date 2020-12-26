@@ -23,13 +23,21 @@ const routes = [
   }
 ]
 
-for (let day = 1; day <= store.getters.currentDay; day++) {
+Object.keys(store.getters.currentDay).forEach(year => {
   routes.push({
-    path: `/${day}`,
-    name: `day-${day}`,
-    component: () => import(`@/components/Day${day}.vue`)
+    path: `/${year}`,
+    name: `year-${year}`,
+    component: () => import(`@/views/Year${year}.vue`)
   })
-}
+
+  for (let day = 1; day <= store.getters.currentDay[year]; day++) {
+    routes.push({
+      path: `/${year}/${day}`,
+      name: `year-${year}-day-${day}`,
+      component: () => import(`@/components/${year}/Day${day}.vue`)
+    })
+  }
+})
 
 const router = new VueRouter({
   mode: 'hash',

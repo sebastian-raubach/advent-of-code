@@ -1,6 +1,6 @@
 {
-  "name": "advent-of-code-2020",
-  "version": "0.1.0",
+  "name": "advent-of-code",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
