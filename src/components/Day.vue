@@ -61,11 +61,16 @@ export default {
       }
     }
   },
+  data: function () {
+    return {
+      input: null
+    }
+  },
   computed: {
     ...mapGetters([
       'editingEnabled'
     ]),
-    input: function () {
+    taskInput: function () {
       try {
         return require(`@/assets/input/${this.year}/Day-${this.day}.txt`).default
       } catch (err) {

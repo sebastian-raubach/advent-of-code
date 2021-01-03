@@ -41,12 +41,16 @@ export default {
       titles: {
         1: 'Chronal Calibration',
         2: 'Inventory Management System',
-        3: 'No Matter How You Slice It'
+        3: 'No Matter How You Slice It',
+        4: 'Repose Record',
+        5: 'Alchemical Reduction'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
         2: { partOne: true, partTwo: true },
-        3: { partOne: true, partTwo: true }
+        3: { partOne: true, partTwo: true },
+        4: { partOne: true, partTwo: true },
+        5: { partOne: true, partTwo: true }
       }
     }
   },
