@@ -58,19 +58,19 @@ export default {
      */
     doReaction: function (letters) {
       // Current position
-      let position = 0
+      let position = letters.length - 1
 
-      // While we haven't reached the end
-      while (position < letters.length) {
+      // While we haven't reached the start
+      while (position > 0) {
         // If this one and its neighbor can react
-        if (this.canReact(letters[position], letters[position + 1])) {
+        if (this.canReact(letters[position], letters[position - 1])) {
           // Remove them
-          letters.splice(position, 2)
-          // And go back a step
+          letters.splice(position - 1, 2)
+          // Adjust the position
           position--
         } else {
-          // Otherwise move forwards
-          position++
+          // Otherwise move backwards
+          position--
         }
       }
 
