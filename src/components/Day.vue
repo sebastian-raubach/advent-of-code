@@ -27,13 +27,13 @@
     <template v-if="solutions.partOne !== undefined && solutions.partOne !== null">
       <h2 class="mt-3">Solution Part 1</h2>
       <slot name="partOne" />
-      <p>{{ solutions.partOne }}</p>
+      <b-form-input class="mb-3" readonly :value="solutions.partOne" @focus="$event.target.select()" />
     </template>
 
     <template v-if="solutions.partTwo !== undefined && solutions.partTwo !== null">
       <h2>Solution Part 2</h2>
       <slot name="partTwo" />
-      <p>{{ solutions.partTwo }}</p>
+      <b-form-input class="mb-3" readonly :value="solutions.partTwo" @focus="$event.target.select()" />
     </template>
   </div>
 </template>

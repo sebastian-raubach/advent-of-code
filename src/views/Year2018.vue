@@ -44,7 +44,9 @@ export default {
         3: 'No Matter How You Slice It',
         4: 'Repose Record',
         5: 'Alchemical Reduction',
-        6: 'Chronal Coordinates'
+        6: 'Chronal Coordinates',
+        7: 'The Sum of Its Parts',
+        8: 'Memory Maneuver'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -52,7 +54,9 @@ export default {
         3: { partOne: true, partTwo: true },
         4: { partOne: true, partTwo: true },
         5: { partOne: true, partTwo: true },
-        6: { partOne: true, partTwo: true }
+        6: { partOne: true, partTwo: true },
+        7: { partOne: true, partTwo: true },
+        8: { partOne: true, partTwo: true }
       }
     }
   },
