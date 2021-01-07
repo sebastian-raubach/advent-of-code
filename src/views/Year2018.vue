@@ -46,7 +46,8 @@ export default {
         5: 'Alchemical Reduction',
         6: 'Chronal Coordinates',
         7: 'The Sum of Its Parts',
-        8: 'Memory Maneuver'
+        8: 'Memory Maneuver',
+        9: 'Marble Mania'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -56,7 +57,8 @@ export default {
         5: { partOne: true, partTwo: true },
         6: { partOne: true, partTwo: true },
         7: { partOne: true, partTwo: true },
-        8: { partOne: true, partTwo: true }
+        8: { partOne: true, partTwo: true },
+        9: { partOne: true, partTwo: true }
       }
     }
   },
