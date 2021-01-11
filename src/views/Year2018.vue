@@ -47,7 +47,10 @@ export default {
         6: 'Chronal Coordinates',
         7: 'The Sum of Its Parts',
         8: 'Memory Maneuver',
-        9: 'Marble Mania'
+        9: 'Marble Mania',
+        10: 'The Stars Align',
+        11: 'Chronal Charge',
+        12: 'Subterranean Sustainability'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -58,7 +61,10 @@ export default {
         6: { partOne: true, partTwo: true },
         7: { partOne: true, partTwo: true },
         8: { partOne: true, partTwo: true },
-        9: { partOne: true, partTwo: true }
+        9: { partOne: true, partTwo: true },
+        10: { partOne: true, partTwo: true },
+        11: { partOne: true, partTwo: true },
+        12: { partOne: true, partTwo: true }
       }
     }
   },
