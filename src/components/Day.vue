@@ -19,7 +19,7 @@
     <h2>Input</h2>
     <b-form @submit.prevent="onSubmit">
       <b-form-group label="Task input" description="The task input provided for this day." label-for="task-input">
-        <b-form-textarea rows="5" v-model="input" id="task-input" :disabled="!editingEnabled" />
+        <b-form-textarea rows="8" v-model="input" id="task-input" wrap="soft" :disabled="!editingEnabled" />
       </b-form-group>
       <b-button type="submit" @click.prevent="onSubmit">Run</b-button>
     </b-form>
@@ -118,5 +118,9 @@ export default {
 </script>
 
 <style>
-
+#task-input {
+  font-family: monospace;
+  white-space: pre;
+  overflow: auto;
+}
 </style>
