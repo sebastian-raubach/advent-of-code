@@ -2,7 +2,7 @@
 
 ## About
 
-This is the repository for my [Advent of Code](https://adventofcode.com) solution.
+This is the repository for my [Advent of Code](https://adventofcode.com) solutions.
 
 I've been using the following technologies:
 

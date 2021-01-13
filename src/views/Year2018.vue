@@ -50,7 +50,11 @@ export default {
         9: 'Marble Mania',
         10: 'The Stars Align',
         11: 'Chronal Charge',
-        12: 'Subterranean Sustainability'
+        12: 'Subterranean Sustainability',
+        13: 'Mine Cart Madness',
+        14: 'Chocolate Charts',
+        15: 'Beverage Bandits',
+        16: 'Chronal Classification'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -64,7 +68,11 @@ export default {
         9: { partOne: true, partTwo: true },
         10: { partOne: true, partTwo: true },
         11: { partOne: true, partTwo: true },
-        12: { partOne: true, partTwo: true }
+        12: { partOne: true, partTwo: true },
+        13: { partOne: true, partTwo: true },
+        14: { partOne: true, partTwo: true },
+        15: { partOne: true, partTwo: true },
+        16: { partOne: true, partTwo: true }
       }
     }
   },
