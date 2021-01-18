@@ -54,7 +54,9 @@ export default {
         13: 'Mine Cart Madness',
         14: 'Chocolate Charts',
         15: 'Beverage Bandits',
-        16: 'Chronal Classification'
+        16: 'Chronal Classification',
+        17: 'Reservoir Research',
+        18: 'Settlers of The North Pole'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -72,7 +74,9 @@ export default {
         13: { partOne: true, partTwo: true },
         14: { partOne: true, partTwo: true },
         15: { partOne: true, partTwo: true },
-        16: { partOne: true, partTwo: true }
+        16: { partOne: true, partTwo: true },
+        17: { partOne: true, partTwo: true },
+        18: { partOne: true, partTwo: true }
       }
     }
   },

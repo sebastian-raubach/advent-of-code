@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     editingEnabled: false,
     currentDay: {
-      2018: 17,
+      2018: 18,
       2020: 25
     }
   },
