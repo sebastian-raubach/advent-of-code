@@ -56,7 +56,8 @@ export default {
         15: 'Beverage Bandits',
         16: 'Chronal Classification',
         17: 'Reservoir Research',
-        18: 'Settlers of The North Pole'
+        18: 'Settlers of The North Pole',
+        22: 'Mode Maze'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
@@ -76,7 +77,8 @@ export default {
         15: { partOne: true, partTwo: true },
         16: { partOne: true, partTwo: true },
         17: { partOne: true, partTwo: true },
-        18: { partOne: true, partTwo: true }
+        18: { partOne: true, partTwo: true },
+        22: { partOne: true, partTwo: true }
       }
     }
   },
