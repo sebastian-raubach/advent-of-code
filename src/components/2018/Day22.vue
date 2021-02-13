@@ -78,7 +78,7 @@ export default {
       const sizeFactor = 3
 
       // Create the grid
-      for (let y = 0; y <= this.target[1] * sizeFactor; y++) {
+      for (let y = 0; y <= this.target[1] + 50; y++) {
         // Add a  row
         this.grid.push(Array.from(Array(this.target[0] * sizeFactor + 1).keys()).map(i => { return { geoIndex: null, erosionLevel: null, type: null } }))
         for (let x = 0; x <= this.target[0] * sizeFactor; x++) {

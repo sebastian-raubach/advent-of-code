@@ -5,6 +5,7 @@
 
 <script>
 import Day from '@/components/Day'
+import opcodes from '@/util/Opcode2018.js'
 
 export default {
   components: {
@@ -15,25 +16,6 @@ export default {
       solutions: {
         partOne: null,
         partTwo: null
-      },
-      // Define all the opcodes and their functionality
-      opcodes: {
-        addr: (a, b, c, reg) => { reg[c] = reg[a] + reg[b] },
-        addi: (a, b, c, reg) => { reg[c] = reg[a] + b },
-        mulr: (a, b, c, reg) => { reg[c] = reg[a] * reg[b] },
-        muli: (a, b, c, reg) => { reg[c] = reg[a] * b },
-        banr: (a, b, c, reg) => { reg[c] = reg[a] & reg[b] },
-        bani: (a, b, c, reg) => { reg[c] = reg[a] & b },
-        borr: (a, b, c, reg) => { reg[c] = reg[a] | reg[b] },
-        bori: (a, b, c, reg) => { reg[c] = reg[a] | b },
-        setr: (a, _, c, reg) => { reg[c] = reg[a] },
-        seti: (a, _, c, reg) => { reg[c] = a },
-        gtir: (a, b, c, reg) => { reg[c] = a > reg[b] ? 1 : 0 },
-        gtri: (a, b, c, reg) => { reg[c] = reg[a] > b ? 1 : 0 },
-        gtrr: (a, b, c, reg) => { reg[c] = reg[a] > reg[b] ? 1 : 0 },
-        eqir: (a, b, c, reg) => { reg[c] = a === reg[b] ? 1 : 0 },
-        eqri: (a, b, c, reg) => { reg[c] = reg[a] === b ? 1 : 0 },
-        eqrr: (a, b, c, reg) => { reg[c] = reg[a] === reg[b] ? 1 : 0 }
       }
     }
   },
@@ -94,11 +76,11 @@ export default {
         // Get the code number
         const codeNumber = s.ins[0]
         // Get all opcodes that create the desired result
-        const matchingOpcodes = Object.keys(this.opcodes).filter(op => {
+        const matchingOpcodes = Object.keys(opcodes).filter(op => {
           // Take a copy of the before array
           const beforeCopy = s.before.concat()
           // Modify it using the opcode
-          this.opcodes[op](s.ins[1], s.ins[2], s.ins[3], beforeCopy)
+          opcodes[op](s.ins[1], s.ins[2], s.ins[3], beforeCopy)
           // Check if they are the same
           return beforeCopy.every((v, i) => v === s.after[i])
         })
@@ -137,7 +119,7 @@ export default {
       const reg = [0, 0, 0, 0]
 
       // Execute each program instruction
-      this.program.forEach(p => this.opcodes[finalMapping[p[0]]](p[1], p[2], p[3], reg))
+      this.program.forEach(p => opcodes[finalMapping[p[0]]](p[1], p[2], p[3], reg))
 
       // Get the result
       this.solutions.partTwo = reg[0]

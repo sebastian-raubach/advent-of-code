@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Advent of Code 2018</h1>
+    <h1>Advent of Code 2017</h1>
 
     <b-row cols-lg=5>
       <b-col cols=12 sm=6 md=4 v-for="day in days" :key="`day-${day}`" class="aoc-task mb-3 d-flex align-items-stretch">
-        <b-card no-body :class="`${day > currentDay[2018] ? 'disabled' : ''}`" bg-variant="dark">
+        <b-card no-body :class="`${day > currentDay[2017] ? 'disabled' : ''}`" bg-variant="dark">
           <div class="position-relative">
             <b-img fluid class="card-img" :src="require(`@/assets/card-background.jpg`)" />
             <h1 class="day">{{ day }}</h1>
@@ -18,7 +18,7 @@
             </b-card-text>
             <b-card-text class="text-center text-white" v-if="titles[day]">{{ titles[day] }}</b-card-text>
           </b-card-body>
-          <b-button block :to="{ name: `year-2018-day-${day}` }" variant="primary">Day {{ day }}</b-button>
+          <b-button block :to="{ name: `year-2017-day-${day}` }" variant="primary">Day {{ day }}</b-button>
         </b-card>
       </b-col>
     </b-row>
@@ -39,48 +39,12 @@ export default {
     return {
       days: Array.from(Array(25).keys()).map(i => i + 1),
       titles: {
-        1: 'Chronal Calibration',
-        2: 'Inventory Management System',
-        3: 'No Matter How You Slice It',
-        4: 'Repose Record',
-        5: 'Alchemical Reduction',
-        6: 'Chronal Coordinates',
-        7: 'The Sum of Its Parts',
-        8: 'Memory Maneuver',
-        9: 'Marble Mania',
-        10: 'The Stars Align',
-        11: 'Chronal Charge',
-        12: 'Subterranean Sustainability',
-        13: 'Mine Cart Madness',
-        14: 'Chocolate Charts',
-        15: 'Beverage Bandits',
-        16: 'Chronal Classification',
-        17: 'Reservoir Research',
-        18: 'Settlers of The North Pole',
-        20: 'A Regular Map',
-        22: 'Mode Maze'
+        1: 'Inverse Captcha',
+        2: 'Corruption Checksum'
       },
       solutions: {
         1: { partOne: true, partTwo: true },
-        2: { partOne: true, partTwo: true },
-        3: { partOne: true, partTwo: true },
-        4: { partOne: true, partTwo: true },
-        5: { partOne: true, partTwo: true },
-        6: { partOne: true, partTwo: true },
-        7: { partOne: true, partTwo: true },
-        8: { partOne: true, partTwo: true },
-        9: { partOne: true, partTwo: true },
-        10: { partOne: true, partTwo: true },
-        11: { partOne: true, partTwo: true },
-        12: { partOne: true, partTwo: true },
-        13: { partOne: true, partTwo: true },
-        14: { partOne: true, partTwo: true },
-        15: { partOne: true, partTwo: true },
-        16: { partOne: true, partTwo: true },
-        17: { partOne: true, partTwo: true },
-        18: { partOne: true, partTwo: true },
-        20: { partOne: true, partTwo: true },
-        22: { partOne: true, partTwo: true }
+        2: { partOne: true, partTwo: true }
       }
     }
   },

@@ -3,7 +3,7 @@
     <h1>Advent of Code</h1>
 
     <b-row>
-      <b-col cols=12 sm=6 md=6 v-for="year in years" :key="`year-${year}`" class="aoc-year mb-3 d-flex align-items-stretch">
+      <b-col cols=12 sm=6 md=4 v-for="year in years" :key="`year-${year}`" class="aoc-year mb-3 d-flex align-items-stretch">
         <b-card no-body bg-variant="dark">
           <div class="position-relative">
             <b-img fluid class="card-img" :src="require(`@/assets/card-background.jpg`)" />
