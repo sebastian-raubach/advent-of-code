@@ -9,7 +9,7 @@
             <b-img fluid class="card-img" :src="require(`@/assets/card-background.jpg`)" />
             <h1 class="year">{{ year }}</h1>
           </div>
-          <b-button block :to="{ name: `year-${year}` }" variant="primary">Year {{ year }}</b-button>
+          <b-button block :to="{ name: 'year', params: { year: year } }" variant="primary" class="stretched-link">Year {{ year }}</b-button>
         </b-card>
       </b-col>
     </b-row>

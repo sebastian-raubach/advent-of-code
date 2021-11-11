@@ -1,6 +1,12 @@
 <template>
   <div class="mb-3">
-    <h1>Day {{ day }}</h1>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>Day {{ day }}<template v-if="solvedDays[year][day - 1]"> - {{ solvedDays[year][day - 1].title }}</template></h1>
+      <b-button-group>
+        <b-button :disabled="day <= 1" :to="{ name: `year-${year}-day-${day - 1}` }"><BIconCaretLeftFill /></b-button>
+        <b-button :disabled="day >= solvedDays[year].length" :to="{ name: `year-${year}-day-${day + 1}` }"><BIconCaretRightFill /></b-button>
+      </b-button-group>
+    </div>
 
     <div v-if="markdown && markdown.partOne" class="mb-3">
       <b-button v-b-toggle.part-one>Show Part 1</b-button>
@@ -40,8 +46,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { BIconCaretRightFill, BIconCaretLeftFill } from 'bootstrap-vue'
 
 export default {
+  components: {
+    BIconCaretRightFill,
+    BIconCaretLeftFill
+  },
   props: {
     day: {
       type: Number,

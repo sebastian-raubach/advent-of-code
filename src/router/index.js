@@ -20,16 +20,15 @@ const routes = [
     path: '/stats',
     name: 'json-parser',
     component: () => import(/* webpackChunkName: "stats" */ '@/views/JsonStats.vue')
+  },
+  {
+    path: '/:year',
+    name: 'year',
+    component: () => import(/* webpackChunkName: "year" */ '@/views/Year.vue')
   }
 ]
 
 Object.keys(store.getters.currentDay).forEach(year => {
-  routes.push({
-    path: `/${year}`,
-    name: `year-${year}`,
-    component: () => import(`@/views/Year${year}.vue`)
-  })
-
   for (let day = 1; day <= store.getters.currentDay[year]; day++) {
     routes.push({
       path: `/${year}/${day}`,

@@ -10,7 +10,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item v-for="year in years" :key="`year-${year}`" :to="{ name: `year-${year}` }">{{ year }}</b-nav-item>
+          <b-nav-item v-for="year in years" :key="`year-${year}`" :to="{ name: 'year', params: { year: year } }">{{ year }}</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form @submit.prevent>
