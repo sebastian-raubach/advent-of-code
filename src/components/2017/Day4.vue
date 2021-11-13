@@ -27,29 +27,23 @@ export default {
       this.solvePartTwo()
     },
     solvePartOne: function () {
-      this.solutions.partOne = this.phrases.filter(p => {
-        const set = new Set()
-
-        p.forEach(w => set.add(w))
-
-        return set.size === p.length
-      }).length
+      this.solutions.partOne = this.validCount(this.phrases.concat())
     },
     solvePartTwo: function () {
-      this.solutions.partTwo = this.phrases.filter(p => {
-        for (let i = 0; i < p.length; i++) {
-          for (let j = i + 1; j < p.length; j++) {
-            if (this.areAnagram(p[i], p[j])) {
-              return false
-            }
-          }
-        }
-
-        return true
-      }).length
+      let phrases = this.phrases.concat()
+      // Sort each word in the phrase, then do the same as part one.
+      phrases = phrases.map(w => w.map(c => c.split('').sort().join('')))
+      this.solutions.partTwo = this.validCount(phrases)
     },
-    areAnagram: function (one, two) {
-      return one.split('').sort().join('') === two.split('').sort().join('')
+    validCount: function (phrases) {
+      return phrases.filter(p => {
+        // Get the unique ones
+        const set = new Set()
+        p.forEach(w => set.add(w))
+
+        // Unique count same as original count? Then keep it as valid.
+        return set.size === p.length
+      }).length
     }
   }
 }
