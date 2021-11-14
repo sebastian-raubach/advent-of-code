@@ -7,7 +7,8 @@ export default {
           { title: 'Corruption Checksum', solutions: [true, true], isVisual: false },
           { title: 'Spiral Memory', solutions: [false, false], isVisual: false },
           { title: 'High-Entropy Passphrases', solutions: [true, true], isVisual: false },
-          { title: 'A Maze of Twisty Trampolines, All Alike', solutions: [true, true], isVisual: false }
+          { title: 'A Maze of Twisty Trampolines, All Alike', solutions: [true, true], isVisual: false },
+          { title: 'Memory Reallocation', solutions: [true, true], isVisual: false }
         ],
         2018: [
           { title: 'Chronal Calibration', solutions: [true, true], isVisual: false },
