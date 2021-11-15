@@ -11,14 +11,18 @@
     <div v-if="markdown && markdown.partOne" class="mb-3">
       <b-button v-b-toggle.part-one>Show Part 1</b-button>
       <b-collapse id="part-one">
-        <vue-markdown :source="markdown.partOne" />
+        <b-card class="mt-3">
+          <vue-markdown :source="markdown.partOne" />
+        </b-card>
       </b-collapse>
     </div>
 
     <div v-if="markdown && markdown.partTwo" class="mb-3">
       <b-button v-b-toggle.part-two>Show Part 2</b-button>
       <b-collapse id="part-two">
-        <vue-markdown :source="markdown.partTwo" />
+        <b-card class="mt-3">
+          <vue-markdown :source="markdown.partTwo" />
+        </b-card>
       </b-collapse>
     </div>
 

@@ -8,7 +8,10 @@ export default {
           { title: 'Spiral Memory', solutions: [false, false], isVisual: false },
           { title: 'High-Entropy Passphrases', solutions: [true, true], isVisual: false },
           { title: 'A Maze of Twisty Trampolines, All Alike', solutions: [true, true], isVisual: false },
-          { title: 'Memory Reallocation', solutions: [true, true], isVisual: false }
+          { title: 'Memory Reallocation', solutions: [true, true], isVisual: false },
+          { title: 'Recursive Circus', solutions: [true, true], isVisual: false },
+          { title: 'I Heard You Like Registers', solutions: [true, true], isVisual: false },
+          { title: 'Stream Processing', solutions: [true, true], isVisual: false }
         ],
         2018: [
           { title: 'Chronal Calibration', solutions: [true, true], isVisual: false },
