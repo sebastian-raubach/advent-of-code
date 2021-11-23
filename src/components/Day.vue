@@ -93,22 +93,26 @@ export default {
       }
     },
     markdown: function () {
-      let mdOne
-      let mdTwo
+      let markdown
 
       try {
-        mdOne = require(`@/assets/markdown/${this.year}/Day-${this.day}.1.md`)
+        markdown = require(`@/assets/markdown/${this.year}/Day-${this.day}.md`).default
       } catch (err) {
         // Ignore errors
       }
-      try {
-        mdTwo = require(`@/assets/markdown/${this.year}/Day-${this.day}.2.md`)
-      } catch (err) {
-        // Ignore errors
-      }
-      return {
-        partOne: mdOne ? mdOne.default : null,
-        partTwo: mdTwo ? mdTwo.default : null
+
+      if (markdown) {
+        const parts = markdown.split('[comment]: <> (PART 2)')
+
+        return {
+          partOne: parts[0],
+          partTwo: parts.length > 1 ? parts[1] : null
+        }
+      } else {
+        return {
+          partOne: null,
+          partTwo: null
+        }
       }
     },
     splitData: function () {

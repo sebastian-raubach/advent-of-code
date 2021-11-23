@@ -1,68 +1,80 @@
+const solvedDays = {
+  2017: [
+    { title: 'Inverse Captcha', solutions: [true, true], isVisual: false },
+    { title: 'Corruption Checksum', solutions: [true, true], isVisual: false },
+    { title: 'Spiral Memory', solutions: [false, false], isVisual: false },
+    { title: 'High-Entropy Passphrases', solutions: [true, true], isVisual: false },
+    { title: 'A Maze of Twisty Trampolines, All Alike', solutions: [true, true], isVisual: false },
+    { title: 'Memory Reallocation', solutions: [true, true], isVisual: false },
+    { title: 'Recursive Circus', solutions: [true, true], isVisual: false },
+    { title: 'I Heard You Like Registers', solutions: [true, true], isVisual: false },
+    { title: 'Stream Processing', solutions: [true, true], isVisual: false },
+    { title: 'Knot Hash', solutions: [true, true], isVisual: false },
+    { title: 'Hex Ed', solutions: [true, true], isVisual: true },
+    { title: 'Digital Plumber', solutions: [true, true], isVisual: false },
+    { title: 'Packet Scanners', solutions: [true, true], isVisual: false },
+    { title: 'Disk Defragmentation', solutions: [false, false], isVisual: false },
+    { title: 'Dueling Generators', solutions: [true, true], isVisual: false },
+    { title: 'Permutation Promenade', solutions: [true, true], isVisual: false },
+    { title: 'Spinlock', solutions: [true, true], isVisual: false }
+  ],
+  2018: [
+    { title: 'Chronal Calibration', solutions: [true, true], isVisual: false },
+    { title: 'Inventory Management System', solutions: [true, true], isVisual: false },
+    { title: 'No Matter How You Slice It', solutions: [true, true], isVisual: false },
+    { title: 'Repose Record', solutions: [true, true], isVisual: false },
+    { title: 'Alchemical Reduction', solutions: [true, true], isVisual: false },
+    { title: 'Chronal Coordinates', solutions: [true, true], isVisual: false },
+    { title: 'The Sum of Its Parts', solutions: [true, true], isVisual: false },
+    { title: 'Memory Maneuver', solutions: [true, true], isVisual: false },
+    { title: 'Marble Mania', solutions: [true, true], isVisual: false },
+    { title: 'The Stars Align', solutions: [true, true], isVisual: true },
+    { title: 'Chronal Charge', solutions: [true, true], isVisual: false },
+    { title: 'Subterranean Sustainability', solutions: [true, true], isVisual: false },
+    { title: 'Mine Cart Madness', solutions: [true, true], isVisual: false },
+    { title: 'Chocolate Charts', solutions: [true, true], isVisual: false },
+    { title: 'Beverage Bandits', solutions: [true, true], isVisual: false },
+    { title: 'Chronal Classification', solutions: [true, true], isVisual: false },
+    { title: 'Reservoir Research', solutions: [true, true], isVisual: true },
+    { title: 'Settlers of The North Pole', solutions: [true, true], isVisual: true },
+    { title: 'A Regular Map', solutions: [true, true], isVisual: false },
+    { title: 'Mode Maze', solutions: [true, true], isVisual: false }
+  ],
+  2020: [
+    { title: 'Report Repair', solutions: [true, true], isVisual: false },
+    { title: 'Password Philosophy', solutions: [true, true], isVisual: false },
+    { title: 'Toboggan Trajectory', solutions: [true, true], isVisual: true },
+    { title: 'Passport Processing', solutions: [true, true], isVisual: false },
+    { title: 'Binary Boarding', solutions: [true, true], isVisual: false },
+    { title: 'Custom Customs', solutions: [true, true], isVisual: false },
+    { title: 'Handy Haversacks', solutions: [true, true], isVisual: false },
+    { title: 'Handheld Halting', solutions: [true, true], isVisual: false },
+    { title: 'Encoding Error', solutions: [true, true], isVisual: false },
+    { title: 'Adapter Array', solutions: [true, true], isVisual: false },
+    { title: 'Seating System', solutions: [true, true], isVisual: true },
+    { title: 'Rain Risk', solutions: [true, true], isVisual: true },
+    { title: 'Shuttle Search', solutions: [true, true], isVisual: false },
+    { title: 'Docking Data', solutions: [true, true], isVisual: false },
+    { title: 'Rambunctious Recitation', solutions: [true, true], isVisual: false },
+    { title: 'Ticket Translation', solutions: [true, true], isVisual: false },
+    { title: 'Conway Cubes', solutions: [true, true], isVisual: false },
+    { title: 'Operation Order', solutions: [true, true], isVisual: false },
+    { title: 'Monster Messages', solutions: [true, true], isVisual: false },
+    { title: 'Jurassic Jigsaw', solutions: [true, true], isVisual: true },
+    { title: 'Allergen Assessment', solutions: [true, true], isVisual: false },
+    { title: 'Crab Combat', solutions: [true, true], isVisual: false },
+    { title: 'Crab Cups', solutions: [true, true], isVisual: false },
+    { title: 'Lobby Layout', solutions: [true, true], isVisual: false },
+    { title: 'Combo Breaker', solutions: [true, true], isVisual: false }
+  ]
+}
+
+Object.freeze(solvedDays)
+
 export default {
   data: function () {
     return {
-      solvedDays: {
-        2017: [
-          { title: 'Inverse Captcha', solutions: [true, true], isVisual: false },
-          { title: 'Corruption Checksum', solutions: [true, true], isVisual: false },
-          { title: 'Spiral Memory', solutions: [false, false], isVisual: false },
-          { title: 'High-Entropy Passphrases', solutions: [true, true], isVisual: false },
-          { title: 'A Maze of Twisty Trampolines, All Alike', solutions: [true, true], isVisual: false },
-          { title: 'Memory Reallocation', solutions: [true, true], isVisual: false },
-          { title: 'Recursive Circus', solutions: [true, true], isVisual: false },
-          { title: 'I Heard You Like Registers', solutions: [true, true], isVisual: false },
-          { title: 'Stream Processing', solutions: [true, true], isVisual: false }
-        ],
-        2018: [
-          { title: 'Chronal Calibration', solutions: [true, true], isVisual: false },
-          { title: 'Inventory Management System', solutions: [true, true], isVisual: false },
-          { title: 'No Matter How You Slice It', solutions: [true, true], isVisual: false },
-          { title: 'Repose Record', solutions: [true, true], isVisual: false },
-          { title: 'Alchemical Reduction', solutions: [true, true], isVisual: false },
-          { title: 'Chronal Coordinates', solutions: [true, true], isVisual: false },
-          { title: 'The Sum of Its Parts', solutions: [true, true], isVisual: false },
-          { title: 'Memory Maneuver', solutions: [true, true], isVisual: false },
-          { title: 'Marble Mania', solutions: [true, true], isVisual: false },
-          { title: 'The Stars Align', solutions: [true, true], isVisual: true },
-          { title: 'Chronal Charge', solutions: [true, true], isVisual: false },
-          { title: 'Subterranean Sustainability', solutions: [true, true], isVisual: false },
-          { title: 'Mine Cart Madness', solutions: [true, true], isVisual: false },
-          { title: 'Chocolate Charts', solutions: [true, true], isVisual: false },
-          { title: 'Beverage Bandits', solutions: [true, true], isVisual: false },
-          { title: 'Chronal Classification', solutions: [true, true], isVisual: false },
-          { title: 'Reservoir Research', solutions: [true, true], isVisual: true },
-          { title: 'Settlers of The North Pole', solutions: [true, true], isVisual: true },
-          { title: 'A Regular Map', solutions: [true, true], isVisual: false },
-          { title: 'Mode Maze', solutions: [true, true], isVisual: false }
-        ],
-        2020: [
-          { title: 'Report Repair', solutions: [true, true], isVisual: false },
-          { title: 'Password Philosophy', solutions: [true, true], isVisual: false },
-          { title: 'Toboggan Trajectory', solutions: [true, true], isVisual: true },
-          { title: 'Passport Processing', solutions: [true, true], isVisual: false },
-          { title: 'Binary Boarding', solutions: [true, true], isVisual: false },
-          { title: 'Custom Customs', solutions: [true, true], isVisual: false },
-          { title: 'Handy Haversacks', solutions: [true, true], isVisual: false },
-          { title: 'Handheld Halting', solutions: [true, true], isVisual: false },
-          { title: 'Encoding Error', solutions: [true, true], isVisual: false },
-          { title: 'Adapter Array', solutions: [true, true], isVisual: false },
-          { title: 'Seating System', solutions: [true, true], isVisual: true },
-          { title: 'Rain Risk', solutions: [true, true], isVisual: true },
-          { title: 'Shuttle Search', solutions: [true, true], isVisual: false },
-          { title: 'Docking Data', solutions: [true, true], isVisual: false },
-          { title: 'Rambunctious Recitation', solutions: [true, true], isVisual: false },
-          { title: 'Ticket Translation', solutions: [true, true], isVisual: false },
-          { title: 'Conway Cubes', solutions: [true, true], isVisual: false },
-          { title: 'Operation Order', solutions: [true, true], isVisual: false },
-          { title: 'Monster Messages', solutions: [true, true], isVisual: false },
-          { title: 'Jurassic Jigsaw', solutions: [true, true], isVisual: true },
-          { title: 'Allergen Assessment', solutions: [true, true], isVisual: false },
-          { title: 'Crab Combat', solutions: [true, true], isVisual: false },
-          { title: 'Crab Cups', solutions: [true, true], isVisual: false },
-          { title: 'Lobby Layout', solutions: [true, true], isVisual: false },
-          { title: 'Combo Breaker', solutions: [true, true], isVisual: false }
-        ]
-      }
+      solvedDays: solvedDays
     }
   },
   methods: {
