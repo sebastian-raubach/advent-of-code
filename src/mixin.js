@@ -16,7 +16,12 @@ const solvedDays = {
     { title: 'Disk Defragmentation', solutions: [false, false], isVisual: false },
     { title: 'Dueling Generators', solutions: [true, true], isVisual: false },
     { title: 'Permutation Promenade', solutions: [true, true], isVisual: false },
-    { title: 'Spinlock', solutions: [true, true], isVisual: false }
+    { title: 'Spinlock', solutions: [true, true], isVisual: false },
+    { title: 'Duet', solutions: [true, true], isVisual: false },
+    { title: 'A Series of Tubes', solutions: [true, true], isVisual: false },
+    { title: 'Particle Swarm', solutions: [true, true], isVisual: false },
+    { title: 'Fractal Art', solutions: [false, false], isVisual: false },
+    { title: 'Sporifica Virus', solutions: [true, true], isVisual: true }
   ],
   2018: [
     { title: 'Chronal Calibration', solutions: [true, true], isVisual: false },
@@ -66,6 +71,9 @@ const solvedDays = {
     { title: 'Crab Cups', solutions: [true, true], isVisual: false },
     { title: 'Lobby Layout', solutions: [true, true], isVisual: false },
     { title: 'Combo Breaker', solutions: [true, true], isVisual: false }
+  ],
+  2021: [
+    { title: '???', solutions: [false, false], isVisual: false }
   ]
 }
 
