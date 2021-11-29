@@ -2,7 +2,7 @@ const solvedDays = {
   2017: [
     { title: 'Inverse Captcha', solutions: [true, true], isVisual: false },
     { title: 'Corruption Checksum', solutions: [true, true], isVisual: false },
-    { title: 'Spiral Memory', solutions: [false, false], isVisual: false },
+    { title: 'Spiral Memory', solutions: [true, true], isVisual: false },
     { title: 'High-Entropy Passphrases', solutions: [true, true], isVisual: false },
     { title: 'A Maze of Twisty Trampolines, All Alike', solutions: [true, true], isVisual: false },
     { title: 'Memory Reallocation', solutions: [true, true], isVisual: false },
@@ -21,7 +21,10 @@ const solvedDays = {
     { title: 'A Series of Tubes', solutions: [true, true], isVisual: false },
     { title: 'Particle Swarm', solutions: [true, true], isVisual: false },
     { title: 'Fractal Art', solutions: [false, false], isVisual: false },
-    { title: 'Sporifica Virus', solutions: [true, true], isVisual: true }
+    { title: 'Sporifica Virus', solutions: [true, true], isVisual: true },
+    { title: 'Coprocessor Conflagration', solutions: [true, false], isVisual: false },
+    { title: 'Electromagnetic Moat', solutions: [true, true], isVisual: false },
+    { title: 'The Halting Problem', solutions: [true, false], isVisual: false }
   ],
   2018: [
     { title: 'Chronal Calibration', solutions: [true, true], isVisual: false },
