@@ -22,21 +22,15 @@ export default {
     onInputChanged: function (input) {
       const numbers = input.map(i => +i)
 
+      this.solutions.partOne = numbers.map((n, i) => (i > 0 && n > numbers[i - 1]) ? 1 : 0).reduce((a, b) => a + b)
+
       let counter = 0
-
-      for (let i = 1; i < numbers.length; i++) {
-        if (numbers[i] > numbers[i - 1]) {
-          counter++
-        }
-      }
-
-      this.solutions.partOne = counter
-
-      counter = 0
       for (let i = 1; i < numbers.length - 2; i++) {
+        // Get the first and second sum
         const a = numbers.slice(i - 1, i + 2).reduce((a, b) => a + b)
         const b = numbers.slice(i, i + 3).reduce((a, b) => a + b)
 
+        // Compare
         if (b > a) {
           counter++
         }
