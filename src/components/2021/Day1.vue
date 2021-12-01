@@ -20,6 +20,29 @@ export default {
   },
   methods: {
     onInputChanged: function (input) {
+      const numbers = input.map(i => +i)
+
+      let counter = 0
+
+      for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > numbers[i - 1]) {
+          counter++
+        }
+      }
+
+      this.solutions.partOne = counter
+
+      counter = 0
+      for (let i = 1; i < numbers.length - 2; i++) {
+        const a = numbers.slice(i - 1, i + 2).reduce((a, b) => a + b)
+        const b = numbers.slice(i, i + 3).reduce((a, b) => a + b)
+
+        if (b > a) {
+          counter++
+        }
+      }
+
+      this.solutions.partTwo = counter
     }
   }
 }
