@@ -2,6 +2,8 @@
   <Day :day="2" :year="2021" :solutions="solutions" @input-changed="onInputChanged">
     <template v-slot:partOne>
       <div id="partOne" />
+    </template>
+    <template v-slot:partTwo>
       <div id="partTwo" />
     </template>
   </Day>
@@ -47,53 +49,43 @@ export default {
       })
 
       // Keep track of the current position
-      let curr = {
+      const p1 = {
         x: 0,
         y: 0
       }
-
-      // For plotting
-      let trace = {
-        x: [],
-        y: [],
-        mode: 'lines+markers'
-      }
-      // Make the adjustments
-      mods.forEach(m => {
-        this.mod[m.mod](curr, m.value)
-        trace.x.push(curr.x)
-        trace.y.push(curr.y)
-      })
-
-      // Get the solution
-      this.solutions.partOne = curr.x * curr.y
-
-      this.plot('partOne', trace)
-
-      // Reset
-      curr = {
+      const p2 = {
         x: 0,
         y: 0,
         aim: 0
       }
 
-      trace = {
+      // For plotting
+      const traces = [{
         x: [],
         y: [],
         mode: 'lines+markers'
-      }
+      }, {
+        x: [],
+        y: [],
+        mode: 'lines+markers'
+      }]
 
       // Make the adjustments
       mods.forEach(m => {
-        this.mod2[m.mod](curr, m.value)
-        trace.x.push(curr.x)
-        trace.y.push(curr.y)
+        this.mod[m.mod](p1, m.value)
+        this.mod2[m.mod](p2, m.value)
+        traces[0].x.push(p1.x)
+        traces[0].y.push(p1.y)
+        traces[1].x.push(p2.x)
+        traces[1].y.push(p2.y)
       })
 
       // Get the solution
-      this.solutions.partTwo = curr.x * curr.y
+      this.solutions.partOne = p1.x * p1.y
+      this.solutions.partTwo = p2.x * p2.y
 
-      this.plot('partTwo', trace)
+      this.plot('partOne', traces[0])
+      this.plot('partTwo', traces[1])
     },
     plot: function (id, trace) {
       this.$nextTick(() => {
