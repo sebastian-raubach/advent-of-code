@@ -11,10 +11,33 @@
 
 <script>
 import Day from '@/components/Day'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     Day
+  },
+  computed: {
+    ...mapGetters([
+      'darkMode'
+    ]),
+    layout: function () {
+      return {
+        height: 350,
+        xaxis: {
+          title: { text: 'Horizontal position', font: { color: this.darkMode ? 'white' : 'black' } },
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+        },
+        yaxis: {
+          title: { text: 'Depth', font: { color: this.darkMode ? 'white' : 'black' } },
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+        },
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent'
+      }
+    }
   },
   data: function () {
     return {
@@ -34,6 +57,18 @@ export default {
         },
         down: (current, y) => { current.aim += y },
         up: (current, y) => { current.aim -= y }
+      }
+    }
+  },
+  watch: {
+    darkMode: function () {
+      try {
+        this.$plotly.relayout('partOne', this.layout)
+      } catch (err) {
+      }
+      try {
+        this.$plotly.relayout('partTwo', this.layout)
+      } catch (err) {
       }
     }
   },
@@ -89,11 +124,7 @@ export default {
     },
     plot: function (id, trace) {
       this.$nextTick(() => {
-        this.$plotly.newPlot(id, [trace], {
-          height: 350,
-          xaxis: { title: 'Horizontal position' },
-          yaxis: { title: 'Depth' }
-        }, {
+        this.$plotly.newPlot(id, [trace], this.layout, {
           responsive: true,
           displaylogo: false
         })

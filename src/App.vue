@@ -16,6 +16,7 @@
           <b-nav-form @submit.prevent>
             <b-form-checkbox v-model="localEditingEnabled" switch v-b-tooltip="editingEnabled ? 'Disable editing' : 'Enable editing'" />
           </b-nav-form>
+          <b-nav-item @click="toggleDarkMode" v-b-tooltip="darkMode ? 'Disable dark mode' : 'Enable dark mode'"><BIconSun v-if="darkMode" /><BIconMoon v-else /></b-nav-item>
           <b-nav-item :to="{ name: 'json-parser' }">Stats</b-nav-item>
           <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
         </b-navbar-nav>
@@ -31,15 +32,23 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import { BIconMoon, BIconSun } from 'bootstrap-vue'
+
 export default {
+  components: {
+    BIconMoon,
+    BIconSun
+  },
   data: function () {
     return {
-      localEditingEnabled: false
+      localEditingEnabled: false,
+      localDarkMode: false
     }
   },
   computed: {
     ...mapGetters([
       'currentDay',
+      'darkMode',
       'editingEnabled'
     ]),
     years: function () {
@@ -47,14 +56,27 @@ export default {
     }
   },
   watch: {
+    darkMode: function (newValue) {
+      this.localDarkMode = newValue
+    },
     editingEnabled: function (newValue) {
       this.localEditingEnabled = newValue
     },
-    localEditingEnabled: function (newValue) {
+    localDarkMode: function () {
+      document.body.classList.toggle('dark-mode')
+    },
+    localEditingEnabled: function () {
       this.onEditingChanged()
     }
   },
   methods: {
+    toggleDarkMode: function () {
+      if (this.darkMode === true) {
+        this.$store.dispatch('setDarkMode', false)
+      } else {
+        this.$store.dispatch('setDarkMode', true)
+      }
+    },
     onEditingChanged: function () {
       if (this.localEditingEnabled === true) {
         this.$bvModal.msgBoxConfirm('I\'m assuming you aren\'t using this to cheat... Enable anyway?', {
@@ -74,6 +96,7 @@ export default {
     }
   },
   mounted: function () {
+    this.localDarkMode = this.darkMode
     this.localEditingEnabled = this.editingEnabled
   }
 }
@@ -86,6 +109,9 @@ $primary: #c0392b;
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-vue/src/index.scss';
 @import '~bootswatch/dist/united/bootswatch';
+
+// Import dark mode
+@import 'assets/scss/custom-dark';
 
 .tooltip { top: 0; }
 </style>

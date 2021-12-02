@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data: function () {
     return {
@@ -56,6 +58,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'darkMode'
+    ]),
     json: function () {
       if (this.input) {
         try {
@@ -133,6 +138,9 @@ export default {
     }
   },
   watch: {
+    darkMode: function () {
+      this.$nextTick(() => this.updateChart())
+    },
     userTraces: function () {
       this.$nextTick(() => this.updateChart())
     }
@@ -153,12 +161,22 @@ export default {
       this.$plotly.newPlot('timeline-chart', traces, {
         height: 350 + this.userTraces.length / 5 * 10,
         margin: { t: 10, b: 10, l: 50, r: 0 },
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent',
+        xaxis: {
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+        },
         yaxis: {
-          title: 'Points'
+          title: { text: 'Points', font: { color: this.darkMode ? 'white' : 'black' } },
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
         },
         legend: {
+          bgcolor: 'rgba(0,0,0,0)',
           orientation: 'h',
-          traceorder: 'reversed'
+          traceorder: 'reversed',
+          font: { color: this.darkMode ? 'white' : 'black' }
         }
       }, {
         responsive: true,

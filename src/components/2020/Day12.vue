@@ -11,10 +11,16 @@
 
 <script>
 import Day from '@/components/Day'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     Day
+  },
+  computed: {
+    ...mapGetters([
+      'darkMode'
+    ])
   },
   data: function () {
     return {
@@ -237,11 +243,17 @@ export default {
       const layout = {
         shapes: shapes,
         xaxis: {
-          range: [xMin, xMax]
+          range: [xMin, xMax],
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          range: [yMin, yMax]
-        }
+          range: [yMin, yMax],
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+        },
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent'
       }
 
       this.$nextTick(() => {
