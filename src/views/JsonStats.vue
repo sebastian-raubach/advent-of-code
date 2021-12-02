@@ -61,7 +61,7 @@ export default {
         try {
           const parsed = JSON.parse(this.input)
 
-          return Object.keys(parsed.members).map(m => parsed.members[m]).sort((a, b) => a.local_score - b.local_score)
+          return Object.keys(parsed.members).map(m => parsed.members[m]).sort((a, b) => a.local_score - b.local_score).filter(user => user.stars > 0)
         } catch (err) {
           return null
         }
