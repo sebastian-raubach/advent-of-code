@@ -76,7 +76,8 @@ const solvedDays = {
     { title: 'Combo Breaker', solutions: [true, true], isVisual: false }
   ],
   2021: [
-    { title: 'Sonar Sweep', solutions: [true, true], isVisual: false }
+    { title: 'Sonar Sweep', solutions: [true, true], isVisual: false },
+    { title: 'Dive!', solutions: [true, true], isVisual: true }
   ]
 }
 

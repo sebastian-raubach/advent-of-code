@@ -10,7 +10,7 @@ export default new Vuex.Store({
       2017: 25,
       2018: 23,
       2020: 25,
-      2021: 1
+      2021: 2
     }
   },
   getters: {

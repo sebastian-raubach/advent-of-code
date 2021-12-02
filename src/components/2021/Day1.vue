@@ -22,6 +22,7 @@ export default {
     onInputChanged: function (input) {
       const numbers = input.map(i => +i)
 
+      // Map the indices to 0 or 1 depending on whether they're larger than the previous one, then sum up
       this.solutions.partOne = numbers.map((n, i) => (i > 0 && n > numbers[i - 1]) ? 1 : 0).reduce((a, b) => a + b)
 
       let counter = 0
