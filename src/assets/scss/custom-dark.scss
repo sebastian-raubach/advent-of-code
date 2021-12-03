@@ -5,6 +5,10 @@ body.dark-mode select {
     color: #e8e6e3;
 }
 
+body.dark-mode pre {
+  color: inherit;
+}
+
 body.dark-mode {
   background-color: rgb(24, 26, 27);
   color: rgb(207, 203, 197);

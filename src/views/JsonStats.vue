@@ -27,6 +27,10 @@
       <h2>Points over time</h2>
       <div id="timeline-chart" class="my-3" />
     </template>
+    <template v-if="userRankingPerDay">
+      <h2>Ranking over time</h2>
+      <div id="ranking-chart" class="my-3" />
+    </template>
   </div>
 </template>
 
@@ -74,6 +78,31 @@ export default {
         return null
       }
     },
+    userRankingPerDay: function () {
+      if (this.json) {
+        const pointsPerDay = this.tasks.map(d => {
+          const dayPoints = this.json.map((u, i) => this.userTraces[i] ? (this.userTraces[i][d] || 0) : 0)
+          dayPoints.sort((a, b) => a - b)
+          return dayPoints
+        })
+        return this.json.map((u, i) => {
+          if (u.name === 'Wes Hinsley') {
+            console.log('aaaahhh!')
+          }
+          return this.tasks.map(d => {
+            console.log(this.userTraces[i][d])
+            const points = this.userTraces[i] ? this.userTraces[i][d] : null
+            if (points !== undefined && points !== null) {
+              return pointsPerDay[d - 1].lastIndexOf(points)
+            } else {
+              return null
+            }
+          })
+        })
+      } else {
+        return null
+      }
+    },
     userTraces: function () {
       if (this.json) {
         return this.json.map(user => {
@@ -97,6 +126,8 @@ export default {
               if (partOneTimestamp || partTwoTimestamp) {
                 values.push(cumulative)
               }
+            } else {
+              values.push(null)
             }
           }
 
@@ -139,14 +170,67 @@ export default {
   },
   watch: {
     darkMode: function () {
-      this.$nextTick(() => this.updateChart())
+      this.$nextTick(() => {
+        this.updatePointChart()
+        this.updateRankingChart()
+      })
     },
     userTraces: function () {
-      this.$nextTick(() => this.updateChart())
+      this.$nextTick(() => this.updatePointChart())
+    },
+    userRankingPerDay: function () {
+      this.$nextTick(() => this.updateRankingChart())
     }
   },
   methods: {
-    updateChart: function () {
+    updateRankingChart: function () {
+      this.$plotly.purge('ranking-chart')
+
+      const traces = this.userRankingPerDay.map((ut, ui) => {
+        return {
+          x: ut.map((v, i) => i + 1),
+          y: ut,
+          name: this.json[ui].name,
+          mode: 'lines+markers',
+          marker: {
+            size: 10
+          },
+          line: {
+            width: 3
+          }
+        }
+      })
+
+      this.$plotly.newPlot('ranking-chart', traces, {
+        height: Math.max(250, this.userTraces.length * 30 + 50),
+        margin: { t: 10, b: 20, l: 50, r: 0 },
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent',
+        xaxis: {
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+        },
+        yaxis: {
+          title: { text: 'Ranking', font: { color: this.darkMode ? 'white' : 'black' } },
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee',
+          tickmode: 'array',
+          tickvals: Array.from(Array(this.json.length).keys()),
+          ticktext: Array.from(Array(this.json.length).keys()).map(i => this.json.length - i),
+          fixedrange: true
+        },
+        legend: {
+          bgcolor: 'rgba(0,0,0,0)',
+          orientation: 'h',
+          traceorder: 'reversed',
+          font: { color: this.darkMode ? 'white' : 'black' }
+        }
+      }, {
+        responsive: true,
+        displaylogo: false
+      })
+    },
+    updatePointChart: function () {
       this.$plotly.purge('timeline-chart')
 
       const traces = this.userTraces.map((ut, ui) => {
@@ -160,7 +244,7 @@ export default {
 
       this.$plotly.newPlot('timeline-chart', traces, {
         height: 350 + this.userTraces.length / 5 * 10,
-        margin: { t: 10, b: 10, l: 50, r: 0 },
+        margin: { t: 10, b: 20, l: 50, r: 0 },
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         xaxis: {
@@ -170,7 +254,8 @@ export default {
         yaxis: {
           title: { text: 'Points', font: { color: this.darkMode ? 'white' : 'black' } },
           tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee',
+          fixedrange: true
         },
         legend: {
           bgcolor: 'rgba(0,0,0,0)',

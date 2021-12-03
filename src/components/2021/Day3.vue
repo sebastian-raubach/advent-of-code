@@ -22,6 +22,10 @@ export default {
     onInputChanged: function (input) {
       const bits = input.map(i => i.split('').map(b => +b))
 
+      this.solvePartOne(bits)
+      this.solvePartTwo(bits)
+    },
+    solvePartOne: function (bits) {
       // Get the bit count per position
       const bitCount = this.getBitCount(bits)
       // Calculate gamma and epsilon
@@ -30,25 +34,28 @@ export default {
 
       // Get the product for solution part one
       this.solutions.partOne = gamma * epsilon
-
+    },
+    solvePartTwo: function (bits) {
       // Take a copy of the array for each
       let oxygen = bits.concat()
       let co2 = bits.concat()
 
+      // Iterate over all positions
       for (let i = 0; i < bits[0].length; i++) {
-        const oxBc = this.getBitCount(oxygen)
-        const coBc = this.getBitCount(co2)
-
-        // Calculate mcb and lcb for oxygen and co2 respectively for the now limited set of binary numbers
-        const mcb = Math.floor(oxBc[i] / (oxygen.length / 2))
-        const lcb = 1 - Math.floor(coBc[i] / (co2.length / 2))
-
         if (oxygen.length > 1) {
-          // Filter out the ones we don't want
+          // Calculate the bit count for oxygen
+          const oxBc = this.getBitCount(oxygen)
+          // Calculate the most common bit at this position
+          const mcb = Math.floor(oxBc[i] / (oxygen.length / 2))
+          // Filter so we only keep the ones we want
           oxygen = this.filter(oxygen, mcb, i)
         }
         if (co2.length > 1) {
-          // Filter out the ones we don't want
+          // Calculate the bit count for co2
+          const coBc = this.getBitCount(co2)
+          // Calculate the least common bit at this position
+          const lcb = 1 - Math.floor(coBc[i] / (co2.length / 2))
+          // Filter so we only keep the ones we want
           co2 = this.filter(co2, lcb, i)
         }
       }
