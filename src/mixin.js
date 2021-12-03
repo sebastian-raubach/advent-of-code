@@ -77,7 +77,8 @@ const solvedDays = {
   ],
   2021: [
     { title: 'Sonar Sweep', solutions: [true, true], isVisual: false },
-    { title: 'Dive!', solutions: [true, true], isVisual: true }
+    { title: 'Dive!', solutions: [true, true], isVisual: true },
+    { title: 'Binary Diagnostic', solutions: [true, true], isVisual: false }
   ]
 }
 
