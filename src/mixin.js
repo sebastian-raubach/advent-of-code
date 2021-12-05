@@ -93,6 +93,21 @@ export default {
     }
   },
   methods: {
+    createMultiColorGradient: function (colors, steps) {
+      const sections = colors.length - 1
+
+      let result = []
+
+      for (let i = 0; i < steps - 1; i++) {
+        result = result.concat(this.createColorGradient(colors[i], colors[i + 1], Math.floor(steps / sections)))
+      }
+
+      while (result.length < steps) {
+        result.push(colors[colors.length - 1])
+      }
+
+      return result
+    },
     /**
      * Creates a linear gradient between the two given colors with the given number of steps
      * @param {String} one The first color in HEX
@@ -105,7 +120,7 @@ export default {
 
       const result = []
       for (let i = 0; i < steps; i++) {
-        const iNorm = i / (steps - 1)
+        const iNorm = (i / (steps - 1)) || 1
         result.push(this.rgbToHex(
           Math.floor(oneRgb.r + iNorm * (twoRgb.r - oneRgb.r)),
           Math.floor(oneRgb.g + iNorm * (twoRgb.g - oneRgb.g)),

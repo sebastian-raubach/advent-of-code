@@ -115,7 +115,7 @@ export default {
         maxV = Math.max(maxV, value)
       })
 
-      const gradient = this.createColorGradient('#bdc3c7', '#c0392b', maxV)
+      const gradient = this.createColorGradient('#C4E538', '#006266', maxV)
 
       // Initialise the canvas
       const canvas = document.getElementById(id)
