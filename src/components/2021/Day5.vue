@@ -120,21 +120,16 @@ export default {
       // Initialise the canvas
       const canvas = document.getElementById(id)
       const ctx = canvas.getContext('2d')
-      const factor = 2
       // Set the canvas size
       canvas.width = minX + maxX
       canvas.height = minY + maxY
-      ctx.scale(factor, factor)
 
-      for (let y = minY; y <= maxY; y++) {
-        for (let x = minX; x <= maxX; x++) {
-          const cell = map.get(`${x},${y}`)
-          if (cell) {
-            ctx.fillStyle = gradient[cell - 1]
-            ctx.fillRect(x, y, 1, 1)
-          }
-        }
-      }
+      map.forEach((value, key) => {
+        const coords = key.split(',').map(c => +c)
+
+        ctx.fillStyle = gradient[value - 1]
+        ctx.fillRect(coords[0], coords[1], 1, 1)
+      })
     }
   }
 }
