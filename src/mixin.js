@@ -80,7 +80,8 @@ const solvedDays = {
     { title: 'Dive!', solutions: [true, true], isVisual: true },
     { title: 'Binary Diagnostic', solutions: [true, true], isVisual: false },
     { title: 'Giant Squid', solutions: [true, true], isVisual: false },
-    { title: 'Hydrothermal Venture', solutions: [true, true], isVisual: true }
+    { title: 'Hydrothermal Venture', solutions: [true, true], isVisual: true },
+    { title: 'Lanternfish', solutions: [true, true], isVisual: false }
   ]
 }
 
