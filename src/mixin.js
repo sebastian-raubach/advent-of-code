@@ -81,7 +81,8 @@ const solvedDays = {
     { title: 'Binary Diagnostic', solutions: [true, true], isVisual: false },
     { title: 'Giant Squid', solutions: [true, true], isVisual: false },
     { title: 'Hydrothermal Venture', solutions: [true, true], isVisual: true },
-    { title: 'Lanternfish', solutions: [true, true], isVisual: false }
+    { title: 'Lanternfish', solutions: [true, true], isVisual: false },
+    { title: 'The Treachery of Whales', solutions: [true, true], isVisual: false }
   ]
 }
 
