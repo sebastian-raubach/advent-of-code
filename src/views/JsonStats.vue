@@ -27,6 +27,10 @@
       <h2>Points over time</h2>
       <div id="timeline-chart" class="my-3" />
     </template>
+    <template v-if="userTraces">
+      <h2>Points per day</h2>
+      <div id="per-day-chart" class="my-3" />
+    </template>
     <template v-if="userRankingPerDay">
       <h2>Ranking over time</h2>
       <div id="ranking-chart" class="my-3" />
@@ -81,17 +85,13 @@ export default {
     userRankingPerDay: function () {
       if (this.json) {
         const pointsPerDay = this.tasks.map(d => {
-          const dayPoints = this.json.map((u, i) => this.userTraces[i] ? (this.userTraces[i][d] || 0) : 0)
+          const dayPoints = this.json.map((u, i) => (this.userTraces[i] && this.userTraces[i][d - 1]) ? (this.userTraces[i][d - 1].cumulative || 0) : 0)
           dayPoints.sort((a, b) => a - b)
           return dayPoints
         })
         return this.json.map((u, i) => {
-          if (u.name === 'Wes Hinsley') {
-            console.log('aaaahhh!')
-          }
           return this.tasks.map(d => {
-            console.log(this.userTraces[i][d])
-            const points = this.userTraces[i] ? this.userTraces[i][d] : null
+            const points = (this.userTraces[i] && this.userTraces[i][d - 1]) ? this.userTraces[i][d - 1].cumulative : null
             if (points !== undefined && points !== null) {
               return pointsPerDay[d - 1].lastIndexOf(points)
             } else {
@@ -108,23 +108,28 @@ export default {
         return this.json.map(user => {
           let cumulative = 0
           const values = []
-          values.push(cumulative)
           for (let day = 0; day < this.tasks.length; day++) {
             if (user.completion_day_level[day + 1]) {
               const partOneTimestamp = user.completion_day_level[day + 1][1] ? +user.completion_day_level[day + 1][1].get_star_ts : null
               const partTwoTimestamp = user.completion_day_level[day + 1][2] ? +user.completion_day_level[day + 1][2].get_star_ts : null
 
+              let points = 0
               if (partOneTimestamp) {
                 const partOneIndex = this.sortedUsersPerDay[day].partOne.indexOf(partOneTimestamp)
-                cumulative += this.json.length - partOneIndex
+                points += this.json.length - partOneIndex
               }
               if (partTwoTimestamp) {
                 const partTwoIndex = this.sortedUsersPerDay[day].partTwo.indexOf(partTwoTimestamp)
-                cumulative += this.json.length - partTwoIndex
+                points += this.json.length - partTwoIndex
               }
 
+              cumulative += points
+
               if (partOneTimestamp || partTwoTimestamp) {
-                values.push(cumulative)
+                values.push({
+                  cumulative: cumulative,
+                  individual: points
+                })
               }
             } else {
               values.push(null)
@@ -172,11 +177,15 @@ export default {
     darkMode: function () {
       this.$nextTick(() => {
         this.updatePointChart()
+        this.updatePointPerDayChart()
         this.updateRankingChart()
       })
     },
     userTraces: function () {
-      this.$nextTick(() => this.updatePointChart())
+      this.$nextTick(() => {
+        this.updatePointChart()
+        this.updatePointPerDayChart()
+      })
     },
     userRankingPerDay: function () {
       this.$nextTick(() => this.updateRankingChart())
@@ -216,8 +225,7 @@ export default {
           gridcolor: this.darkMode ? '#111111' : '#eeeeee',
           tickmode: 'array',
           tickvals: Array.from(Array(this.json.length).keys()),
-          ticktext: Array.from(Array(this.json.length).keys()).map(i => this.json.length - i),
-          fixedrange: true
+          ticktext: Array.from(Array(this.json.length).keys()).map(i => this.json.length - i)
         },
         legend: {
           bgcolor: 'rgba(0,0,0,0)',
@@ -235,8 +243,8 @@ export default {
 
       const traces = this.userTraces.map((ut, ui) => {
         return {
-          x: ut.map((v, i) => i),
-          y: ut,
+          x: ut.map((v, i) => i + 1),
+          y: ut.map(i => i ? i.cumulative : null),
           name: this.json[ui].name,
           mode: 'lines+markers'
         }
@@ -254,8 +262,7 @@ export default {
         yaxis: {
           title: { text: 'Points', font: { color: this.darkMode ? 'white' : 'black' } },
           tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee',
-          fixedrange: true
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
         },
         legend: {
           bgcolor: 'rgba(0,0,0,0)',
@@ -263,6 +270,45 @@ export default {
           traceorder: 'reversed',
           font: { color: this.darkMode ? 'white' : 'black' }
         }
+      }, {
+        responsive: true,
+        displaylogo: false
+      })
+    },
+    updatePointPerDayChart: function () {
+      this.$plotly.purge('per-day-chart')
+
+      const traces = this.userTraces.map((ut, ui) => {
+        return {
+          x: ut.map((v, i) => i + 1),
+          y: ut.map(i => i ? i.individual : null),
+          name: this.json[ui].name,
+          mode: 'lines+markers'
+          // type: 'bar'
+        }
+      })
+
+      this.$plotly.newPlot('per-day-chart', traces, {
+        height: 350 + this.userTraces.length / 5 * 10,
+        margin: { t: 10, b: 20, l: 50, r: 0 },
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent',
+        xaxis: {
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+        },
+        yaxis: {
+          title: { text: 'Points', font: { color: this.darkMode ? 'white' : 'black' } },
+          tickfont: { color: this.darkMode ? 'white' : 'black' },
+          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+        },
+        legend: {
+          bgcolor: 'rgba(0,0,0,0)',
+          orientation: 'h',
+          traceorder: 'reversed',
+          font: { color: this.darkMode ? 'white' : 'black' }
+        }
+        // barmode: 'relative'
       }, {
         responsive: true,
         displaylogo: false
