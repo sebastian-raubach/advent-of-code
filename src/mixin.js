@@ -1,4 +1,7 @@
 const solvedDays = {
+  2016: [
+    { title: 'No Time for a Taxicab', solutions: [true, true], isVisual: true }
+  ],
   2017: [
     { title: 'Inverse Captcha', solutions: [true, true], isVisual: false },
     { title: 'Corruption Checksum', solutions: [true, true], isVisual: false },
@@ -82,7 +85,8 @@ const solvedDays = {
     { title: 'Giant Squid', solutions: [true, true], isVisual: false },
     { title: 'Hydrothermal Venture', solutions: [true, true], isVisual: true },
     { title: 'Lanternfish', solutions: [true, true], isVisual: false },
-    { title: 'The Treachery of Whales', solutions: [true, true], isVisual: false }
+    { title: 'The Treachery of Whales', solutions: [true, true], isVisual: false },
+    { title: 'Seven Segment Search', solutions: [true, true], isVisual: false }
   ]
 }
 
@@ -95,6 +99,9 @@ export default {
     }
   },
   methods: {
+    mod: function (a, b) {
+      return ((a % b) + b) % b
+    },
     createMultiColorGradient: function (colors, steps) {
       const sections = colors.length - 1
 
