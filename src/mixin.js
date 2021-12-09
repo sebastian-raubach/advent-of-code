@@ -1,7 +1,9 @@
 const solvedDays = {
   2016: [
     { title: 'No Time for a Taxicab', solutions: [true, true], isVisual: true },
-    { title: 'Bathroom Security', solutions: [true, true], isVisual: true }
+    { title: 'Bathroom Security', solutions: [true, true], isVisual: true },
+    { title: 'Squares With Three Sides', solutions: [true, true], isVisual: false },
+    { title: 'Security Through Obscurity', solutions: [true, true], isVisual: false }
   ],
   2017: [
     { title: 'Inverse Captcha', solutions: [true, true], isVisual: false },
