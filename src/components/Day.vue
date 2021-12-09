@@ -11,7 +11,7 @@
     <div v-if="markdown && markdown.partOne" class="mb-3">
       <b-button v-b-toggle.part-one>Show Part 1</b-button>
       <b-collapse id="part-one">
-        <b-card class="mt-3">
+        <b-card class="mt-3 markdown">
           <vue-markdown :source="markdown.partOne" />
         </b-card>
       </b-collapse>
@@ -20,7 +20,7 @@
     <div v-if="markdown && markdown.partTwo" class="mb-3">
       <b-button v-b-toggle.part-two>Show Part 2</b-button>
       <b-collapse id="part-two">
-        <b-card class="mt-3">
+        <b-card class="mt-3 markdown">
           <vue-markdown :source="markdown.partTwo" />
         </b-card>
       </b-collapse>
@@ -141,5 +141,12 @@ export default {
   font-family: monospace;
   white-space: pre;
   overflow: auto;
+}
+.markdown pre b {
+  font-weight: 900;
+  text-shadow: 0 0 3px #000000;
+}
+body.dark-mode .markdown pre b {
+  text-shadow: 0 0 3px #ffffff;
 }
 </style>

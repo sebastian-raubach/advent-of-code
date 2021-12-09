@@ -68,7 +68,7 @@ egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg |
 <b>gbdfcae</b> <b>bgc</b> <b>cg</b> <b>cgb</b>
 gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc |
 <b>fgae</b> cfgab <b>fg</b> bagce
-<pre>
+</pre>
 
 Because the digits `1`, `4`, `7`, and `8` each use a unique number of segments, you should be able to tell which combinations of signals correspond to those digits. Counting **only digits in the output values** (the part after `|` on each line), in the above example, there are **`26`** instances of digits that use a unique number of segments (highlighted above).
 

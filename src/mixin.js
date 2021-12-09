@@ -87,7 +87,8 @@ const solvedDays = {
     { title: 'Hydrothermal Venture', solutions: [true, true], isVisual: true },
     { title: 'Lanternfish', solutions: [true, true], isVisual: false },
     { title: 'The Treachery of Whales', solutions: [true, true], isVisual: false },
-    { title: 'Seven Segment Search', solutions: [true, true], isVisual: false }
+    { title: 'Seven Segment Search', solutions: [true, true], isVisual: false },
+    { title: 'Smoke Basin', solutions: [true, true], isVisual: true }
   ]
 }
 
