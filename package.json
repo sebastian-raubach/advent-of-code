@@ -12,6 +12,7 @@
     "bootstrap-vue": "^2.19.0",
     "bootswatch": "^4.5.3",
     "core-js": "^3.6.5",
+    "md5": "^2.3.0",
     "plotly.js": "^1.58.2",
     "vue": "^2.6.11",
     "vue-markdown": "^2.2.4",
