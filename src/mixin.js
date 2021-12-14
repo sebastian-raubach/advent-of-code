@@ -92,7 +92,11 @@ const solvedDays = {
     { title: 'The Treachery of Whales', solutions: [true, true], isVisual: false },
     { title: 'Seven Segment Search', solutions: [true, true], isVisual: false },
     { title: 'Smoke Basin', solutions: [true, true], isVisual: true },
-    { title: 'Syntax Scoring', solutions: [true, true], isVisual: false }
+    { title: 'Syntax Scoring', solutions: [true, true], isVisual: false },
+    { title: 'Dumbo Octopus', solutions: [true, true], isVisual: true },
+    { title: 'Passage Pathing', solutions: [true, true], isVisual: true },
+    { title: 'Transparent Origami', solutions: [true, true], isVisual: true },
+    { title: 'Extended Polymerization', solutions: [true, true], isVisual: false }
   ]
 }
 
