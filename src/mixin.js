@@ -96,7 +96,8 @@ const solvedDays = {
     { title: 'Dumbo Octopus', solutions: [true, true], isVisual: true },
     { title: 'Passage Pathing', solutions: [true, true], isVisual: true },
     { title: 'Transparent Origami', solutions: [true, true], isVisual: true },
-    { title: 'Extended Polymerization', solutions: [true, true], isVisual: false }
+    { title: 'Extended Polymerization', solutions: [true, true], isVisual: false },
+    { title: 'Chiton', solutions: [true, true], isVisual: true }
   ]
 }
 
