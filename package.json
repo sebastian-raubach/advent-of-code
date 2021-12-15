@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@datastructures-js/priority-queue": "^5.3.0",
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.19.0",
     "bootswatch": "^4.5.3",

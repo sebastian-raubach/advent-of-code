@@ -9,6 +9,19 @@
       </b-form-group>
     </b-form>
 
+    <template v-if="userTraces">
+      <h2>Points over time</h2>
+      <div id="timeline-chart" class="my-3" />
+    </template>
+    <template v-if="userTraces">
+      <h2>Points per day</h2>
+      <div id="per-day-chart" class="my-3" />
+    </template>
+    <template v-if="userRankingPerDay">
+      <h2>Ranking over time</h2>
+      <div id="ranking-chart" class="my-3" />
+    </template>
+
     <template v-if="json">
       <h2>Stats overview</h2>
       <p>Hover over the stars to see the timestamps for part 1 and part 2 as well as the user's ranking for the day.</p>
@@ -21,19 +34,6 @@
           </template>
         </template>
       </b-table>
-    </template>
-
-    <template v-if="userTraces">
-      <h2>Points over time</h2>
-      <div id="timeline-chart" class="my-3" />
-    </template>
-    <template v-if="userTraces">
-      <h2>Points per day</h2>
-      <div id="per-day-chart" class="my-3" />
-    </template>
-    <template v-if="userRankingPerDay">
-      <h2>Ranking over time</h2>
-      <div id="ranking-chart" class="my-3" />
     </template>
   </div>
 </template>
@@ -74,7 +74,7 @@ export default {
         try {
           const parsed = JSON.parse(this.input)
 
-          return Object.keys(parsed.members).map(m => parsed.members[m]).sort((a, b) => a.local_score - b.local_score).filter(user => user.stars > 0)
+          return Object.keys(parsed.members).map(m => parsed.members[m]).sort((a, b) => a.local_score - b.local_score)
         } catch (err) {
           return null
         }
