@@ -190,6 +190,7 @@ After step 10:
 
 After step 10, there have been a total of `204` flashes. Fast forwarding, here is the same configuration every 10 steps:
 
+<pre>
 After step 20:
 3936556452
 56865568<b>0</b>6
@@ -297,6 +298,7 @@ After step 100:
 9322228966
 7922286866
 6789998766
+</pre>
 
 After 100 steps, there have been a total of **`1656`** flashes.
 

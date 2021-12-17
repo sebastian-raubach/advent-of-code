@@ -144,9 +144,9 @@ export default {
 }
 .markdown pre b {
   font-weight: 900;
-  text-shadow: 0 0 3px #000000;
+  text-shadow: 0 0 3px #e83e8c;
 }
 body.dark-mode .markdown pre b {
-  text-shadow: 0 0 3px #ffffff;
+  text-shadow: 0 0 3px #ff9bc9;
 }
 </style>

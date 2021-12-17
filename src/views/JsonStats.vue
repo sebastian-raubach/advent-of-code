@@ -251,7 +251,7 @@ export default {
       })
 
       this.$plotly.newPlot('timeline-chart', traces, {
-        height: 350 + this.userTraces.length / 5 * 10,
+        height: Math.max(250, this.userTraces.length * 15 + 50),
         margin: { t: 10, b: 20, l: 50, r: 0 },
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
@@ -289,7 +289,7 @@ export default {
       })
 
       this.$plotly.newPlot('per-day-chart', traces, {
-        height: 350 + this.userTraces.length / 5 * 10,
+        height: Math.max(250, this.userTraces.length * 10 + 50),
         margin: { t: 10, b: 20, l: 50, r: 0 },
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',

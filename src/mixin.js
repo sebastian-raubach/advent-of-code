@@ -90,14 +90,16 @@ const solvedDays = {
     { title: 'Hydrothermal Venture', solutions: [true, true], isVisual: true },
     { title: 'Lanternfish', solutions: [true, true], isVisual: false },
     { title: 'The Treachery of Whales', solutions: [true, true], isVisual: false },
-    { title: 'Seven Segment Search', solutions: [true, true], isVisual: false },
-    { title: 'Smoke Basin', solutions: [true, true], isVisual: true },
-    { title: 'Syntax Scoring', solutions: [true, true], isVisual: false },
-    { title: 'Dumbo Octopus', solutions: [true, true], isVisual: true },
-    { title: 'Passage Pathing', solutions: [true, true], isVisual: true },
-    { title: 'Transparent Origami', solutions: [true, true], isVisual: true },
-    { title: 'Extended Polymerization', solutions: [true, true], isVisual: false },
-    { title: 'Chiton', solutions: [true, true], isVisual: true }
+    { title: 'Seven Segment Search', solutions: [true, true], isVisual: false, tags: ['substitution', 'deduction'] },
+    { title: 'Smoke Basin', solutions: [true, true], isVisual: true, tags: ['2d', 'segmentation'] },
+    { title: 'Syntax Scoring', solutions: [true, true], isVisual: false, tags: ['parsing'] },
+    { title: 'Dumbo Octopus', solutions: [true, true], isVisual: true, tags: ['2d', 'array-manipulation'] },
+    { title: 'Passage Pathing', solutions: [true, true], isVisual: true, tags: ['graph', 'path-finding'] },
+    { title: 'Transparent Origami', solutions: [true, true], isVisual: true, tags: ['2d', 'array-manipulation'] },
+    { title: 'Extended Polymerization', solutions: [true, true], isVisual: false, tags: ['substitution'] },
+    { title: 'Chiton', solutions: [true, true], isVisual: true, tags: ['2d', 'path-finding'] },
+    { title: 'Packet Decoder', solutions: [true, true], isVisual: false, tags: ['tree', 'parsing'] },
+    { title: 'Trick Shot', solutions: [true, true], isVisual: true, tags: ['2d'] }
   ]
 }
 

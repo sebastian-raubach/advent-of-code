@@ -114,4 +114,8 @@ $primary: #c0392b;
 @import 'assets/scss/custom-dark';
 
 .tooltip { top: 0; }
+
+pre {
+  color: #e83e8c;
+}
 </style>
