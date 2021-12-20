@@ -99,7 +99,10 @@ const solvedDays = {
     { title: 'Extended Polymerization', solutions: [true, true], isVisual: false, tags: ['substitution'] },
     { title: 'Chiton', solutions: [true, true], isVisual: true, tags: ['2d', 'path-finding'] },
     { title: 'Packet Decoder', solutions: [true, true], isVisual: false, tags: ['tree', 'parsing'] },
-    { title: 'Trick Shot', solutions: [true, true], isVisual: true, tags: ['2d'] }
+    { title: 'Trick Shot', solutions: [true, true], isVisual: true, tags: ['2d'] },
+    { title: 'Snailfish', solutions: [true, true], isVisual: false, tags: ['string-manipulation', 'parsing'] },
+    { title: 'Beacon Scanner', solutions: [true, true], isVisual: false, tags: ['3d'] },
+    { title: 'Trench Map', solutions: [true, true], isVisual: true, tags: ['2d'] }
   ]
 }
 
