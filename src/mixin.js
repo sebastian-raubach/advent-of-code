@@ -1,4 +1,11 @@
 const solvedDays = {
+  2015: [
+    { title: 'Not Quite Lisp', solutions: [true, true], isVisual: false },
+    { title: 'I Was Told There Would Be No Math', solutions: [true, true], isVisual: false },
+    { title: 'Perfectly Spherical Houses in a Vacuum', solutions: [true, true], isVisual: true },
+    { title: 'The Ideal Stocking Stuffer', solutions: [true, true], isVisual: false },
+    { title: 'Doesn\'t He Have Intern- Elves For This ?', solutions: [true, true], isVisual: false }
+  ],
   2016: [
     { title: 'No Time for a Taxicab', solutions: [true, true], isVisual: true },
     { title: 'Bathroom Security', solutions: [true, true], isVisual: true },
@@ -104,7 +111,10 @@ const solvedDays = {
     { title: 'Beacon Scanner', solutions: [true, true], isVisual: false, tags: ['3d'] },
     { title: 'Trench Map', solutions: [true, true], isVisual: true, tags: ['2d'] },
     { title: 'Dirac Dice', solutions: [true, true], isVisual: false, tags: ['caching', 'optimization'] },
-    { title: 'Reactor Reboot', solutions: [true, true], isVisual: false, tags: ['3d', 'intersection'] }
+    { title: 'Reactor Reboot', solutions: [true, true], isVisual: false, tags: ['3d', 'intersection'] },
+    { title: 'Amphipod', solutions: [true, true], isVisual: false, tags: ['path-finding'] },
+    { title: 'Arithmetic Logic Unit', solutions: [true, true], isVisual: false, tags: [] },
+    { title: 'Sea Cucumber', solutions: [true, true], isVisual: false, tags: ['2d'] }
   ]
 }
 
