@@ -4,7 +4,8 @@ const solvedDays = {
     { title: 'I Was Told There Would Be No Math', solutions: [true, true], isVisual: false },
     { title: 'Perfectly Spherical Houses in a Vacuum', solutions: [true, true], isVisual: true },
     { title: 'The Ideal Stocking Stuffer', solutions: [true, true], isVisual: false },
-    { title: 'Doesn\'t He Have Intern- Elves For This ?', solutions: [true, true], isVisual: false }
+    { title: 'Doesn\'t He Have Intern- Elves For This ?', solutions: [true, true], isVisual: false },
+    { title: 'Probably a Fire Hazard', solutions: [true, true], isVisual: true }
   ],
   2016: [
     { title: 'No Time for a Taxicab', solutions: [true, true], isVisual: true },
