@@ -25,24 +25,22 @@ export default {
       const bits = input[0]
 
       let i = 0
-      let goOn = true
-      while (goOn) {
+      while (true) {
         const checksum = md5(`${bits}${i}`)
 
         if (checksum.startsWith('00000')) {
           this.solutions.partOne = i
-          goOn = false
+          break
         }
 
         i++
       }
-      goOn = true
-      while (goOn) {
+      while (true) {
         const checksum = md5(`${bits}${i}`)
 
         if (checksum.startsWith('000000')) {
           this.solutions.partTwo = i
-          goOn = false
+          break
         }
 
         i++
