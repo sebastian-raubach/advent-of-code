@@ -100,6 +100,8 @@ export default {
               return i
             }
           }
+
+          return 0
         }).join('')
       }).reduce((a, b) => a + b)
     },

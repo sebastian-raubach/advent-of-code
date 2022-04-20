@@ -107,7 +107,7 @@ export default {
       this.solutions.partTwo = counter
     },
     makeArray: function (w, h, val) {
-    var arr = []
+    const arr = []
     for (let i = 0; i < h; i++) {
         arr[i] = []
         for (let j = 0; j < w; j++) {

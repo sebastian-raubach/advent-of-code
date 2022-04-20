@@ -6,7 +6,10 @@ const solvedDays = {
     { title: 'The Ideal Stocking Stuffer', solutions: [true, true], isVisual: false },
     { title: 'Doesn\'t He Have Intern- Elves For This ?', solutions: [true, true], isVisual: false },
     { title: 'Probably a Fire Hazard', solutions: [true, true], isVisual: true },
-    { title: 'Some Assembly Required', solutions: [true, true], isVisual: false }
+    { title: 'Some Assembly Required', solutions: [true, true], isVisual: false },
+    { title: 'Matchsticks', solutions: [true, true], isVisual: false },
+    { title: null, solutions: [false, false], isVisual: false },
+    { title: 'Elves Look, Elves Say', solutions: [true, true], isVisual: false }
   ],
   2016: [
     { title: 'No Time for a Taxicab', solutions: [true, true], isVisual: true },
@@ -174,11 +177,13 @@ export default {
      */
     hexToRgb: function (hex) {
       const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-      return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-      } : null
+      return result
+        ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        }
+        : null
     },
     /**
      * Converts the given R, G, B values into a HEX color

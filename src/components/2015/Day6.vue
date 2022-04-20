@@ -27,26 +27,14 @@ export default {
         partTwo: null
       },
       partOne: {
-        'turn off': (grid, x, y) => {
-          grid[y][x] = 0
-        },
-        toggle: (grid, x, y) => {
-          grid[y][x] = 1 - grid[y][x]
-        },
-        'turn on': (grid, x, y) => {
-          grid[y][x] = 1
-        }
+        'turn off': (grid, x, y) => { grid[y][x] = 0 },
+        toggle: (grid, x, y) => { grid[y][x] = 1 - grid[y][x] },
+        'turn on': (grid, x, y) => { grid[y][x] = 1 }
       },
       partTwo: {
-        'turn off': (grid, x, y) => {
-          grid[y][x] = Math.max(0, grid[y][x] - 1)
-        },
-        toggle: (grid, x, y) => {
-          grid[y][x] += 2
-        },
-        'turn on': (grid, x, y) => {
-          grid[y][x]++
-        }
+        'turn off': (grid, x, y) => { grid[y][x] = Math.max(0, grid[y][x] - 1) },
+        toggle: (grid, x, y) => { grid[y][x] += 2 },
+        'turn on': (grid, x, y) => { grid[y][x]++ }
       }
     }
   },

@@ -27,7 +27,7 @@ export default {
         const parts = w.split('')
 
         // Filter out the bad strings first
-        if (badStrings.some(b => w.indexOf(b) !== -1)) {
+        if (badStrings.some(b => w.inludes(b))) {
           return false
         }
         // Filter out the words that don't contain at least three vowels

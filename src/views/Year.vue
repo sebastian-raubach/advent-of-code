@@ -20,7 +20,7 @@
               <b-card-text class="text-center text-white" v-if="days[day - 1]">{{ days[day - 1].title }}</b-card-text>
               <b-card-text class="text-center text-white" v-if="days[day - 1] && days[day - 1].isVisual"><BIconEaselFill /></b-card-text>
             </b-card-body>
-            <b-button block :to="{ name: `year-${year}-day-${day}` }" variant="primary" class="stretched-link">Day {{ day }}</b-button>
+            <b-button block :disabled="day > currentDay[year]" :to="{ name: `year-${year}-day-${day}` }" variant="primary" class="stretched-link">Day {{ day }}</b-button>
           </b-card>
         </b-col>
       </template>
