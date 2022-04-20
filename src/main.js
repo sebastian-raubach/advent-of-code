@@ -5,9 +5,6 @@ import store from './store'
 import mixin from './mixin.js'
 
 import { BootstrapVue } from 'bootstrap-vue'
-import { install as VueMarkdown } from 'vue-markdown/src/build'
-
-Vue.use(VueMarkdown)
 
 Vue.use(BootstrapVue)
 Vue.mixin(mixin)

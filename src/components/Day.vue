@@ -12,7 +12,7 @@
       <b-button v-b-toggle.part-one>Show Part 1</b-button>
       <b-collapse id="part-one">
         <b-card class="mt-3 markdown">
-          <vue-markdown :source="markdown.partOne" />
+          <VueMarkdown :source="markdown.partOne" />
         </b-card>
       </b-collapse>
     </div>
@@ -21,7 +21,7 @@
       <b-button v-b-toggle.part-two>Show Part 2</b-button>
       <b-collapse id="part-two">
         <b-card class="mt-3 markdown">
-          <vue-markdown :source="markdown.partTwo" />
+          <VueMarkdown :source="markdown.partTwo" />
         </b-card>
       </b-collapse>
     </div>
@@ -51,11 +51,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import { BIconCaretRightFill, BIconCaretLeftFill } from 'bootstrap-vue'
+import VueMarkdown from '@adapttive/vue-markdown'
 
 export default {
   components: {
     BIconCaretRightFill,
-    BIconCaretLeftFill
+    BIconCaretLeftFill,
+    VueMarkdown
   },
   props: {
     day: {

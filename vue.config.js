@@ -1,6 +1,7 @@
 module.exports = {
   lintOnSave: true,
   runtimeCompiler: true,
+  transpileDependencies: false,
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   configureWebpack: {
     module: {
