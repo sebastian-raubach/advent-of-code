@@ -8,7 +8,7 @@ const solvedDays = {
     { title: 'Probably a Fire Hazard', solutions: [true, true], isVisual: true },
     { title: 'Some Assembly Required', solutions: [true, true], isVisual: false },
     { title: 'Matchsticks', solutions: [true, true], isVisual: false },
-    { title: null, solutions: [false, false], isVisual: false },
+    { title: 'All in a Single Night', solutions: [true, true], isVisual: false },
     { title: 'Elves Look, Elves Say', solutions: [true, true], isVisual: false }
   ],
   2016: [
