@@ -11,7 +11,9 @@ const solvedDays = {
     { title: 'All in a Single Night', solutions: [true, true], isVisual: false },
     { title: 'Elves Look, Elves Say', solutions: [true, true], isVisual: false },
     { title: 'Corporate Policy', solutions: [true, true], isVisual: false },
-    { title: 'JSAbacusFramework.io', solutions: [true, true], isVisual: false }
+    { title: 'JSAbacusFramework.io', solutions: [true, true], isVisual: false },
+    { title: 'Knights of the Dinner Table', solutions: [true, true], isVisual: false },
+    { title: 'Reindeer Olympics', solutions: [true, true], isVisual: true }
   ],
   2016: [
     { title: 'No Time for a Taxicab', solutions: [true, true], isVisual: true },
