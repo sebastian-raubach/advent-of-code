@@ -44,17 +44,14 @@ export default {
       const gridOne = new Array(1000).fill(0).map(() => new Array(1000).fill(0))
       const gridTwo = new Array(1000).fill(0).map(() => new Array(1000).fill(0))
 
+      const pattern = /(?<method>.+) (?<blX>\d+),(?<blY>\d+) through (?<trX>\d+),(?<trY>\d+)/
       input.forEach(i => {
-        const [left, right] = i.split(' through ')
-        const tr = right.split(',').map(c => +c)
-        const index = left.lastIndexOf(' ')
-        const method = left.substring(0, index)
-        const bl = left.substring(index + 1, left.length).split(',').map(c => +c)
+        const matched = i.match(pattern).groups
 
-        for (let y = bl[1]; y <= tr[1]; y++) {
-          for (let x = bl[0]; x <= tr[0]; x++) {
-            this.partOne[method](gridOne, x, y)
-            this.partTwo[method](gridTwo, x, y)
+        for (let y = +matched.blY; y <= +matched.trY; y++) {
+          for (let x = +matched.blX; x <= +matched.trX; x++) {
+            this.partOne[matched.method](gridOne, x, y)
+            this.partTwo[matched.method](gridTwo, x, y)
           }
         }
       })

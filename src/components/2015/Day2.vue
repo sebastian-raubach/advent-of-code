@@ -42,7 +42,7 @@ export default {
         // For part two, sort the sides by size
         const sides = [b.l, b.w, b.h].sort((a, b) => a - b)
 
-        // Then return the sum of the smalles two sides (times 2) plus the product of all sides
+        // Then return the sum of the smallest two sides (times 2) plus the product of all sides
         return 2 * sides[0] + 2 * sides[1] + sides.reduce((x, y) => x * y, 1)
       }).reduce((a, b) => a + b)
     }

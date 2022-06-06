@@ -13,7 +13,11 @@ const solvedDays = {
     { title: 'Corporate Policy', solutions: [true, true], isVisual: false },
     { title: 'JSAbacusFramework.io', solutions: [true, true], isVisual: false },
     { title: 'Knights of the Dinner Table', solutions: [true, true], isVisual: false },
-    { title: 'Reindeer Olympics', solutions: [true, true], isVisual: true }
+    { title: 'Reindeer Olympics', solutions: [true, true], isVisual: true },
+    { title: 'Science for Hungry People', solutions: [false, false], isVisual: false },
+    { title: 'Aunt Sue', solutions: [true, true], isVisual: false },
+    { title: 'No Such Thing as Too Much', solutions: [false, false], isVisual: false },
+    { title: 'Like a GIF For Your Yard', solutions: [true, true], isVisual: true }
   ],
   2016: [
     { title: 'No Time for a Taxicab', solutions: [true, true], isVisual: true },

@@ -39,13 +39,13 @@ export default {
     onInputChanged: function (input) {
       const pattern = /(?<name>.+) can fly (?<speed>\d+) km\/s for (?<duration>\d+) seconds, but then must rest for (?<rest>\d+) seconds./
       const reindeer = input.map(i => {
-        const res = i.match(pattern)
+        const res = i.match(pattern).groups
 
         return {
-          name: res.groups.name,
-          speed: +res.groups.speed,
-          duration: +res.groups.duration,
-          rest: +res.groups.rest,
+          name: res.name,
+          speed: +res.speed,
+          duration: +res.duration,
+          rest: +res.rest,
           score: 0,
           distance: 0
         }

@@ -22,7 +22,7 @@ module.exports = {
         'path': require.resolve('path-browserify')
       }
     },
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     target: 'web'
   }
 }

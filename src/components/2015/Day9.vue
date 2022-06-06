@@ -21,16 +21,16 @@ export default {
   methods: {
     onInputChanged: function (input) {
       const cities = new Set()
+      const pattern = /(?<source>.+) to (?<target>.+) = (?<distance>\d+)/
       const routes = input.map(r => {
-        const [points, distance] = r.split(' = ')
-        const [source, target] = points.split(' to ')
+        const matched = r.match(pattern).groups
 
-        cities.add(source)
-        cities.add(target)
+        cities.add(matched.source)
+        cities.add(matched.target)
 
         return {
-          points: [source, target],
-          distance: +distance
+          points: [matched.source, matched.target],
+          distance: +matched.distance
         }
       })
 

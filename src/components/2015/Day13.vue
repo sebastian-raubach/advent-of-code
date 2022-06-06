@@ -26,12 +26,12 @@ export default {
       const rules = new Map()
 
       input.forEach(i => {
-        const res = i.match(pattern)
+        const res = i.match(pattern).groups
 
-        peopleSet.add(res.groups.who)
-        peopleSet.add(res.groups.other)
+        peopleSet.add(res.who)
+        peopleSet.add(res.other)
 
-        rules.set(`${res.groups.who},${res.groups.other}`, res.groups.type === 'gain' ? +res.groups.change : -+res.groups.change)
+        rules.set(`${res.who},${res.other}`, res.type === 'gain' ? +res.change : -+res.change)
       })
 
       const people = Array.from(peopleSet)
