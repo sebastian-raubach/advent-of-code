@@ -211,6 +211,7 @@ export default {
       })
 
       this.$plotly.newPlot('ranking-chart', traces, {
+        hovermode: 'x',
         height: Math.max(250, this.userTraces.length * 30 + 50),
         margin: { t: 10, b: 20, l: 50, r: 0 },
         paper_bgcolor: 'transparent',
@@ -251,6 +252,7 @@ export default {
       })
 
       this.$plotly.newPlot('timeline-chart', traces, {
+        hovermode: 'x',
         height: Math.max(250, this.userTraces.length * 15 + 50),
         margin: { t: 10, b: 20, l: 50, r: 0 },
         paper_bgcolor: 'transparent',
@@ -289,6 +291,7 @@ export default {
       })
 
       this.$plotly.newPlot('per-day-chart', traces, {
+        hovermode: 'x',
         height: Math.max(250, this.userTraces.length * 10 + 50),
         margin: { t: 10, b: 20, l: 50, r: 0 },
         paper_bgcolor: 'transparent',
