@@ -29,7 +29,7 @@
     <h2>Input</h2>
     <b-form @submit.prevent="onSubmit">
       <b-form-group label="Task input" description="The task input provided for this day." label-for="task-input">
-        <b-form-textarea rows="8" v-model="input" id="task-input" wrap="soft" :disabled="!editingEnabled" />
+        <b-form-textarea rows="8" v-model="input" id="task-input" wrap="soft" :disabled="!storeEditingEnabled" />
       </b-form-group>
       <b-button type="submit" @click.prevent="onSubmit">Run</b-button>
     </b-form>
@@ -52,6 +52,7 @@
 import { mapGetters } from 'vuex'
 import { BIconCaretRightFill, BIconCaretLeftFill } from 'bootstrap-vue'
 import VueMarkdown from '@adapttive/vue-markdown'
+import { solvedDays } from '@/util/days'
 
 export default {
   components: {
@@ -66,7 +67,7 @@ export default {
     },
     year: {
       type: Number,
-      default: 2020
+      default: 2022
     },
     solutions: {
       type: Object,
@@ -80,12 +81,13 @@ export default {
   },
   data: function () {
     return {
+      solvedDays,
       input: null
     }
   },
   computed: {
     ...mapGetters([
-      'editingEnabled'
+      'storeEditingEnabled'
     ]),
     taskInput: function () {
       try {

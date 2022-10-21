@@ -67,7 +67,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'darkMode'
+      'storeDarkMode'
     ]),
     json: function () {
       if (this.input) {
@@ -174,7 +174,7 @@ export default {
     }
   },
   watch: {
-    darkMode: function () {
+    storeDarkMode: function () {
       this.$nextTick(() => {
         this.updatePointChart()
         this.updatePointPerDayChart()
@@ -217,13 +217,13 @@ export default {
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         xaxis: {
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          title: { text: 'Ranking', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee',
+          title: { text: 'Ranking', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee',
           tickmode: 'array',
           tickvals: Array.from(Array(this.json.length).keys()),
           ticktext: Array.from(Array(this.json.length).keys()).map(i => this.json.length - i)
@@ -232,7 +232,7 @@ export default {
           bgcolor: 'rgba(0,0,0,0)',
           orientation: 'h',
           traceorder: 'reversed',
-          font: { color: this.darkMode ? 'white' : 'black' }
+          font: { color: this.storeDarkMode ? 'white' : 'black' }
         }
       }, {
         responsive: true,
@@ -258,19 +258,19 @@ export default {
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         xaxis: {
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          title: { text: 'Points', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          title: { text: 'Points', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         legend: {
           bgcolor: 'rgba(0,0,0,0)',
           orientation: 'h',
           traceorder: 'reversed',
-          font: { color: this.darkMode ? 'white' : 'black' }
+          font: { color: this.storeDarkMode ? 'white' : 'black' }
         }
       }, {
         responsive: true,
@@ -297,19 +297,19 @@ export default {
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         xaxis: {
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          title: { text: 'Points', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          title: { text: 'Points', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         legend: {
           bgcolor: 'rgba(0,0,0,0)',
           orientation: 'h',
           traceorder: 'reversed',
-          font: { color: this.darkMode ? 'white' : 'black' }
+          font: { color: this.storeDarkMode ? 'white' : 'black' }
         }
         // barmode: 'relative'
       }, {

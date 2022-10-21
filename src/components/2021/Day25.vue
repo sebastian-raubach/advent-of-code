@@ -5,6 +5,7 @@
 
 <script>
 import Day from '@/components/Day'
+import { mod } from '@/util/math'
 
 export default {
   components: {
@@ -33,8 +34,8 @@ export default {
             const cell = grid[y][x]
 
             if (cell === '>') {
-              if (grid[y][this.mod(x + 1, grid[y].length)] === '.') {
-                gridCopy[y][this.mod(x + 1, grid[y].length)] = '>'
+              if (grid[y][mod(x + 1, grid[y].length)] === '.') {
+                gridCopy[y][mod(x + 1, grid[y].length)] = '>'
                 x++
                 movement = true
               } else {
@@ -54,8 +55,8 @@ export default {
             const cell = grid[y][x]
 
             if (cell === 'v') {
-              if (grid[this.mod(y + 1, grid.length)][x] === '.') {
-                gridCopy[this.mod(y + 1, grid.length)][x] = 'v'
+              if (grid[mod(y + 1, grid.length)][x] === '.') {
+                gridCopy[mod(y + 1, grid.length)][x] = 'v'
                 y++
                 movement = true
               } else {

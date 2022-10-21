@@ -10,6 +10,7 @@
 
 <script>
 import Day from '@/components/Day'
+import { createColorGradient } from '@/util/color'
 
 export default {
   components: {
@@ -132,7 +133,7 @@ export default {
       // Draw all trajectories
       overallPoints.forEach(set => {
         // Generate a gradient each
-        const gradient = this.createColorGradient('#006266', '#C4E538', set.length)
+        const gradient = createColorGradient('#006266', '#C4E538', set.length)
 
         for (let i = 0; i < set.length - 1; i++) {
           ctx.strokeStyle = gradient[i]

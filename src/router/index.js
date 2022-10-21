@@ -28,8 +28,8 @@ const routes = [
   }
 ]
 
-Object.keys(store.getters.currentDay).forEach(year => {
-  for (let day = 1; day <= store.getters.currentDay[year]; day++) {
+Object.keys(store.getters.storeCurrentDay).forEach(year => {
+  for (let day = 1; day <= store.getters.storeCurrentDay[year]; day++) {
     routes.push({
       path: `/${year}/${day}`,
       name: `year-${year}-day-${day}`,

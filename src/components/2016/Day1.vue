@@ -9,6 +9,7 @@
 <script>
 import Day from '@/components/Day'
 import { mapGetters } from 'vuex'
+import { mod } from '@/util/math'
 
 export default {
   components: {
@@ -16,11 +17,11 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'darkMode'
+      'storeDarkMode'
     ])
   },
   watch: {
-    darkMode: function () {
+    storeDarkMode: function () {
       if (this.trace.x.length > 0) {
         this.plot()
       }
@@ -83,7 +84,7 @@ export default {
         // Based on the turn, calculate the direction delta
         const delta = d.turn === 'R' ? 1 : -1
         // Adjust the direction accordingly
-        curr.dir = this.directions[this.mod((this.directions.indexOf(curr.dir) + delta), this.directions.length)]
+        curr.dir = this.directions[mod((this.directions.indexOf(curr.dir) + delta), this.directions.length)]
         // Move in the new direction
         this.move[curr.dir](curr.pos, d.move)
 
@@ -135,13 +136,13 @@ export default {
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         xaxis: {
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          title: { text: 'Ranking', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          title: { text: 'Ranking', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         }
       }, {
         responsive: true,

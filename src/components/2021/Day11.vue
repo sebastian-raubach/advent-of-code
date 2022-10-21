@@ -10,6 +10,7 @@
 
 <script>
 import Day from '@/components/Day'
+import { createColorGradient } from '@/util/color'
 
 export default {
   components: {
@@ -127,7 +128,7 @@ export default {
     draw: function () {
       const ctx = document.getElementById('partTwo').getContext('2d')
       ctx.clearRect(0, 0, 518, 518)
-      const gradient = this.createColorGradient('#C4E538', '#006266', 10)
+      const gradient = createColorGradient('#C4E538', '#006266', 10)
 
       const grid = this.grids[this.round]
       for (let y = 0; y < 10; y++) {

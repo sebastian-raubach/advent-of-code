@@ -19,11 +19,11 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'darkMode'
+      'storeDarkMode'
     ])
   },
   watch: {
-    darkMode: function () {
+    storeDarkMode: function () {
       if (this.solutions.partOne !== null) {
         this.draw([this.traces.partOne], 'partOne')
         this.draw(this.traces.partTwo, 'partTwo')
@@ -154,12 +154,12 @@ export default {
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         xaxis: {
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         }
       }, {
         responsive: true,

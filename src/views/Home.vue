@@ -23,10 +23,10 @@ export default {
   name: 'Home',
   computed: {
     ...mapGetters([
-      'currentDay'
+      'storeCurrentDay'
     ]),
     years: function () {
-      return Object.keys(this.currentDay).sort((a, b) => b - a)
+      return Object.keys(this.storeCurrentDay).sort((a, b) => b - a)
     }
   }
 }

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { createColorGradient } from '@/util/color'
 import Day from '@/components/Day'
 
 export default {
@@ -76,7 +77,7 @@ export default {
         }
       }
 
-      const gradient = this.createColorGradient('#006266', '#C4E538', max + 1)
+      const gradient = createColorGradient('#006266', '#C4E538', max + 1)
 
       for (let y = 0; y < data.length; y++) {
         for (let x = 0; x < data[y].length; x++) {

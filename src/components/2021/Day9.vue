@@ -19,20 +19,20 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'darkMode'
+      'storeDarkMode'
     ]),
     layout: function () {
       return {
         height: 700,
         xaxis: {
-          title: { text: 'X', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          title: { text: 'X', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          title: { text: 'Y', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee',
+          title: { text: 'Y', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee',
           scaleanchor: 'x'
         },
         paper_bgcolor: 'transparent',
@@ -41,7 +41,7 @@ export default {
     }
   },
   watch: {
-    darkMode: function () {
+    storeDarkMode: function () {
       this.plotGrid()
       this.plotBasins()
     }

@@ -27,11 +27,11 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'darkMode'
+      'storeDarkMode'
     ])
   },
   watch: {
-    darkMode: function () {
+    storeDarkMode: function () {
       this.plot()
     }
   },
@@ -107,17 +107,17 @@ export default {
             margin: { t: 10, b: 20, l: 50, r: 0 },
             legend: {
               orientation: 'h',
-              font: { color: this.darkMode ? 'white' : 'black' }
+              font: { color: this.storeDarkMode ? 'white' : 'black' }
             },
             paper_bgcolor: 'transparent',
             plot_bgcolor: 'transparent',
             xaxis: {
-              tickfont: { color: this.darkMode ? 'white' : 'black' },
-              gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+              tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+              gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
             },
             yaxis: {
-              tickfont: { color: this.darkMode ? 'white' : 'black' },
-              gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+              tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+              gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
             }
           }, {
             responsive: true,

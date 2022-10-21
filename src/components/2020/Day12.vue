@@ -12,6 +12,8 @@
 <script>
 import Day from '@/components/Day'
 import { mapGetters } from 'vuex'
+import { createColorGradient } from '@/util/color'
+import { mod } from '@/util/math'
 
 export default {
   components: {
@@ -19,7 +21,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'darkMode'
+      'storeDarkMode'
     ])
   },
   data: function () {
@@ -28,7 +30,7 @@ export default {
         partOne: null,
         partTwo: null
       },
-      colorGradient: this.createColorGradient('#eeeeee', '#c0392b', 1000),
+      colorGradient: createColorGradient('#eeeeee', '#c0392b', 1000),
       operationsOne: {
         // N, S, E and W just adjust the x and y position
         N: (pos, op) => { pos.y += op.value },
@@ -36,9 +38,9 @@ export default {
         E: (pos, op) => { pos.x += op.value },
         W: (pos, op) => { pos.x -= op.value },
         // L turns the ship counter-clockwise modulo 360
-        L: (pos, op) => { pos.angle = this.mod(pos.angle - op.value, 360) },
+        L: (pos, op) => { pos.angle = mod(pos.angle - op.value, 360) },
         // R turns the ship clockwise modulo 360
-        R: (pos, op) => { pos.angle = this.mod(pos.angle + op.value, 360) },
+        R: (pos, op) => { pos.angle = mod(pos.angle + op.value, 360) },
         // F Uses either N, E, S or W depending on the current angle
         F: (pos, op) => {
           switch (pos.angle) {
@@ -83,7 +85,7 @@ export default {
               break
           }
           // Update angle
-          pos.angle = this.mod(pos.angle - op.value, 360)
+          pos.angle = mod(pos.angle - op.value, 360)
         },
         // R rotates the waypoint around the ship clockwise
         R: (pos, way, op) => {
@@ -104,7 +106,7 @@ export default {
               way.y = tmp
               break
           }
-          pos.angle = this.mod(pos.angle + op.value, 360)
+          pos.angle = mod(pos.angle + op.value, 360)
          },
         // F moves the ship in the direction of the waypoint multiplied by the value
         F: (pos, way, op) => {
@@ -115,15 +117,6 @@ export default {
     }
   },
   methods: {
-    /**
-     * Implementation of modulo that works with negative numbers
-     * @param n The value to modulo
-     * @param m The modulo value
-     * @returns The result of n % m that works with negative numbers
-     */
-    mod: function (n, m) {
-      return ((n % m) + m) % m
-    },
     onInputChanged: function (input) {
       this.directions = input.map(i => {
         // Get the number
@@ -244,13 +237,13 @@ export default {
         shapes: shapes,
         xaxis: {
           range: [xMin, xMax],
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
           range: [yMin, yMax],
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent'

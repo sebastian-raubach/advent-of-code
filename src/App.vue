@@ -14,9 +14,9 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form @submit.prevent>
-            <b-form-checkbox v-model="localEditingEnabled" switch v-b-tooltip="editingEnabled ? 'Disable editing' : 'Enable editing'" />
+            <b-form-checkbox v-model="localEditingEnabled" switch v-b-tooltip="storeEditingEnabled ? 'Disable editing' : 'Enable editing'" />
           </b-nav-form>
-          <b-nav-item @click="toggleDarkMode" v-b-tooltip="darkMode ? 'Disable dark mode' : 'Enable dark mode'"><BIconSun v-if="darkMode" /><BIconMoon v-else /></b-nav-item>
+          <b-nav-item @click="toggleDarkMode" v-b-tooltip="storeDarkMode ? 'Disable dark mode' : 'Enable dark mode'"><BIconSun v-if="storeDarkMode" /><BIconMoon v-else /></b-nav-item>
           <b-nav-item :to="{ name: 'json-parser' }">Stats</b-nav-item>
           <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
         </b-navbar-nav>
@@ -47,19 +47,19 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'currentDay',
-      'darkMode',
-      'editingEnabled'
+      'storeCurrentDay',
+      'storeDarkMode',
+      'storeEditingEnabled'
     ]),
     years: function () {
-      return Object.keys(this.currentDay).sort((a, b) => b - a)
+      return Object.keys(this.storeCurrentDay).sort((a, b) => b - a)
     }
   },
   watch: {
-    darkMode: function (newValue) {
+    storeDarkMode: function (newValue) {
       this.localDarkMode = newValue
     },
-    editingEnabled: function (newValue) {
+    storeEditingEnabled: function (newValue) {
       this.localEditingEnabled = newValue
     },
     localDarkMode: function () {
@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     toggleDarkMode: function () {
-      if (this.darkMode === true) {
+      if (this.storeDarkMode === true) {
         this.$store.dispatch('setDarkMode', false)
       } else {
         this.$store.dispatch('setDarkMode', true)
@@ -96,8 +96,8 @@ export default {
     }
   },
   mounted: function () {
-    this.localDarkMode = this.darkMode
-    this.localEditingEnabled = this.editingEnabled
+    this.localDarkMode = this.storeDarkMode
+    this.localEditingEnabled = this.storeEditingEnabled
   }
 }
 </script>

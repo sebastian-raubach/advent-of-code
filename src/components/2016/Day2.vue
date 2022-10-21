@@ -46,6 +46,7 @@
 
 <script>
 import Day from '@/components/Day'
+import { createColorGradient } from '@/util/color'
 
 export default {
   components: {
@@ -113,8 +114,8 @@ export default {
       })
 
       // Create the gradients for the visualizations
-      this.gradientOne = this.createColorGradient('#FFC312', '#EA2027', Math.max(...this.heatOne))
-      this.gradientTwo = this.createColorGradient('#FFC312', '#EA2027', Math.max(...Object.keys(this.dir2).map(k => this.dir2[k].count)))
+      this.gradientOne = createColorGradient('#FFC312', '#EA2027', Math.max(...this.heatOne))
+      this.gradientTwo = createColorGradient('#FFC312', '#EA2027', Math.max(...Object.keys(this.dir2).map(k => this.dir2[k].count)))
 
       // Set the result
       this.solutions.partOne = resultOne

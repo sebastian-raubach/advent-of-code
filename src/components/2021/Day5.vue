@@ -15,6 +15,7 @@
 
 <script>
 import Day from '@/components/Day'
+import { createColorGradient } from '@/util/color'
 
 export default {
   components: {
@@ -115,7 +116,7 @@ export default {
         maxV = Math.max(maxV, value)
       })
 
-      const gradient = this.createColorGradient('#C4E538', '#006266', maxV)
+      const gradient = createColorGradient('#C4E538', '#006266', maxV)
 
       // Initialise the canvas
       const canvas = document.getElementById(id)

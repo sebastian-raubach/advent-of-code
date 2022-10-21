@@ -19,20 +19,20 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'darkMode'
+      'storeDarkMode'
     ]),
     layout: function () {
       return {
         height: 350,
         xaxis: {
-          title: { text: 'Horizontal position', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          title: { text: 'Horizontal position', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         yaxis: {
-          title: { text: 'Depth', font: { color: this.darkMode ? 'white' : 'black' } },
-          tickfont: { color: this.darkMode ? 'white' : 'black' },
-          gridcolor: this.darkMode ? '#111111' : '#eeeeee'
+          title: { text: 'Depth', font: { color: this.storeDarkMode ? 'white' : 'black' } },
+          tickfont: { color: this.storeDarkMode ? 'white' : 'black' },
+          gridcolor: this.storeDarkMode ? '#111111' : '#eeeeee'
         },
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent'
@@ -61,7 +61,7 @@ export default {
     }
   },
   watch: {
-    darkMode: function () {
+    storeDarkMode: function () {
       try {
         this.$plotly.relayout('partOne', this.layout)
       } catch (err) {

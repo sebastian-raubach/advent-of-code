@@ -13,14 +13,15 @@ export default new Vuex.Store({
       2017: 25,
       2018: 23,
       2020: 25,
-      2021: 25
+      2021: 25,
+      2022: 1
     },
     darkMode: false
   },
   getters: {
-    editingEnabled: (state) => state.editingEnabled,
-    currentDay: (state) => state.currentDay,
-    darkMode: (state) => state.darkMode
+    storeEditingEnabled: (state) => state.editingEnabled,
+    storeCurrentDay: (state) => state.currentDay,
+    storeDarkMode: (state) => state.darkMode
   },
   mutations: {
     ON_EDITING_ENABLED_CHANGED_MUTATION: function (state, newEditingEnabled) {

@@ -5,7 +5,7 @@
     <b-row cols-lg=5>
       <template v-for="day in allDays">
         <b-col cols=12 sm=6 md=4  :key="`day-${day}`" class="aoc-task mb-3 d-flex align-items-stretch">
-          <b-card no-body :class="`${day > currentDay[year] ? 'disabled' : ''}`" bg-variant="dark">
+          <b-card no-body :class="`${day > storeCurrentDay[year] ? 'disabled' : ''}`" bg-variant="dark">
             <div class="position-relative">
               <b-img fluid class="card-img" :src="require(`@/assets/card-background.jpg`)" />
               <h1 class="day">{{ day }}</h1>
@@ -20,7 +20,7 @@
               <b-card-text class="text-center text-white" v-if="days[day - 1]">{{ days[day - 1].title }}</b-card-text>
               <b-card-text class="text-center text-white" v-if="days[day - 1] && days[day - 1].isVisual"><BIconEaselFill /></b-card-text>
             </b-card-body>
-            <b-button block :disabled="day > currentDay[year]" :to="{ name: `year-${year}-day-${day}` }" variant="primary" class="stretched-link">Day {{ day }}</b-button>
+            <b-button block :disabled="day > storeCurrentDay[year]" :to="{ name: `year-${year}-day-${day}` }" variant="primary" class="stretched-link">Day {{ day }}</b-button>
           </b-card>
         </b-col>
       </template>
@@ -31,6 +31,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { BIconStarFill, BIconStar, BIconEaselFill } from 'bootstrap-vue'
+import { solvedDays } from '@/util/days'
 
 export default {
   components: {
@@ -46,10 +47,10 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'currentDay'
+      'storeCurrentDay'
     ]),
     days: function () {
-      return this.solvedDays[this.year]
+      return solvedDays[this.year]
     }
   },
   created: function () {

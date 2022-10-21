@@ -16,6 +16,7 @@
 <script>
 /* eslint-disable new-cap */
 import Day from '@/components/Day'
+import { createColorGradient } from '@/util/color'
 
 const d3Select = require('d3-selection')
 const dagreD3 = require('dagre-d3')
@@ -93,7 +94,7 @@ export default {
       const nodes = []
       const edges = new Set()
 
-      const gradient = this.createColorGradient('#C4E538', '#006266', max - min + 1)
+      const gradient = createColorGradient('#C4E538', '#006266', max - min + 1)
 
       console.log(nodeCount)
 

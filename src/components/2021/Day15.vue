@@ -15,6 +15,7 @@
 
 <script>
 import Day from '@/components/Day'
+import { createColorGradient } from '@/util/color'
 
 const { PriorityQueue } = require('@datastructures-js/priority-queue')
 
@@ -128,8 +129,8 @@ export default {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      const gradient = this.createColorGradient('#006266', '#C4E538', nodes.get(`${maxX},${maxY}`).cost + 1)
-      const gradientValue = this.createColorGradient('#006266', '#C4E538', 10)
+      const gradient = createColorGradient('#006266', '#C4E538', nodes.get(`${maxX},${maxY}`).cost + 1)
+      const gradientValue = createColorGradient('#006266', '#C4E538', 10)
 
       nodes.forEach(n => {
         ctx.fillStyle = gradientValue[n.value]
