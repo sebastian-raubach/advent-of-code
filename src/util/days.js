@@ -130,6 +130,7 @@ const solvedDays = {
     { title: 'Sea Cucumber', solutions: [true, true], isVisual: false, tags: ['2d'] }
   ],
   2022: [
+    { title: 'Calorie Counting', solutions: [true, true], isVisual: false }
   ]
 }
 
