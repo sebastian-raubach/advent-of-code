@@ -146,11 +146,21 @@ export default {
   white-space: pre;
   overflow: auto;
 }
+.markdown strong code,
 .markdown pre b,
 .markdown code b {
   font-weight: 900;
   text-shadow: 0 0 3px #e83e8c;
 }
+.markdown strong {
+  text-shadow: 0 0 3px #333333;
+  font-weight: 500;
+}
+body.dark-mode .markdown strong {
+  text-shadow: 0 0 3px #cccccc;
+  font-weight: 500;
+}
+body.dark-mode .markdown strong code,
 body.dark-mode .markdown pre b,
 body.dark-mode .markdown code b {
   text-shadow: 0 0 3px #ff9bc9;
