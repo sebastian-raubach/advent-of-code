@@ -131,7 +131,10 @@ const solvedDays = {
   ],
   2022: [
     { title: 'Calorie Counting', solutions: [true, true], isVisual: true },
-    { title: 'Rock Paper Scissors', solutions: [true, true], isVisual: false }
+    { title: 'Rock Paper Scissors', solutions: [true, true], isVisual: false },
+    { title: 'Rucksack Reorganization', solutions: [true, true], isVisual: false },
+    { title: 'Camp Cleanup', solutions: [true, true], isVisual: true },
+    { title: 'Supply Stacks', solutions: [true, true], isVisual: true }
   ]
 }
 
