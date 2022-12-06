@@ -14,7 +14,7 @@ export default new Vuex.Store({
       2018: 23,
       2020: 25,
       2021: 25,
-      2022: 5
+      2022: 6
     },
     darkMode: false
   },

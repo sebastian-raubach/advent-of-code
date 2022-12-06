@@ -84,20 +84,12 @@ export default {
     solvePartTwo: function (stacks, instructions) {
       // For each instruction
       instructions.forEach(i => {
-        // Define temporary array for the chunk to move
-        const chunk = []
-        // Move `count` boxes
-        for (let c = 0; c < i.count; c++) {
-          // If there are enough
-          if (stacks[i.from - 1].length > 0) {
-            // From one stack to the chunk buffer
-            chunk.push(stacks[i.from - 1].pop())
-          }
-        }
-        // Reverse chunk buffer
-        chunk.reverse()
-        // Then move to target stack
-        chunk.forEach(p => stacks[i.to - 1].push(p))
+        // Get the stack we're taking bits from
+        const stack = stacks[i.from - 1]
+        // Remove the section of elements
+        const chunk = stack.splice(stack.length - i.count, i.count)
+        // Put it on the other stack
+        stacks[i.to - 1].push(...chunk)
       })
 
       // Join for result
