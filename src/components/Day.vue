@@ -1,7 +1,7 @@
 <template>
   <div class="mb-3">
     <div class="d-flex justify-content-between align-items-center">
-      <h1>Day {{ day }}<template v-if="solvedDays[year][day - 1]"> - {{ solvedDays[year][day - 1].title }}</template></h1>
+      <h1>Day {{ day }}<template v-if="currentDay"> - {{ currentDay.title }}</template></h1>
       <b-button-group>
         <b-button :disabled="day <= 1" :to="{ name: `year-${year}-day-${day - 1}` }"><BIconCaretLeftFill /></b-button>
         <b-button :disabled="day >= solvedDays[year].length" :to="{ name: `year-${year}-day-${day + 1}` }"><BIconCaretRightFill /></b-button>
@@ -32,6 +32,9 @@
         <b-form-textarea rows="8" v-model="input" id="task-input" wrap="soft" :disabled="!storeEditingEnabled" />
       </b-form-group>
       <b-button type="submit" @click.prevent="onSubmit">Run</b-button>
+      <div v-if="currentDay.warnings">
+        <small class="text-warning" v-for="(warning, index) in currentDay.warnings" :key="`warning-${index}`">{{ warning }}</small>
+      </div>
     </b-form>
 
     <template v-if="solutions.partOne !== undefined && solutions.partOne !== null">
@@ -67,7 +70,7 @@ export default {
     },
     year: {
       type: Number,
-      default: 2022
+      default: 2023
     },
     solutions: {
       type: Object,
@@ -89,6 +92,9 @@ export default {
     ...mapGetters([
       'storeEditingEnabled'
     ]),
+    currentDay: function () {
+      return this.solvedDays[this.year][this.day - 1]
+    },
     taskInput: function () {
       try {
         return require(`@/assets/input/${this.year}/Day-${this.day}.txt`).default

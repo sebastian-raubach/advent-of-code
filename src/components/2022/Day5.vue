@@ -65,7 +65,7 @@ export default {
         }
       })
 
-      // Define the number  of stacks we need
+      // Define the number of stacks we need
       const stacks = Array.from(Array(stackData[0].length).keys()).map(i => [])
 
       // Go through the stack data in reverse

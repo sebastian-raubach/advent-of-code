@@ -11,16 +11,17 @@
               <h1 class="day">{{ day }}</h1>
             </div>
             <b-card-body>
-              <b-card-text class="text-center">
+              <b-card-text class="text-center mb-1">
                 <BIconStarFill class="mx-1 badge-gold" v-if="days[day - 1] && days[day - 1].solutions[0]" />
                 <BIconStar class="mx-1 badge-default" v-else />
                 <BIconStarFill class="mx-1 badge-gold" v-if="days[day - 1] && days[day - 1].solutions[1]" />
                 <BIconStar class="mx-1 badge-default" v-else />
               </b-card-text>
-              <b-card-text class="text-center text-white" v-if="days[day - 1]">{{ days[day - 1].title }}</b-card-text>
-              <b-card-text class="text-center text-white" v-if="days[day - 1] && days[day - 1].isVisual"><BIconEaselFill /></b-card-text>
+              <b-card-text class="text-center mb-1 text-white" v-if="days[day - 1]">{{ days[day - 1].title }}</b-card-text>
+              <b-card-text class="text-center mb-1 text-white" v-if="days[day - 1] && days[day - 1].isVisual" v-b-tooltip="'This task has a visual representation of the result.'"><BIconEaselFill /></b-card-text>
+              <b-card-text class="text-center mb-1 text-warning" v-if="days[day - 1] && days[day - 1].warnings" v-b-tooltip="days[day - 1].warnings.join('\n')"><BIconExclamationTriangle /></b-card-text>
             </b-card-body>
-            <b-button block :disabled="day > storeCurrentDay[year]" :to="{ name: `year-${year}-day-${day}` }" variant="primary" class="stretched-link">Day {{ day }}</b-button>
+            <b-button block :disabled="day > storeCurrentDay[year]" :to="{ name: `year-${year}-day-${day}` }" variant="primary">Day {{ day }}</b-button>
           </b-card>
         </b-col>
       </template>
@@ -30,14 +31,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { BIconStarFill, BIconStar, BIconEaselFill } from 'bootstrap-vue'
+import { BIconStarFill, BIconStar, BIconEaselFill, BIconExclamationTriangle } from 'bootstrap-vue'
 import { solvedDays } from '@/util/days'
 
 export default {
   components: {
     BIconStarFill,
     BIconStar,
-    BIconEaselFill
+    BIconEaselFill,
+    BIconExclamationTriangle
   },
   data: function () {
     return {

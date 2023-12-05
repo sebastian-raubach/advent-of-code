@@ -1,3 +1,5 @@
+import { WARNING_LONG_RUNTIME } from '@/util/warning'
+
 const solvedDays = {
   2015: [
     { title: 'Not Quite Lisp', solutions: [true, true], isVisual: false },
@@ -135,7 +137,21 @@ const solvedDays = {
     { title: 'Rucksack Reorganization', solutions: [true, true], isVisual: false },
     { title: 'Camp Cleanup', solutions: [true, true], isVisual: true },
     { title: 'Supply Stacks', solutions: [true, true], isVisual: true },
-    { title: 'Tuning Trouble', solutions: [true, true], isVisual: false }
+    { title: 'Tuning Trouble', solutions: [true, true], isVisual: false },
+    { title: 'No Space Left On Device', solutions: [true, true], isVisual: true },
+    { title: 'Treetop Tree House', solutions: [true, true], isVisual: true },
+    { title: 'Rope Bridge', solutions: [true, true], isVisual: true },
+    { title: 'Cathode-Ray Tube', solutions: [true, true], isVisual: false },
+    { title: 'Monkey in the Middle', solutions: [true, true], isVisual: false },
+    { title: 'Hill Climbing Algorithm', solutions: [true, true], isVisual: true },
+    { title: 'Distress Signal', solutions: [true, true], isVisual: false }
+  ],
+  2023: [
+    { title: 'Trebuchet?!', solutions: [true, true], isVisual: false },
+    { title: 'Cube Conundrum', solutions: [true, true], isVisual: false },
+    { title: 'Gear Ratios', solutions: [true, true], isVisual: true },
+    { title: 'Scratchcards ', solutions: [true, true], isVisual: false },
+    { title: 'If You Give A Seed A Fertilizer', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] }
   ]
 }
 

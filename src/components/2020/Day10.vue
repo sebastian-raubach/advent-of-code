@@ -1,5 +1,5 @@
 <template>
-  <Day :day="10" :solutions="solutions" @input-changed="onInputChanged">
+  <Day :day="10" :year="2020" :solutions="solutions" @input-changed="onInputChanged">
   </Day>
 </template>
 

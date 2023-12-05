@@ -1,25 +1,11 @@
 <template>
-  <Day :day="12" :year="2021" :solutions="solutions" @input-changed="onInputChanged">
-    <template v-slot:partOne>
-      <div class="svg-holder">
-        <svg ref="partOne" id="partOne" width="1000"/>
-      </div>
-    </template>
-    <template v-slot:partTwo>
-      <div class="svg-holder">
-        <svg ref="partTwo" id="partTwo" width="1000"/>
-      </div>
-    </template>
-  </Day>
+  <Day :day="12" :year="2021" :solutions="solutions" @input-changed="onInputChanged" />
 </template>
 
 <script>
 /* eslint-disable new-cap */
 import Day from '@/components/Day'
-import { createColorGradient } from '@/util/color'
-
-const d3Select = require('d3-selection')
-const dagreD3 = require('dagre-d3')
+// import { createColorGradient } from '@/util/color'
 
 export default {
   components: {
@@ -72,83 +58,83 @@ export default {
       this.$nextTick(() => this.drawGraph(nodeToNeighbor, this.$refs.partTwo, pathsPartTwo))
     },
     drawGraph: function (nodeToNeighbor, element, paths) {
-      const nodeCount = new Map()
+      // const nodeCount = new Map()
 
-      console.log(paths)
+      // console.log(paths)
 
-      let min = 0
-      let max = 0
-      paths.forEach(p => p.split(',').forEach(l => {
-        if (!nodeCount.has(l)) {
-          nodeCount.set(l, 0)
-        }
-        const count = nodeCount.get(l) + 1
-        nodeCount.set(l, count)
+      // let min = 0
+      // let max = 0
+      // paths.forEach(p => p.split(',').forEach(l => {
+      //   if (!nodeCount.has(l)) {
+      //     nodeCount.set(l, 0)
+      //   }
+      //   const count = nodeCount.get(l) + 1
+      //   nodeCount.set(l, count)
 
-        min = Math.min(min, count)
-        max = Math.max(max, count)
-      }))
+      //   min = Math.min(min, count)
+      //   max = Math.max(max, count)
+      // }))
 
-      const g = new dagreD3.graphlib.Graph().setGraph({})
+      // const g = new dagreD3.graphlib.Graph().setGraph({})
 
-      const nodes = []
-      const edges = new Set()
+      // const nodes = []
+      // const edges = new Set()
 
-      const gradient = createColorGradient('#C4E538', '#006266', max - min + 1)
+      // const gradient = createColorGradient('#C4E538', '#006266', max - min + 1)
 
-      console.log(nodeCount)
+      // console.log(nodeCount)
 
-      nodeToNeighbor.forEach((v, k) => nodes.push({
-        label: k,
-        shape: 'circle',
-        style: `stroke: black; fill: ${nodeCount.has(k) ? gradient[nodeCount.get(k) - min] : 'white'};`,
-        labelStyle: `font-size: ${k === k.toLowerCase() ? 1 : 2}em`
-      }))
-      nodeToNeighbor.forEach((v, k) => v.forEach(t => {
-        const arr = [k, t]
-        arr.sort((a, b) => {
-          if (a === 'start' || b === 'end') {
-            return -1
-          } else if (b === 'start' || a === 'end') {
-            return 1
-          } else {
-            return a.localeCompare(b)
-          }
-        })
-        edges.add(`${arr[0]},${arr[1]}`)
-      }))
+      // nodeToNeighbor.forEach((v, k) => nodes.push({
+      //   label: k,
+      //   shape: 'circle',
+      //   style: `stroke: black; fill: ${nodeCount.has(k) ? gradient[nodeCount.get(k) - min] : 'white'};`,
+      //   labelStyle: `font-size: ${k === k.toLowerCase() ? 1 : 2}em`
+      // }))
+      // nodeToNeighbor.forEach((v, k) => v.forEach(t => {
+      //   const arr = [k, t]
+      //   arr.sort((a, b) => {
+      //     if (a === 'start' || b === 'end') {
+      //       return -1
+      //     } else if (b === 'start' || a === 'end') {
+      //       return 1
+      //     } else {
+      //       return a.localeCompare(b)
+      //     }
+      //   })
+      //   edges.add(`${arr[0]},${arr[1]}`)
+      // }))
 
-      nodes.sort((a, b) => {
-        if (a.label === 'start' || b.label === 'end') {
-          return -1
-        } else if (b.label === 'start' || a.label === 'end') {
-          return 1
-        } else {
-          return a.label.localeCompare(b.label)
-        }
-      })
+      // nodes.sort((a, b) => {
+      //   if (a.label === 'start' || b.label === 'end') {
+      //     return -1
+      //   } else if (b.label === 'start' || a.label === 'end') {
+      //     return 1
+      //   } else {
+      //     return a.label.localeCompare(b.label)
+      //   }
+      // })
 
-      nodes.forEach(n => g.setNode(n.label, n))
-      edges.forEach(e => {
-        const [source, target] = e.split(',')
-        g.setEdge(source, target, {
-          style: 'stroke: black; fill: none;',
-          arrowhead: 'undirected'
-        })
-      })
+      // nodes.forEach(n => g.setNode(n.label, n))
+      // edges.forEach(e => {
+      //   const [source, target] = e.split(',')
+      //   g.setEdge(source, target, {
+      //     style: 'stroke: black; fill: none;',
+      //     arrowhead: 'undirected'
+      //   })
+      // })
 
-      const render = new dagreD3.render()
+      // const render = new dagreD3.render()
 
-      const svg = d3Select.select(element)
-      const svgGroup = svg.append('g')
+      // const svg = d3Select.select(element)
+      // const svgGroup = svg.append('g')
 
-      // Run the renderer. This is what draws the final graph.
-      render(svgGroup, g)
+      // // Run the renderer. This is what draws the final graph.
+      // render(svgGroup, g)
 
-      // Center the graph
-      const xCenterOffset = (svg.attr('width') - g.graph().width) / 2
-      svgGroup.attr('transform', 'translate(' + xCenterOffset + ', 20)')
-      svg.attr('height', g.graph().height + 40)
+      // // Center the graph
+      // const xCenterOffset = (svg.attr('width') - g.graph().width) / 2
+      // svgGroup.attr('transform', 'translate(' + xCenterOffset + ', 20)')
+      // svg.attr('height', g.graph().height + 40)
     },
     findAllPaths: function (nodeToNeighbor) {
       const source = 'start'

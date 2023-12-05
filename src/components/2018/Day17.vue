@@ -1,9 +1,9 @@
 <template>
   <Day :day="17" :year="2018" :solutions="solutions" @input-changed="onInputChanged">
     <template v-slot:partOne>
-      <pre class="day-17-code border">
-<code v-html="gridOne" />
-      </pre>
+      <div class="canvas-holder">
+        <canvas id="partOne" class="canvas" :width="canvasOne.width" :height="canvasOne.height" />
+      </div>
     </template>
   </Day>
 </template>
@@ -27,7 +27,10 @@ export default {
         partOne: null,
         partTwo: null
       },
-      gridOne: null
+      canvasOne: {
+        width: 1000,
+        height: 1000
+      }
     }
   },
   methods: {
@@ -98,9 +101,6 @@ export default {
         c.x -= xRange[0]
         c.y -= yRange[0]
 
-        if (!this.grid[c.y]) {
-          console.log(c.y)
-        }
         // Set the clay
         this.grid[c.y][c.x] = CLAY
       })
@@ -111,24 +111,41 @@ export default {
 
       this.solvePartOne()
       this.solvePartTwo()
+
+      this.$nextTick(() => this.draw())
     },
-    print: function () {
-      let result = ''
-      for (let y = 0; y < this.grid.length; y++) {
-        for (let x = 0; x < this.grid[y].length; x++) {
-          if (this.grid[y][x] === REST) {
-            result += '<span class="day-17-water-rest">~</span>'
-          } else if (this.grid[y][x] === HYPO) {
-            result += '<span class="day-17-water-hypo">|</span>'
-          } else if (this.grid[y][x] === CLAY) {
-            result += '<span class="day-17-clay">#</span>'
-          } else {
-            result += this.grid[y][x]
+    draw: function () {
+      // Initialise the canvas
+      const canvas = document.getElementById('partOne')
+      const ctx = canvas.getContext('2d')
+      ctx.lineWidth = 1
+
+      // Create gradient
+      // const sandGradient = createMultiColorGradient(VIRIDIS, result.count)
+
+      const factor = 4
+
+      this.canvasOne = {
+        width: this.grid[0].length * factor,
+        height: this.grid.length * factor
+      }
+
+      this.$nextTick(() => {
+        for (let y = 0; y < this.grid.length; y++) {
+          for (let x = 0; x < this.grid[y].length; x++) {
+            if (this.grid[y][x] === REST) {
+              ctx.fillStyle = '#3498db'
+              ctx.fillRect(x * factor, y * factor, factor, factor)
+            } else if (this.grid[y][x] === HYPO) {
+              ctx.fillStyle = '#2980b9'
+              ctx.fillRect(x * factor, y * factor, factor, factor)
+            } else if (this.grid[y][x] === CLAY) {
+              ctx.fillStyle = '#7f8c8d'
+              ctx.fillRect(x * factor, y * factor, factor, factor)
+            }
           }
         }
-        result += '<br/>'
-      }
-      return result
+      })
     },
     goDown: function () {
       const valid = [CLAY, REST]
@@ -222,7 +239,6 @@ export default {
         }
       }
       this.solutions.partOne = counter
-      this.gridOne = this.print()
     },
     solvePartTwo: function () {
       // Cound the occurance of water at rest
@@ -241,21 +257,9 @@ export default {
 </script>
 
 <style>
-.day-17-code {
-  background-color: #2c3e50;
-  color: #7f8c8d;
-  max-height: 100vh;
-}
-.day-17-clay {
-  background-color: #7f8c8d;
-  color: #2c3e50;
-}
-.day-17-water-rest {
-  background-color: #2980b9;
-  color: #2c3e50;
-}
-.day-17-water-hypo {
-  background-color: #3498db;
-  color: #2c3e50;
+.canvas-holder {
+  overflow: auto;
+  height: 1000px;
+  width: 100%;
 }
 </style>

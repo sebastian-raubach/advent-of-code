@@ -1,5 +1,5 @@
 <template>
-  <Day :day="12" :solutions="solutions" @input-changed="onInputChanged">
+  <Day :day="12" :year="2020" :solutions="solutions" @input-changed="onInputChanged">
     <template v-slot:partOne>
       <div class="plotly-chart" id="partOneChart" />
     </template>
@@ -148,8 +148,10 @@ export default {
         x: ship.x,
         y: ship.y
       })
+      console.log(this.directions)
       // For each of the directions
       this.directions.forEach(i => {
+        console.log(i)
         // Use the operation mapping to resolve it
         this.operationsOne[i.instruction](ship, i)
         // Remember the new point for the chart

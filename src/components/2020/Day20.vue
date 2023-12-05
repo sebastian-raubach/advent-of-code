@@ -1,5 +1,5 @@
 <template>
-  <Day :day="20" :solutions="solutions" @input-changed="onInputChanged">
+  <Day :day="20" :year="2020" :solutions="solutions" @input-changed="onInputChanged">
     <template v-slot:partTwo>
       <pre class="day-20-code border">
 <code v-html="gridTwo" />
