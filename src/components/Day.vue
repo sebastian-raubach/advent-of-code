@@ -32,7 +32,7 @@
         <b-form-textarea rows="8" v-model="input" id="task-input" wrap="soft" :disabled="!storeEditingEnabled" />
       </b-form-group>
       <b-button type="submit" @click.prevent="onSubmit">Run</b-button>
-      <div v-if="currentDay.warnings">
+      <div v-if="currentDay && currentDay.warnings">
         <small class="text-warning" v-for="(warning, index) in currentDay.warnings" :key="`warning-${index}`">{{ warning }}</small>
       </div>
     </b-form>

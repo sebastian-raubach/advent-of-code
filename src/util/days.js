@@ -151,7 +151,9 @@ const solvedDays = {
     { title: 'Cube Conundrum', solutions: [true, true], isVisual: false },
     { title: 'Gear Ratios', solutions: [true, true], isVisual: true },
     { title: 'Scratchcards ', solutions: [true, true], isVisual: false },
-    { title: 'If You Give A Seed A Fertilizer', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] }
+    { title: 'If You Give A Seed A Fertilizer', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] },
+    { title: 'Wait For It', solutions: [true, true], isVisual: false },
+    { title: 'Camel Cards', solutions: [true, true], isVisual: false }
   ]
 }
 

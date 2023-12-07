@@ -9,13 +9,13 @@ export default new Vuex.Store({
     editingEnabled: false,
     currentDay: {
       2015: 18,
-      2016: 5,
+      2016: 7,
       2017: 25,
       2018: 23,
       2020: 25,
       2021: 25,
       2022: 23,
-      2023: 5
+      2023: 7
     },
     darkMode: false
   },
