@@ -153,7 +153,9 @@ const solvedDays = {
     { title: 'Scratchcards ', solutions: [true, true], isVisual: false },
     { title: 'If You Give A Seed A Fertilizer', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] },
     { title: 'Wait For It', solutions: [true, true], isVisual: false },
-    { title: 'Camel Cards', solutions: [true, true], isVisual: false }
+    { title: 'Camel Cards', solutions: [true, true], isVisual: false },
+    { title: 'Haunted Wasteland', solutions: [true, true], isVisual: false },
+    { title: 'Mirage Maintenance', solutions: [true, true], isVisual: false }
   ]
 }
 

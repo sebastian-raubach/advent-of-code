@@ -1,6 +1,6 @@
-module.exports = {
-  lintOnSave: true,
-  runtimeCompiler: true,
+const { defineConfig } = require('@vue/cli-service')
+
+module.exports = defineConfig({
   transpileDependencies: false,
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   configureWebpack: {
@@ -21,8 +21,6 @@ module.exports = {
       fallback: {
         'path': require.resolve('path-browserify')
       }
-    },
-    devtool: 'eval-source-map',
-    target: 'web'
+    }
   }
-}
+})

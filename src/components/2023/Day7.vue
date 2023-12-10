@@ -30,9 +30,7 @@ export default {
   },
   methods: {
     onInputChanged: function (input) {
-      console.log('PART 1')
       this.solutions.partOne = this.solve(input, this.orderOne, this.determineTypeOne)
-      console.log('PART 2')
       this.solutions.partTwo = this.solve(input, this.orderTwo, this.determineTypeTwo)
     },
     solve: function (input, order, df) {
