@@ -155,7 +155,10 @@ const solvedDays = {
     { title: 'Wait For It', solutions: [true, true], isVisual: false },
     { title: 'Camel Cards', solutions: [true, true], isVisual: false },
     { title: 'Haunted Wasteland', solutions: [true, true], isVisual: false },
-    { title: 'Mirage Maintenance', solutions: [true, true], isVisual: false }
+    { title: 'Mirage Maintenance', solutions: [true, true], isVisual: false },
+    { title: 'Pipe Maze', solutions: [true, true], isVisual: true },
+    { title: 'Cosmic Expansion', solutions: [true, true], isVisual: false },
+    { title: 'Hot Springs', solutions: [true, true], isVisual: false }
   ]
 }
 

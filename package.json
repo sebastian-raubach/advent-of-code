@@ -14,7 +14,6 @@
     "bootstrap-vue": "^2.22.0",
     "bootswatch": "^4.6.1",
     "core-js": "^3.8.3",
-    "gif.js": "^0.2.0",
     "md5": "^2.3.0",
     "plotly.js": "^2.24.3",
     "plotly.js-dist-min": "^2.27.1",

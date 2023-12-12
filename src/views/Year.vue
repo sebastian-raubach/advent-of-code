@@ -7,8 +7,8 @@
         <b-col cols=12 sm=6 md=4  :key="`day-${day}`" class="aoc-task mb-3 d-flex align-items-stretch">
           <b-card no-body :class="`${day > storeCurrentDay[year] ? 'disabled' : ''}`" bg-variant="dark">
             <div class="position-relative">
-              <b-img fluid class="card-img" :src="require(`@/assets/card-background.jpg`)" />
-              <h1 class="day">{{ day }}</h1>
+              <b-img fluid class="card-img" :src="require(`@/assets/card-background-2.jpg`)" />
+              <h1 class="day text-light pb-5">{{ day }}</h1>
             </div>
             <b-card-body>
               <b-card-text class="text-center mb-1">
