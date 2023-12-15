@@ -159,7 +159,9 @@ const solvedDays = {
     { title: 'Pipe Maze', solutions: [true, true], isVisual: true },
     { title: 'Cosmic Expansion', solutions: [true, true], isVisual: false },
     { title: 'Hot Springs', solutions: [true, true], isVisual: false },
-    { title: 'Point of Incidence', solutions: [true, true], isVisual: false }
+    { title: 'Point of Incidence', solutions: [true, true], isVisual: false },
+    { title: 'Parabolic Reflector Dish', solutions: [true, true], isVisual: false },
+    { title: 'Lens Library', solutions: [true, true], isVisual: false }
   ]
 }
 
