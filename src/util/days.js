@@ -161,7 +161,12 @@ const solvedDays = {
     { title: 'Hot Springs', solutions: [true, true], isVisual: false },
     { title: 'Point of Incidence', solutions: [true, true], isVisual: false },
     { title: 'Parabolic Reflector Dish', solutions: [true, true], isVisual: false },
-    { title: 'Lens Library', solutions: [true, true], isVisual: false }
+    { title: 'Lens Library', solutions: [true, true], isVisual: false },
+    { title: 'The Floor Will Be Lava', solutions: [true, true], isVisual: true },
+    { title: 'Clumsy Crucible', solutions: [true, true], isVisual: true },
+    { title: 'Lavaduct Lagoon', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] },
+    { title: 'Aplenty', solutions: [true, true], isVisual: false },
+    { title: 'Pulse Propagation', solutions: [true, true], isVisual: false }
   ]
 }
 

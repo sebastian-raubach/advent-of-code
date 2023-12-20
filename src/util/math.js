@@ -17,7 +17,14 @@ const transpose = (matrix) => {
   return grid
 }
 
+const gcd = (a, b) => b === 0 ? a : gcd(b, a % b)
+const lcmInternal = (a, b) => a / gcd(a, b) * b
+const lcmAll = (ns) => ns.reduce(lcmInternal, 1)
+
+const lcm = (values) => lcmAll(values)
+
 export {
   mod,
-  transpose
+  transpose,
+  lcm
 }

@@ -14,6 +14,7 @@
 
 <script>
 import Day from '@/components/Day'
+import { lcm } from '@/util/math'
 
 export default {
   components: {
@@ -55,14 +56,7 @@ export default {
 
       const counts = starts.map(s => this.solve(s, instructions, map, goals).counter)
 
-      this.solutions.partTwo = this.lcm(counts)
-    },
-    lcm: function (values) {
-      const gcd = (a, b) => b === 0 ? a : gcd(b, a % b)
-      const lcm = (a, b) => a / gcd(a, b) * b
-      const lcmAll = (ns) => ns.reduce(lcm, 1)
-
-      return lcmAll(values)
+      this.solutions.partTwo = lcm(counts)
     },
     solve: function (start, instructions, map, goals) {
       let current = start
