@@ -6,6 +6,7 @@ Plotly.register([
   require('plotly.js/lib/heatmap'),
   require('plotly.js/lib/scatter'),
   require('plotly.js/lib/scatter3d'),
+  require('plotly.js/lib/mesh3d'),
   require('plotly.js/lib/parcoords')
 ])
 

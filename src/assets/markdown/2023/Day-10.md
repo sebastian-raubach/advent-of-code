@@ -154,7 +154,7 @@ The above loop encloses merely **four tiles** - the two pairs of `.` in the sout
 
 In fact, there doesn't even need to be a full tile path to the outside for tiles to count as outside the loop - squeezing between pipes is also allowed! Here, `I` is still within the loop and `O` is still outside the loop:
 
-</pre>
+<pre>
 ..........
 .S------7.
 .|F----7|.

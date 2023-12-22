@@ -166,7 +166,9 @@ const solvedDays = {
     { title: 'Clumsy Crucible', solutions: [true, true], isVisual: true },
     { title: 'Lavaduct Lagoon', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] },
     { title: 'Aplenty', solutions: [true, true], isVisual: false },
-    { title: 'Pulse Propagation', solutions: [true, true], isVisual: false }
+    { title: 'Pulse Propagation', solutions: [true, true], isVisual: false },
+    { title: 'Step Counter', solutions: [true, false], isVisual: true },
+    { title: 'Sand Slabs', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] }
   ]
 }
 
