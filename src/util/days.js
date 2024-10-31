@@ -168,7 +168,8 @@ const solvedDays = {
     { title: 'Aplenty', solutions: [true, true], isVisual: false },
     { title: 'Pulse Propagation', solutions: [true, true], isVisual: false },
     { title: 'Step Counter', solutions: [true, false], isVisual: true },
-    { title: 'Sand Slabs', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] }
+    { title: 'Sand Slabs', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] },
+    { title: 'A Long Walk', solutions: [true, true], isVisual: true, warnings: [WARNING_LONG_RUNTIME] }
   ]
 }
 
